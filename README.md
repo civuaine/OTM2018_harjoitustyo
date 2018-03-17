@@ -6,5 +6,6 @@ Heipä hei, **minä** olen sitä mieltä että komentorivi alkaa käydä tutuksi
 [gitlog.txt](https://github.com/civuaine/OTM2018_harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
 
 Terveisin mä
+
 -kiitosNam
 
