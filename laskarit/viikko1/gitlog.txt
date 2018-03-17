@@ -1,4 +1,5 @@
 Komennon git log | cat -tulos:
+Kirjotan tähän väliiin tän testihommelin laskarii varten..
 
 
 
