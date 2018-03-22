@@ -14,7 +14,7 @@ Käyttäjärooleja on vain yksi eli normaali käyttäjä.
 - Statistiikkasivulla havainnot on päivämäärän mukaan järjestetty
 - Käyttäjä voi lisätä juuri tehdyn pilvihavainnon järjestelmään (tietokantaan), myös aiemmin tehdyn havainnon voi lisätä
 
-## Käyttäliittymäsuunnittelua...
+## Käyttöliittymäsuunnittelua...
 - Käyttäjä klikkailee nappeja sovelluksen kysyessä kysymyksiä havaintoon liittyen
 - Käyttäjälle näytetään esimerkkikuvia kysymyksiin liittyen
 - Joidenkin kysymysten ohessa voidaan antaa lisäohjeita tarvittaessa jonnekin sivuun tai napin toiminnallisuuden taakse 
