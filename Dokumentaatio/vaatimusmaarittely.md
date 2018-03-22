@@ -11,8 +11,11 @@ Käyttäjärooleja on vain yksi eli normaali käyttäjä.
 
 ## Suunnitellut toiminnallisuudet
 - Käyttäjä voi nähdä statistiikkaa, eli millaisia pilvihavaintoja milläkin paikkakunnalla on tehty ja milloin
+- Jokainen käyttäjä voi nähdä muiden tekemiä havaintoja. Käyttäjät ovat anonyymejä.
 - Statistiikkasivulla havainnot on päivämäärän mukaan järjestetty
-- Käyttäjä voi lisätä juuri tehdyn pilvihavainnon järjestelmään (tietokantaan), myös aiemmin tehdyn havainnon voi lisätä
+- Käyttäjä voi lisätä juuri tehdyn pilvihavainnon järjestelmään (tietokantaan), myös aiemmin tehdyn havainnon voi lisätä. Tästä huolimatta haetaan havaintojen kirjaamispäivän ja seuraavan päivän sääennuste, vaikka havainto olisikin esim. viikon takaa.
+- Käyttäjältä kysytään haluaako hän tallentaa havainnon järjestelmään
+- Tehtyjä havaintoja ei voi poistaa
 
 ## Käyttöliittymäsuunnittelua...
 - Käyttäjä klikkailee nappeja sovelluksen kysyessä kysymyksiä havaintoon liittyen
