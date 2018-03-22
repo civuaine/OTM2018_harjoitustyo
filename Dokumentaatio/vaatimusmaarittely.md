@@ -16,8 +16,10 @@ Käyttäjärooleja on vain yksi eli normaali käyttäjä.
 - Käyttäjä voi lisätä juuri tehdyn pilvihavainnon järjestelmään (tietokantaan), myös aiemmin tehdyn havainnon voi lisätä. Tästä huolimatta haetaan havaintojen kirjaamispäivän ja seuraavan päivän sääennuste, vaikka havainto olisikin esim. viikon takaa.
 - Käyttäjältä kysytään haluaako hän tallentaa havainnon järjestelmään
 - Tehtyjä havaintoja ei voi poistaa
+- Tulevaisuudessa olevat havainnot aiheuttavat virheilmoituksen
 
 ## Käyttöliittymäsuunnittelua...
+- Kun käyttäjä käynnistää sovelluksen, tulee näytölle ohjeet sovelluksen ideasta ja tarkoituksesta, sekä siihen liittyvästä toiminnallisuudesta
 - Käyttäjä klikkailee nappeja sovelluksen kysyessä kysymyksiä havaintoon liittyen
 - Käyttäjälle näytetään esimerkkikuvia kysymyksiin liittyen
 - Joidenkin kysymysten ohessa voidaan antaa lisäohjeita tarvittaessa jonnekin sivuun tai napin toiminnallisuuden taakse 
@@ -28,4 +30,7 @@ Käyttäjärooleja on vain yksi eli normaali käyttäjä.
 - Tulee toimia Linux-ympäristössä
 - Käyttäjien havainnot tallennetaan paikallisen koneen levylle
 
+## Jatkokehitysideoita
+- Sovellukseen saatetaan lisätä myöhemmin mahdollisuus selvittää myös havaitun pilven pilvilaji, jolloin pilvien perusteella annettu sääennuste voi parantua.
 
+Jatkokehitys riippuu ajan riittävyydestä. Tämä on suunnitelma ja graafisen käyttöliittymän ulkoasu varmasti tulee vielä muuttumaan...
