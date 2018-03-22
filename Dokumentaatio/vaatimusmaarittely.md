@@ -12,7 +12,17 @@ Käyttäjärooleja on vain yksi eli normaali käyttäjä.
 ## Suunnitellut toiminnallisuudet
 - Käyttäjä voi nähdä statistiikkaa, eli millaisia pilvihavaintoja milläkin paikkakunnalla on tehty ja milloin
 - Statistiikkasivulla havainnot on päivämäärän mukaan järjestetty
-- Käyttäjä voi lisätä tehdyn pilvihavainnon järjestelmään (tietokantaan), myös aiemmin tehdyn havainnon voi lisätä
--
+- Käyttäjä voi lisätä juuri tehdyn pilvihavainnon järjestelmään (tietokantaan), myös aiemmin tehdyn havainnon voi lisätä
+
+## Käyttäliittymäsuunnittelua...
+- Käyttäjä klikkailee nappeja sovelluksen kysyessä kysymyksiä havaintoon liittyen
+- Käyttäjälle näytetään esimerkkikuvia kysymyksiin liittyen
+- Joidenkin kysymysten ohessa voidaan antaa lisäohjeita tarvittaessa jonnekin sivuun tai napin toiminnallisuuden taakse 
+- Jokainen klikkaus johtaa uuteen kysymykseen. Paluu mahdollisuus edelliseen kysymykseen tulee onnistua.
+- Ilmatieteen laitokselta haettu sääennuste jotenkin järkevästi ruudulle...
+
+## Toimintaympäristön rajoitteet
+- Tulee toimia Linux-ympäristössä
+- Käyttäjien havainnot tallennetaan paikallisen koneen levylle
 
 
