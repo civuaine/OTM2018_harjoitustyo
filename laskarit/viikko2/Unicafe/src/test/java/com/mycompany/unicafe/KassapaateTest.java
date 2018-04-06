@@ -234,7 +234,7 @@ public class KassapaateTest {
     @Test
     public void kortilleLadataanRahaaSaldoMuuttuu() {
         kassapaate.lataaRahaaKortille(maksukortti, 100); // 1 euro
-        assertEquals(100100, kassapaate.kassassaRahaa());
+        assertEquals(1100, maksukortti.saldo());
     }
     
     @Test 

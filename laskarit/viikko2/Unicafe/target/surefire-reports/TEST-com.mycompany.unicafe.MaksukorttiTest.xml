@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.mycompany.unicafe.MaksukorttiTest" time="0" tests="8" errors="0" skipped="0" failures="0">
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="8" failures="0" name="com.mycompany.unicafe.MaksukorttiTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
     <property name="java.vm.version" value="25.151-b12"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="/home/sini/Documents/Sini/Helsingin_yliopisto/Tietojenkasittely/OTM2018_harjoitustyo/laskarit/viikko2/Unicafe"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=":"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -21,12 +20,14 @@
     <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/endorsed"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.io.tmpdir" value="/tmp"/>
-    <property name="line.separator" value="&#10;"/>
+    <property name="line.separator" value="
+"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="os.name" value="Linux"/>
-    <property name="classworlds.conf" value="/usr/share/maven/bin/m2.conf"/>
+    <property name="maven.ext.class.path" value="/home/sini/Netbeans/tmcbeans/java/maven-nblib/netbeans-eventspy.jar"/>
+    <property name="classworlds.conf" value="/home/sini/Netbeans/tmcbeans/java/maven/bin/m2.conf"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/bin/../jre/lib/amd64:/usr/lib/jvm/java-8-openjdk-amd64/bin/../jre/lib/i386::/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -37,11 +38,11 @@
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.specification.version" value="1.8"/>
     <property name="user.name" value="sini"/>
-    <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
+    <property name="java.class.path" value="/home/sini/Netbeans/tmcbeans/java/maven/boot/plexus-classworlds-2.4.jar"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/usr/lib/jvm/java-8-openjdk-amd64/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test jacoco:report"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/sini/Netbeans/tmcbeans/java/maven-nblib/netbeans-eventspy.jar test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -51,7 +52,7 @@
     <property name="securerandom.source" value="file:/dev/./urandom"/>
     <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="maven.home" value="/usr/share/maven"/>
+    <property name="maven.home" value="/home/sini/Netbeans/tmcbeans/java/maven"/>
     <property name="file.separator" value="/"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -59,12 +60,12 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="konstruktoriAsettaaSaldonOikein" classname="com.mycompany.unicafe.MaksukorttiTest" time="0"/>
-  <testcase name="rahanLataaminenKasvattaaSaldoaOikein" classname="com.mycompany.unicafe.MaksukorttiTest" time="0"/>
-  <testcase name="testaaPalauttaakoOikeanSaldon" classname="com.mycompany.unicafe.MaksukorttiTest" time="0"/>
-  <testcase name="luotuKorttiOlemassa" classname="com.mycompany.unicafe.MaksukorttiTest" time="0"/>
-  <testcase name="metdoiPalauttaaFalseJosRahatEivatRiita" classname="com.mycompany.unicafe.MaksukorttiTest" time="0"/>
-  <testcase name="saldoVaheneeKunRahaaTarpeeksi" classname="com.mycompany.unicafe.MaksukorttiTest" time="0"/>
-  <testcase name="metodiPalauttaaTrueJosRahatRiittivat" classname="com.mycompany.unicafe.MaksukorttiTest" time="0"/>
-  <testcase name="saldoEiMuutuJosRahaaEiTarpeeksi" classname="com.mycompany.unicafe.MaksukorttiTest" time="0"/>
+  <testcase classname="com.mycompany.unicafe.MaksukorttiTest" name="konstruktoriAsettaaSaldonOikein" time="0"/>
+  <testcase classname="com.mycompany.unicafe.MaksukorttiTest" name="rahanLataaminenKasvattaaSaldoaOikein" time="0"/>
+  <testcase classname="com.mycompany.unicafe.MaksukorttiTest" name="testaaPalauttaakoOikeanSaldon" time="0"/>
+  <testcase classname="com.mycompany.unicafe.MaksukorttiTest" name="luotuKorttiOlemassa" time="0"/>
+  <testcase classname="com.mycompany.unicafe.MaksukorttiTest" name="metdoiPalauttaaFalseJosRahatEivatRiita" time="0"/>
+  <testcase classname="com.mycompany.unicafe.MaksukorttiTest" name="saldoVaheneeKunRahaaTarpeeksi" time="0"/>
+  <testcase classname="com.mycompany.unicafe.MaksukorttiTest" name="metodiPalauttaaTrueJosRahatRiittivat" time="0"/>
+  <testcase classname="com.mycompany.unicafe.MaksukorttiTest" name="saldoEiMuutuJosRahaaEiTarpeeksi" time="0"/>
 </testsuite>
