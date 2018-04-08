@@ -8,5 +8,6 @@ Käytetty aika projektin eteen. Laskarit ja muu kurssiin kuuluva pähkäily ei s
 | 15.3. | 1    | Oman aiheen pohdinta jatkuu, jotain ideaa tulevan käyttöliittymän toiminnasta |
 | 22.3. | 3    | Vaatimusmäärittelyn laatiminen |
 | 6.4   | 1    | Oman sovelluksen aloittamisen suunnittelua, mitä rakentaa ensin...|
-| 7.4   | 4    | Alustavan graafisen käyttöliitymän toteutus etusivulle. Koodin Kerromallin hyvin alustava toteutus |
-| yht   | 10   | | 
+| 7.4   | 4    | Alustavan graafisen käyttöliitymän toteutus etusivulle. Koodin Kerrosmallin hyvin alustava toteutus. |
+| 8.4   | 5    | Graafisen käyttöliittymän etusivun hiominen. pom.xml:ään riippuvuuksien lisääminen. |
+| yht   | 15   | | 
