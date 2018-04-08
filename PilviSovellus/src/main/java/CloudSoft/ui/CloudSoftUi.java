@@ -3,6 +3,8 @@ package CloudSoft.ui;
 import CloudSoft.domain.CloudSoftService;
 
 import java.io.FileInputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
 import javafx.application.Application;
@@ -16,9 +18,12 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -35,7 +40,7 @@ public class CloudSoftUi extends Application {
         // graafisen käyttöliittymän asettelija
         System.out.println("Pilvisovellus on käynnissä...");
         BorderPane asettelu = new BorderPane();
-
+        
         Button aloitusNappi = new Button("Tee pilvihavainto");
         Button statistiikkaNappi = new Button("Tilastoja havainnoista");
         
@@ -50,35 +55,30 @@ public class CloudSoftUi extends Application {
         
 // tervehdysviesti
         Label tervehdysViesti = new Label("Tervetuloa Pilvisovellukseen!");
-        tervehdysViesti.setFont(Font.font("aridia", 30));
+        tervehdysViesti.setFont(Font.font("aridia", 40));
         tervehdysViesti.setTextFill(Color.DARKTURQUOISE);
         asettelu.setTop(tervehdysViesti);
         tervehdysViesti.autosize();
         BorderPane.setAlignment(tervehdysViesti, Pos.TOP_CENTER);
    
-// Tekstikenttä
-        TextArea kayttoOhje = new TextArea("Ole oma meteorologisi! \nSovelluksen avulla voit selvittää mikä havaitsemasi \n"
-                + "pilvi on luokaltaan ja lajiltaan, ja mitä se voi mahdollisesti kertoa tulevasta säästä. \n"
-                + "\n"
-                + "'Tee pilvihavainto' -napin takana sinulta kysytään muutamia kysymyksiä pilvihavaintoosi liittyen ja pyrkii niiden avulla \n"
-                + "kertomaan sinulle, mikä havaitsemasi pilvi on ja millaista säätä"
-                + "se ennustaa lähitunneille tai päiville. \nVoit lopuksi halutessasi tallentaa pilvihavaintosi pilvihavaintotietokantaan, "
-                + "jossa on muiden käyttäjien tekemiä havaintoja. \nLopuksi saat havaintopaikallesi myös Ilmatieteen laitoksen "
-                + "tarjoaman paikkakuntakohtaisen sääennusteen muutamalle lähipäivälle. \nPääset halutessasi katsomaan muiden käyttäjien havaintoja"
-                + "'Tilastoja havainnoista' -napin kautta. ");
+// TekstiAlue
+        String teksti = new String(Files.readAllBytes(Paths.get("teksti.txt")));
+        TextArea kayttoOhje = new TextArea(teksti);
         
         HBox apu = new HBox(kayttoOhje);
         apu.setAlignment(Pos.CENTER);
         apu.setPadding(new Insets(20));
         HBox.setHgrow(kayttoOhje, Priority.ALWAYS);
-        //kayttoOhje.setWrapText(true);
+        kayttoOhje.setWrapText(true);
+        kayttoOhje.setMaxWidth(700);
+        kayttoOhje.setMaxHeight(300);
         asettelu.setCenter(kayttoOhje);
+        
         
 // Yleinen asettelu sivun komponenteille
         BorderPane.setMargin(napit, new Insets(20));
         BorderPane.setMargin(tervehdysViesti, new Insets(20));
         BorderPane.setMargin(kayttoOhje, new Insets(20));
-        
         
 // Näkymän muodostaminen
         this.nakyma = new Scene(asettelu, 1850, 1000); // muokkaa avautuvaksi aina full screen
