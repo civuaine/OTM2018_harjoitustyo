@@ -1,6 +1,7 @@
 package CloudSoft.ui;
 
 import CloudSoft.domain.CloudSoftService;
+import java.awt.Image;
 
 import java.io.FileInputStream;
 import java.nio.file.Files;
@@ -83,6 +84,10 @@ public class CloudSoftUi extends Application {
         BorderPane.setMargin(kayttoOhje, new Insets(20));
         //taustakuva
         //asettelu.setStyle("-fx-background-image: url(\"/home/sini/Documents/Sini/Helsingin_yliopisto/Tietojenkasittely/OTM2018_harjoitustyo/PilviSovellus/kukka.jpeg\");-fx-background-size: 500, 500;-fx-background-repeat: no-repeat;");
+//        String kuva = CloudSoftUi.class.getResource("kukka.jpeg").toExternalForm();
+//        asettelu.setStyle("-fx-background-image: url('" + kuva + "'); " +
+//           "-fx-background-position: center center; " +
+//           "-fx-background-repeat: stretch;");
         
 // Näkymän muodostaminen
         this.nakyma = new Scene(asettelu, 1850, 1000); // muokkaa avautuvaksi aina full screen
