@@ -62,7 +62,7 @@ public class CloudSoftUi extends Application {
         BorderPane.setAlignment(tervehdysViesti, Pos.TOP_CENTER);
    
 // TekstiAlue
-        String teksti = new String(Files.readAllBytes(Paths.get("teksti.txt")));
+        String teksti = new String(Files.readAllBytes(Paths.get("/home/sini/Documents/Sini/Helsingin_yliopisto/Tietojenkasittely/OTM2018_harjoitustyo/PilviSovellus/teksti.txt")));
         TextArea kayttoOhje = new TextArea(teksti);
         
         HBox apu = new HBox(kayttoOhje);
@@ -72,16 +72,21 @@ public class CloudSoftUi extends Application {
         kayttoOhje.setWrapText(true);
         kayttoOhje.setMaxWidth(700);
         kayttoOhje.setMaxHeight(300);
+        kayttoOhje.setFont(Font.font("aridia", 14));
         asettelu.setCenter(kayttoOhje);
         
+        //String css = CloudSoftUi.class.getResource("/home/sini/Documents/Sini/Helsingin_yliopisto/Tietojenkasittely/OTM2018_harjoitustyo/PilviSovellus/style.css").toExternalForm();
         
 // Yleinen asettelu sivun komponenteille
         BorderPane.setMargin(napit, new Insets(20));
         BorderPane.setMargin(tervehdysViesti, new Insets(20));
         BorderPane.setMargin(kayttoOhje, new Insets(20));
+        //taustakuva
+        //asettelu.setStyle("-fx-background-image: url(\"/home/sini/Documents/Sini/Helsingin_yliopisto/Tietojenkasittely/OTM2018_harjoitustyo/PilviSovellus/kukka.jpeg\");-fx-background-size: 500, 500;-fx-background-repeat: no-repeat;");
         
 // Näkymän muodostaminen
         this.nakyma = new Scene(asettelu, 1850, 1000); // muokkaa avautuvaksi aina full screen
+        //this.nakyma.getStylesheets().add(css);
         ikkuna.setScene(nakyma);
         ikkuna.setTitle("Pilvisovellus");
         ikkuna.show();

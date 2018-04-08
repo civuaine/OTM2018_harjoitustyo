@@ -1,6 +1,8 @@
 Ole oma sääennustajasi!
+Katsele taivaalle, bongaa pilvi ja selvitä mitä se kertoo lähihetkien tulevasta säästä!
 
-Sovelluksen avulla voit selvittää mikä havaitsemasi pilvi on luokaltaan ja lajiltaan, ja mitä se voi mahdollisesti kertoa tulevasta säästä!
+"Tee pilvihavainto" 
+Sinulta kysytään muutamia kysymyksiä pilvihavaintoosi liittyen. Vastaustesi perusteella sovellus pyrkii kertomaan sinulle, mikä havaitsemasi pilvi on ja millaista säätä se voi mahdollisesti ennustaa lähitunneille, jopa päiville. Voit lopuksi halutessasi tallentaa pilvihavaintosi pilvihavaintotietokantaan, jossa on muiden käyttäjien tekemiä havaintoja. Lopuksi saat havaintopaikallesi myös Ilmatieteen laitoksen tarjoaman paikkakuntakohtaisen sääennusteen muutamalle lähipäivälle - näet kuinka hyvin havaintosi täsmää sääennusteen kanssa. 
 
-'Tee pilvihavainto' 
-Sinulta kysytään muutamia kysymyksiä pilvihavaintoosi liittyen. Vastaustesi perusteella sovellus pyrkii kertomaan sinulle, mikä havaitsemasi pilvi on ja millaista säätä se voi mahdollisesti ennustaa lähitunneille, jopa päiville. Voit lopuksi halutessasi tallentaa pilvihavaintosi pilvihavaintotietokantaan, jossa on muiden käyttäjien tekemiä havaintoja. Lopuksi saat havaintopaikallesi myös Ilmatieteen laitoksen tarjoaman paikkakuntakohtaisen sääennusteen muutamalle lähipäivälle - näet kuinka hyvin havaintosi täsmää sääennusteen kanssa. Pääset halutessasi katsomaan muiden käyttäjien havaintoja 'Tilastoja havainnoista' -napin kautta.
+"Tilastoja havainnoista"
+Pääset halutessasi katsomaan muiden käyttäjien havaintoja.
