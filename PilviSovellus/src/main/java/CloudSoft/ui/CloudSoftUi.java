@@ -34,13 +34,21 @@ import javafx.stage.Stage;
 public class CloudSoftUi extends Application {
 
     private CloudSoftService cloudsoftservice;
-    private Scene nakyma;
+    private Scene paanakyma;
+    private Scene havaintosivu;
+    private Scene tilastosivu;
 
     @Override
     public void start(Stage ikkuna) throws Exception {
-        // graafisen käyttöliittymän asettelija
+        // graafisen käyttöliittymän asettelijat
         System.out.println("Pilvisovellus on käynnissä...");
         BorderPane asettelu = new BorderPane();
+        BorderPane havAsettelu = new BorderPane();
+        BorderPane tilasto = new BorderPane();
+        
+        this.paanakyma = new Scene(asettelu,1850, 1000);
+        this.havaintosivu = new Scene(havAsettelu, 1850, 1000);
+        this.tilastosivu = new Scene(tilasto, 1850, 1000);
         
         Button aloitusNappi = new Button("Tee pilvihavainto");
         Button statistiikkaNappi = new Button("Tilastoja havainnoista");
@@ -53,6 +61,17 @@ public class CloudSoftUi extends Application {
         aloitusNappi.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         statistiikkaNappi.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         asettelu.setBottom(napit);
+        
+        aloitusNappi.setOnAction((event) -> {
+            System.out.println("Tehdään havainto!");
+            ikkuna.setScene(this.havaintosivu);
+            
+        });
+        
+        statistiikkaNappi.setOnAction((event) -> {
+            System.out.println("Katsellaan tilastoja!");
+            ikkuna.setScene(this.tilastosivu);
+        });
         
 // tervehdysviesti
         Label tervehdysViesti = new Label("Tervetuloa Pilvisovellukseen!");
@@ -90,9 +109,8 @@ public class CloudSoftUi extends Application {
 //           "-fx-background-repeat: stretch;");
         
 // Näkymän muodostaminen
-        this.nakyma = new Scene(asettelu, 1850, 1000); // muokkaa avautuvaksi aina full screen
         //this.nakyma.getStylesheets().add(css);
-        ikkuna.setScene(nakyma);
+        ikkuna.setScene(this.paanakyma);
         ikkuna.setTitle("Pilvisovellus");
         ikkuna.show();
 
