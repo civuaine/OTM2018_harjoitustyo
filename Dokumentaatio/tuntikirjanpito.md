@@ -10,4 +10,5 @@ Käytetty aika projektin eteen. Laskarit ja muu kurssiin kuuluva pähkäily ei s
 | 6.4   | 1    | Oman sovelluksen aloittamisen suunnittelua, mitä rakentaa ensin...|
 | 7.4   | 4    | Alustavan graafisen käyttöliitymän toteutus etusivulle. Koodin Kerrosmallin hyvin alustava toteutus. |
 | 8.4   | 5    | Graafisen käyttöliittymän etusivun hiominen. pom.xml:ään riippuvuuksien lisääminen. |
-| yht   | 15   | | 
+| 9.4   | 5    | sovelluslogiikka-luokan metodien tekemistä, nappien toiminnallisuuksien lisäämistä, testin tekeminen. |
+| yht   | 20   | | 
