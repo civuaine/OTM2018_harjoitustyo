@@ -40,9 +40,9 @@ public class CloudSoftUi extends Application {
 
     @Override
     public void init() {
-        CloudSoftService cloudsoftservice = new CloudSoftService();
+        this.cloudsoftservice = new CloudSoftService();
     }
-    
+
     public void siirryEtusivulle(Button etusivulle, Stage ikkuna) {
         etusivulle.setOnAction((event) -> {
             System.out.println("Siirrytään etusivulle");
@@ -129,9 +129,6 @@ public class CloudSoftUi extends Application {
         ikkuna.setScene(this.paanakyma);
         ikkuna.setTitle("Pilvisovellus");
         ikkuna.show();
-        
-        
-        
 
 //Havainto
         // asettelija = havAsettelu
@@ -148,67 +145,69 @@ public class CloudSoftUi extends Application {
         havOhje.setMaxWidth(700);
         havOhje.setMaxHeight(60);
         havOhje.setFont(Font.font("aridia", 14));
-        
+
         havAsettelu.setTop(havApu);
 
         // nappi
         // tänne voi tuunaa, että muuttuu sovelluksen ikkunan koon kasvaessa/pienetessä
         Button havNappi = etusivuNappi(havAsettelu);
         siirryEtusivulle(havNappi, ikkuna);
-        
+
         // paikkakunta ja päivämäärä
         VBox paikkakuntaKokonaisuus = new VBox();
         VBox pvmKokonaisuus = new VBox();
         HBox pvmJaPaikka = new HBox();
-        
+
         Label paikkakuntaTeksti = new Label("Anna havaintopaikkakunnan nimi:");
         Label pvmTeksti = new Label("Anna havaintopäivämäärä (pp.kk.vvvv):");
         Label hyvaksymistekstiPaikkakunta = new Label();
         Label hyvaksymistekstiPvm = new Label();
-        
-        
+
         TextField paikkakunta = new TextField();
         TextField pvm = new TextField();
-        
+
         Button paikkakuntaNappi = new Button("Tallenna");
         Button pvmNappi = new Button("Tallenna");
-        
+
         paikkakuntaNappi.setOnAction((event) -> {
             String pk = paikkakunta.getText();
-            cloudsoftservice.havaintoPaikkakunta(pk);
-            hyvaksymistekstiPaikkakunta.setText("Paikkakunta annettu!");
-            hyvaksymistekstiPaikkakunta.setTextFill(Color.DARKOLIVEGREEN);
+            if (pk.isEmpty()) {
+                hyvaksymistekstiPaikkakunta.setText("Anna paikkakunta!");
+                hyvaksymistekstiPaikkakunta.setTextFill(Color.FIREBRICK);
+            } else {
+                cloudsoftservice.havaintoPaikkakunta(pk);
+                hyvaksymistekstiPaikkakunta.setText("Paikkakunta annettu!");
+                hyvaksymistekstiPaikkakunta.setTextFill(Color.DARKOLIVEGREEN);
+            }
+
         });
-        
+
         pvmNappi.setOnAction((event) -> {
-           String pvmnauha = pvmNappi.getText();
-           Boolean pvmilmo = cloudsoftservice.paivamaaraTarkistin(pvmnauha);
-           if (pvmilmo = true) {
-               hyvaksymistekstiPvm.setText("Päivämäärä annettu!");
-               hyvaksymistekstiPvm.setTextFill(Color.DARKOLIVEGREEN);
-           } else {
-               hyvaksymistekstiPvm.setText("Tarkista päivämäärä! Anna se muodossa pp.kk.vvvv, päivämäärä ei saa olla tulevaisuudessa.)");
-               hyvaksymistekstiPvm.setTextFill(Color.FIREBRICK);
-           }
-           
+            String pvmnauha = pvmNappi.getText();
+            Boolean pvmilmo = cloudsoftservice.paivamaaraTarkistin(pvmnauha);
+            if (pvmilmo = true) {
+                hyvaksymistekstiPvm.setText("Päivämäärä annettu!");
+                hyvaksymistekstiPvm.setTextFill(Color.DARKOLIVEGREEN);
+            } else {
+                hyvaksymistekstiPvm.setText("Tarkista päivämäärä! Anna se muodossa pp.kk.vvvv, päivämäärä ei saa olla tulevaisuudessa.)");
+                hyvaksymistekstiPvm.setTextFill(Color.FIREBRICK);
+            }
+
         });
-     
+
         paikkakuntaKokonaisuus.getChildren().addAll(paikkakuntaTeksti, paikkakunta, paikkakuntaNappi, hyvaksymistekstiPaikkakunta);
         paikkakuntaKokonaisuus.setSpacing(10);
         paikkakuntaKokonaisuus.setPadding(new Insets(20));
-        
-        pvmKokonaisuus.getChildren().addAll(pvmTeksti, pvm, pvmNappi);
+
+        pvmKokonaisuus.getChildren().addAll(pvmTeksti, pvm, pvmNappi, hyvaksymistekstiPvm);
         pvmKokonaisuus.setSpacing(10);
         pvmKokonaisuus.setPadding(new Insets(20));
-        
-        pvmJaPaikka.getChildren().addAll(paikkakuntaKokonaisuus, pvmKokonaisuus, hyvaksymistekstiPvm);
+
+        pvmJaPaikka.getChildren().addAll(paikkakuntaKokonaisuus, pvmKokonaisuus);
         pvmJaPaikka.setSpacing(30);
-        pvmJaPaikka.setPadding(new Insets(20));   
-        
+        pvmJaPaikka.setPadding(new Insets(20));
+
         havAsettelu.setCenter(pvmJaPaikka);
-        
-        
-        
 
 //Tilasto
         // asettelija = tilAsettelu
@@ -216,7 +215,7 @@ public class CloudSoftUi extends Application {
         String tilastoTeksti = new String(Files.readAllBytes(Paths.get("/home/sini/Documents/Sini/Helsingin_yliopisto/Tietojenkasittely/OTM2018_harjoitustyo/PilviSovellus/teksti3.txt")));
         //TextArea tilastoOhje = new TextArea(tilastoTeksti);
         Label tilastoOhje = new Label(tilastoTeksti);
-        
+
         HBox tilApu = new HBox(tilastoOhje);
         tilApu.setAlignment(Pos.CENTER);
         tilApu.setPadding(new Insets(20));
@@ -231,21 +230,6 @@ public class CloudSoftUi extends Application {
         Button tilNappi = etusivuNappi(tilAsettelu);
         siirryEtusivulle(tilNappi, ikkuna);
 
-   
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         // Yleinen asettelu sivujen komponenteille
         BorderPane.setMargin(napit, new Insets(20));
         BorderPane.setMargin(tervehdysViesti, new Insets(20));
