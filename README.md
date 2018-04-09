@@ -13,7 +13,7 @@ Jokaiselle käyttäjälle näytetään myös Ilmatieteen laitoksen paikkakuntako
 
 ## Komentorivitoiminnot
 
-## testien suorittaminen
+### testien suorittaminen
 
 HUOM! Tätä sovellusta ei voi käynnistää komentoriviltä! komento 
 
@@ -24,7 +24,7 @@ mvn compile exec:java-Dexec.mainClass=CloudSoft.ui.CloudSoftUi
 saa aikaan vain virheilmotuksen, jonka alkuperä ei selvinnyt vielä pajassakaan. Netbeansin vihreä nuoli toimii tosin.
 
 
-testit saa suoritettua komennolla
+Testit saa suoritettua komennolla
 
 ```
 mvn test
