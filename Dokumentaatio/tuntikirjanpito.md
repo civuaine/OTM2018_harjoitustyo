@@ -12,5 +12,5 @@ Käytetty aika projektin eteen. Laskarit ja muu kurssiin kuuluva pähkäily ei s
 | 8.4   | 5    | Graafisen käyttöliittymän etusivun hiominen. pom.xml:ään riippuvuuksien lisääminen. |
 | 9.4   | 5    | sovelluslogiikka-luokan metodien tekemistä, nappien toiminnallisuuksien lisäämistä, testin tekeminen. |
 | 11.4  | 4    | Koodin refaktorointi, uusia luokkia, joiden toiminnallisuuksien selkeyttäminen, bugien korjailua|
-| 12.4  | 6    | Näkymien muokkaus melko valmiiksi. 
+| 12.4  |     | Näkymien muokkaus melko valmiiksi. 
 | yht   | 20   | | 
