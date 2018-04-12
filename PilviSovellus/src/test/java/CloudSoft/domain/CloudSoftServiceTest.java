@@ -43,8 +43,8 @@ public class CloudSoftServiceTest {
         
     }
 
-    @Test
-    public void EiAnnaEnnustettaJosPaivamaaraEroYli3Paivaa() {
-        assertEquals(true, cloudsoftservice.annetaankoEnnuste());
-    }
+//    @Test
+//    public void EiAnnaEnnustettaJosPaivamaaraEroYli3Paivaa() {
+//        assertEquals(true, cloudsoftservice.annetaankoEnnuste());
+//    }
 }

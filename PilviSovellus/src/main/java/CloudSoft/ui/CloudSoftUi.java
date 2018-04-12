@@ -1,6 +1,7 @@
 package CloudSoft.ui;
 
 import CloudSoft.domain.CloudSoftService;
+import CloudSoft.domain.ObservationDateCheck;
 
 import java.awt.Image;
 import java.io.FileInputStream;
@@ -29,7 +30,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-// importtaa vielä muut CloudSoft paketit!!
+
 
 public class CloudSoftUi extends Application {
 
@@ -54,7 +55,7 @@ public class CloudSoftUi extends Application {
 
     public Button etusivuNappi(BorderPane asettelu) {
         Button etusivulle = new Button("Etusivulle");
-        etusivulle.setAlignment(Pos.BOTTOM_LEFT);
+        etusivulle.setAlignment(Pos.TOP_LEFT);
         asettelu.setBottom(etusivulle);
         BorderPane.setMargin(etusivulle, new Insets(20));
 
@@ -130,7 +131,7 @@ public class CloudSoftUi extends Application {
         ikkuna.setTitle("Pilvisovellus");
         ikkuna.show();
 
-//Havainto
+//Havaintosivu
         // asettelija = havAsettelu
         // Ohjeet
         String havteksti = new String(Files.readAllBytes(Paths.get("/home/sini/Documents/Sini/Helsingin_yliopisto/Tietojenkasittely/OTM2018_harjoitustyo/PilviSovellus/teksti2.txt")));
@@ -138,7 +139,7 @@ public class CloudSoftUi extends Application {
         Label havOhje = new Label(havteksti);
 
         HBox havApu = new HBox(havOhje);
-        havApu.setAlignment(Pos.CENTER);
+        havApu.setAlignment(Pos.TOP_CENTER);
         havApu.setPadding(new Insets(20));
         HBox.setHgrow(havOhje, Priority.ALWAYS);
         havOhje.setWrapText(true);
@@ -159,7 +160,8 @@ public class CloudSoftUi extends Application {
         HBox pvmJaPaikka = new HBox();
 
         Label paikkakuntaTeksti = new Label("Anna havaintopaikkakunnan nimi:");
-        Label pvmTeksti = new Label("Anna havaintopäivämäärä (pp.kk.vvvv):");
+        Label pvmTeksti = new Label("Anna havaintopäivämäärä (pp/kk/vvvv TAI p/k/vvvv):");
+        
         Label hyvaksymistekstiPaikkakunta = new Label();
         Label hyvaksymistekstiPvm = new Label();
 
@@ -171,12 +173,13 @@ public class CloudSoftUi extends Application {
 
         paikkakuntaNappi.setOnAction((event) -> {
             String pk = paikkakunta.getText();
-            if (pk.isEmpty()) {
-                hyvaksymistekstiPaikkakunta.setText("Anna paikkakunta!");
+            // tarkistetaan heti löytyykö paikkakunta IL:n tietokannasta.
+            Boolean paikkakuntatesti = cloudsoftservice.tarkistaPaikkakunta(pk);
+            if (!paikkakuntatesti) {
+                hyvaksymistekstiPaikkakunta.setText("Anna paikkakunta, tarkista oikeinkirjoitus!");
                 hyvaksymistekstiPaikkakunta.setTextFill(Color.FIREBRICK);
             } else {
-                cloudsoftservice.havaintoPaikkakunta(pk);
-                hyvaksymistekstiPaikkakunta.setText("Paikkakunta annettu!");
+                hyvaksymistekstiPaikkakunta.setText("Paikkakunta " + pk +" annettu!");
                 hyvaksymistekstiPaikkakunta.setTextFill(Color.DARKOLIVEGREEN);
             }
 
@@ -184,13 +187,15 @@ public class CloudSoftUi extends Application {
 
         pvmNappi.setOnAction((event) -> {
             String pvmnauha = pvmNappi.getText();
-            Boolean pvmilmo = cloudsoftservice.paivamaaraTarkistin(pvmnauha);
-            if (pvmilmo = true) {
+            Boolean pvmtesti = cloudsoftservice.tarkistaPaivamaara(pvmnauha);
+            
+            if (pvmtesti) {
+                hyvaksymistekstiPvm.setText("Tarkista päivämäärä, anna se muodossa pp/kk/vvvv "
+                        + "\nhavainnon pitää olla vuoden 1950 jälkeen tehty, havaintoaika ei voi olla myöskään tulevaisuudessa");
+                hyvaksymistekstiPvm.setTextFill(Color.FIREBRICK);
+            } else {
                 hyvaksymistekstiPvm.setText("Päivämäärä annettu!");
                 hyvaksymistekstiPvm.setTextFill(Color.DARKOLIVEGREEN);
-            } else {
-                hyvaksymistekstiPvm.setText("Tarkista päivämäärä! Anna se muodossa pp.kk.vvvv, päivämäärä ei saa olla tulevaisuudessa.)");
-                hyvaksymistekstiPvm.setTextFill(Color.FIREBRICK);
             }
 
         });
@@ -206,9 +211,16 @@ public class CloudSoftUi extends Application {
         pvmJaPaikka.getChildren().addAll(paikkakuntaKokonaisuus, pvmKokonaisuus);
         pvmJaPaikka.setSpacing(30);
         pvmJaPaikka.setPadding(new Insets(20));
+//        pvmJaPaikka.setAlignment(Pos.BOTTOM_CENTER);
+//        HBox.setHgrow(paikkakuntaKokonaisuus, Priority.ALWAYS);
+//        HBox.setHgrow(pvmKokonaisuus, Priority.ALWAYS);
 
         havAsettelu.setCenter(pvmJaPaikka);
 
+// kysely
+        // Nappi
+        Button kysely = new Button("Aloita kysely");
+        
 //Tilasto
         // asettelija = tilAsettelu
         //Otsikko
