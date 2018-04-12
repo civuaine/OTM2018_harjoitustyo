@@ -31,13 +31,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-
 public class CloudSoftUi extends Application {
 
     private CloudSoftService cloudsoftservice;
     private Scene paanakyma;
     private Scene havaintosivu;
     private Scene tilastosivu;
+    private Scene kyselysivu;
 
     @Override
     public void init() {
@@ -69,10 +69,12 @@ public class CloudSoftUi extends Application {
         BorderPane asettelu = new BorderPane();
         BorderPane havAsettelu = new BorderPane();
         BorderPane tilAsettelu = new BorderPane();
+        BorderPane kysAsettelu = new BorderPane();
 
         this.paanakyma = new Scene(asettelu, 1850, 1000);
         this.havaintosivu = new Scene(havAsettelu, 1850, 1000);
         this.tilastosivu = new Scene(tilAsettelu, 1850, 1000);
+        this.kyselysivu = new Scene(kysAsettelu, 1850, 1000);
 
 //Etusivu
         // napit
@@ -161,7 +163,7 @@ public class CloudSoftUi extends Application {
 
         Label paikkakuntaTeksti = new Label("Anna havaintopaikkakunnan nimi:");
         Label pvmTeksti = new Label("Anna havaintopäivämäärä (pp/kk/vvvv TAI p/k/vvvv):");
-        
+
         Label hyvaksymistekstiPaikkakunta = new Label();
         Label hyvaksymistekstiPvm = new Label();
 
@@ -173,14 +175,16 @@ public class CloudSoftUi extends Application {
 
         paikkakuntaNappi.setOnAction((event) -> {
             String pk = paikkakunta.getText();
+
             // tarkistetaan heti löytyykö paikkakunta IL:n tietokannasta.
             Boolean paikkakuntatesti = cloudsoftservice.tarkistaPaikkakunta(pk);
             if (!paikkakuntatesti) {
                 hyvaksymistekstiPaikkakunta.setText("Anna paikkakunta, tarkista oikeinkirjoitus!");
                 hyvaksymistekstiPaikkakunta.setTextFill(Color.FIREBRICK);
             } else {
-                hyvaksymistekstiPaikkakunta.setText("Paikkakunta " + pk +" annettu!");
+                hyvaksymistekstiPaikkakunta.setText("Paikkakunta annettu!");
                 hyvaksymistekstiPaikkakunta.setTextFill(Color.DARKOLIVEGREEN);
+                //cloudsoftservice.paikkakuntaOikeinAnnettu();
             }
 
         });
@@ -188,19 +192,23 @@ public class CloudSoftUi extends Application {
         pvmNappi.setOnAction((event) -> {
             String pvmnauha = pvmNappi.getText();
             Boolean pvmtesti = cloudsoftservice.tarkistaPaivamaara(pvmnauha);
-            
-            if (pvmtesti) {
+
+            if (pvmtesti) { // VAIHDA!! huutomerkki eteen
                 hyvaksymistekstiPvm.setText("Tarkista päivämäärä, anna se muodossa pp/kk/vvvv "
                         + "\nhavainnon pitää olla vuoden 1950 jälkeen tehty, havaintoaika ei voi olla myöskään tulevaisuudessa");
                 hyvaksymistekstiPvm.setTextFill(Color.FIREBRICK);
             } else {
                 hyvaksymistekstiPvm.setText("Päivämäärä annettu!");
                 hyvaksymistekstiPvm.setTextFill(Color.DARKOLIVEGREEN);
+
             }
 
         });
 
-        paikkakuntaKokonaisuus.getChildren().addAll(paikkakuntaTeksti, paikkakunta, paikkakuntaNappi, hyvaksymistekstiPaikkakunta);
+        Button jatkoNappi = new Button("Jatka");
+        Label jatkoHyvaksynta = new Label();
+
+        paikkakuntaKokonaisuus.getChildren().addAll(paikkakuntaTeksti, paikkakunta, paikkakuntaNappi, hyvaksymistekstiPaikkakunta, jatkoNappi, jatkoHyvaksynta);
         paikkakuntaKokonaisuus.setSpacing(10);
         paikkakuntaKokonaisuus.setPadding(new Insets(20));
 
@@ -217,10 +225,39 @@ public class CloudSoftUi extends Application {
 
         havAsettelu.setCenter(pvmJaPaikka);
 
-// kysely
-        // Nappi
-        Button kysely = new Button("Aloita kysely");
+// kyselysivu
+        // asettlija = kysAsettelu
+        //jatkoNapin toiminta
+        jatkoNappi.setOnAction((event) -> {
+            if ((hyvaksymistekstiPaikkakunta.getText().equals("Paikkakunta annettu!")) && (hyvaksymistekstiPvm.getText().equals("Päivämäärä annettu!"))) {
+                System.out.println("Siirrytään kyselyyn");
+                ikkuna.setScene(this.kyselysivu);
+            } else {
+                jatkoHyvaksynta.setText("Tarkista antamasti syötteet!");
+                jatkoHyvaksynta.setTextFill(Color.FIREBRICK);
+            }
+        });
+
+        Label eka = new Label("Ensimmäinen kysymys");
+        VBox edellisNapit = new VBox();
+        Button edellinen = new Button("Edellinen");
         
+        Button etusivuNappi = etusivuNappi(kysAsettelu);
+        siirryEtusivulle(etusivuNappi, ikkuna);
+        
+        edellisNapit.getChildren().addAll(edellinen, etusivuNappi);
+        edellisNapit.setSpacing(10);
+        edellisNapit.setPadding(new Insets(20));
+        
+        edellinen.setOnAction((event) -> {
+            System.out.println("Siirrytään kyselyyn");
+            ikkuna.setScene(this.havaintosivu);
+        });
+        
+        
+        kysAsettelu.setCenter(eka);
+        kysAsettelu.setBottom(edellisNapit);
+
 //Tilasto
         // asettelija = tilAsettelu
         //Otsikko
