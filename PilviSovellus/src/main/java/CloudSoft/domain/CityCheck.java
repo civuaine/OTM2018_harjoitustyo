@@ -4,7 +4,7 @@ import java.util.*;
 /**
  *
  * Tämä luokka vastaa kaikesta paikkakuntaan tai kaupunkiin liittyvästä
- * tarkastamisesta
+ * tarkastamisesta.
  */
 
 public class CityCheck {
