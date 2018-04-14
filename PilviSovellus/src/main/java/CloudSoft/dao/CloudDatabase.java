@@ -100,7 +100,7 @@ public class CloudDatabase implements CloudDao {
             if (!hasOne) {
                 return null;
             }
-            String ennuste= rs.getString("ennuste");
+            String ennuste = rs.getString("ennuste");
             conn.close();
 
             return ennuste;
@@ -108,6 +108,18 @@ public class CloudDatabase implements CloudDao {
         } catch (Throwable t) {
             // jos jotain menee pieleen, mitään ei palauteta
             return null;
+        }
+    }
+
+    public boolean onTyhja() throws Exception {
+        
+        try (Connection conn = getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Pilvet");
+
+            ResultSet rs = stmt.executeQuery();
+
+            boolean hasOne = rs.next();
+            return !hasOne; // jos on tyhjä --> true
         }
     }
 

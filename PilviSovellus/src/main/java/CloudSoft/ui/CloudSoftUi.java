@@ -11,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -42,10 +44,10 @@ public class CloudSoftUi extends Application {
     private Scene kyselysivu;
 
     @Override
-    public void init() throws Exception{
+    public void init() throws Exception {
         this.cloudsoftservice = new CloudSoftService();
         this.cloudsoftservice.tietokannatKayttovalmiiksi();
-        
+
     }
 
     public void siirryEtusivulle(Button etusivulle, Stage ikkuna) {
@@ -64,6 +66,11 @@ public class CloudSoftUi extends Application {
         BorderPane.setMargin(etusivulle, new Insets(20));
 
         return etusivulle;
+    }
+    
+    public void paivita(String teksti) {
+        teksti
+        
     }
 
     @Override
@@ -112,7 +119,7 @@ public class CloudSoftUi extends Application {
         BorderPane.setAlignment(tervehdysViesti, Pos.TOP_CENTER);
 
         // TekstiAlue
-        String teksti = new String(Files.readAllBytes(Paths.get("/home/sini/Documents/Sini/Helsingin_yliopisto/Tietojenkasittely/OTM2018_harjoitustyo/PilviSovellus/teksti.txt")));
+        String teksti = new String(Files.readAllBytes(Paths.get("teksti.txt")));
         TextArea kayttoOhje = new TextArea(teksti);
 
         HBox apu = new HBox(kayttoOhje);
@@ -140,7 +147,7 @@ public class CloudSoftUi extends Application {
 //Havaintosivu
         // asettelija = havAsettelu
         // Ohjeet
-        String havteksti = new String(Files.readAllBytes(Paths.get("/home/sini/Documents/Sini/Helsingin_yliopisto/Tietojenkasittely/OTM2018_harjoitustyo/PilviSovellus/teksti2.txt")));
+        String havteksti = new String(Files.readAllBytes(Paths.get("teksti2.txt")));
         //TextArea havOhje = new TextArea(havteksti);
         Label havOhje = new Label(havteksti);
 
@@ -245,30 +252,28 @@ public class CloudSoftUi extends Application {
         Label eka = new Label("Ensimmäinen kysymys");
         VBox edellisNapit = new VBox();
         Button edellinen = new Button("Edellinen");
-        
+
         Button etusivuNappi = etusivuNappi(kysAsettelu);
         siirryEtusivulle(etusivuNappi, ikkuna);
-        
+
         edellisNapit.getChildren().addAll(edellinen, etusivuNappi);
         edellisNapit.setSpacing(10);
         edellisNapit.setPadding(new Insets(20));
-        
+
         edellinen.setOnAction((event) -> {
             System.out.println("Siirrytään kyselyyn");
             ikkuna.setScene(this.havaintosivu);
         });
-        
-        
+
         kysAsettelu.setCenter(eka);
         kysAsettelu.setBottom(edellisNapit);
 
 //Tilasto
         // asettelija = tilAsettelu
         //Otsikko
-        String tilastoTeksti = new String(Files.readAllBytes(Paths.get("/home/sini/Documents/Sini/Helsingin_yliopisto/Tietojenkasittely/OTM2018_harjoitustyo/PilviSovellus/teksti3.txt")));
+        String tilastoTeksti = new String(Files.readAllBytes(Paths.get("teksti3.txt")));
         //TextArea tilastoOhje = new TextArea(tilastoTeksti);
         Label tilastoOhje = new Label(tilastoTeksti);
-
         HBox tilApu = new HBox(tilastoOhje);
         tilApu.setAlignment(Pos.CENTER);
         tilApu.setPadding(new Insets(20));
@@ -279,9 +284,66 @@ public class CloudSoftUi extends Application {
         tilastoOhje.setFont(Font.font("aridia", 14));
         tilAsettelu.setTop(tilApu);
 
-        // nappi
+        // Tietokannan havainnot
+        String havaintoTeksti = "";
+        final Label havainnot = new Label();
+        List<String> hav = cloudsoftservice.getHavainnotPaiva();
+        for (String yksi : hav) {
+            havaintoTeksti += yksi + "\n";
+        }
+        havainnot.setText(havaintoTeksti);
+
+        // napit
         Button tilNappi = etusivuNappi(tilAsettelu);
         siirryEtusivulle(tilNappi, ikkuna);
+
+        Button pvmMukaan = new Button("Järjestä päivämäärän mukaan");
+        Button paikanMukaan = new Button("Järjestä paikan mukaan");
+
+        pvmMukaan.setOnAction((event) -> {
+            try {
+                String havaintoTekstiUusi = "";
+                List<String> havpvm = cloudsoftservice.getHavainnotPaiva();
+                
+                for(String yksi : havpvm) {
+                    havaintoTekstiUusi += yksi + "\n";
+                }
+                
+                havainnot.setText(havaintoTekstiUusi);
+                //ikkuna.setScene(this.tilastosivu);
+            } catch (Exception ex) {
+                //älä tee mitään
+            }
+        });
+
+        paikanMukaan.setOnAction((event) -> {
+            try {
+                String havaintoTekstiPaikka = "";
+                List<String> havpaikka = cloudsoftservice.getHavainnotPaikka();
+                
+                for(String yksi : havpaikka) {
+                    havaintoTekstiPaikka += yksi + "\n";
+                }
+                // paivita(String havaintoTekstiPaikka)
+                havainnot.setText(havaintoTekstiPaikka);
+               //ikkuna.setScene(this.tilastosivu);
+            } catch (Exception ex) {
+                //älä tee mitään
+            }
+        });
+
+        VBox tilastot = new VBox();
+        HBox jarjestysNapit = new HBox(paikanMukaan, pvmMukaan);
+        jarjestysNapit.setSpacing(20);
+        jarjestysNapit.setPadding(new Insets(20));
+        jarjestysNapit.setAlignment(Pos.CENTER);
+
+        tilastot.getChildren().addAll(havainnot, jarjestysNapit);
+        tilastot.setAlignment(Pos.CENTER);
+        tilastot.setSpacing(10);
+        tilastot.setPadding(new Insets(20));
+
+        tilAsettelu.setCenter(tilastot);
 
         // Yleinen asettelu sivujen komponenteille
         BorderPane.setMargin(napit, new Insets(20));

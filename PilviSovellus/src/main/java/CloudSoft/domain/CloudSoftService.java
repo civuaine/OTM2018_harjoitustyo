@@ -31,18 +31,37 @@ public class CloudSoftService {
 
     }
 
-    
-    public void tietokannatKayttovalmiiksi() throws ClassNotFoundException {
-                
+    public void tietokannatKayttovalmiiksi() throws Exception {
+
         this.cloudDatabase = new CloudDatabase("jdbc:sqlite:Pilvitietokanta.db");
         this.observationDatabase = new ObservationDatabase("jdbc:sqlite:Havaintotietokanta.db");
-        
+
         this.cloudDatabase.init();
         this.observationDatabase.init();
+
+        if (observationDatabase.getAllByDate() == null) {
+            this.observationDatabase.addData();
+        } else {
+            // älä tee mitään
+        }
         
-        this.cloudDatabase.addData();
-        this.observationDatabase.addData();
+        if(cloudDatabase.onTyhja()) {
+            this.cloudDatabase.addData();            
+        } else {
+            // älä tee mitään
+        }
         
+
+    }
+
+    public List<String> getHavainnotPaiva() throws Exception {
+        List<String> havainnot = this.observationDatabase.getAllByDate();
+        return havainnot;
+    }
+
+    public List<String> getHavainnotPaikka() throws Exception {
+        List<String> havainnot = this.observationDatabase.getAllByDate();
+        return havainnot;
     }
 
     public boolean tarkistaPaikkakunta(String pk) {

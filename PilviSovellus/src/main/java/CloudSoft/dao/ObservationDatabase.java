@@ -86,7 +86,7 @@ public class ObservationDatabase implements ObservationDao {
         List<String> kaupunginMukaan = new ArrayList<>();
 
         try (Connection conn = getConnection()) {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Havainnot ORDER BY paikka");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Havainnot ORDER BY paikka ASC");
 
             ResultSet rs = stmt.executeQuery();
 
@@ -118,7 +118,7 @@ public class ObservationDatabase implements ObservationDao {
         List<String> paivanMukaan = new ArrayList<>();
 
         try (Connection conn = getConnection()) {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Havainnot ORDER BY paivamaara");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Havainnot ORDER BY paivamaara DESC");
 
             ResultSet rs = stmt.executeQuery();
 
