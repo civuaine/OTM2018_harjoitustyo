@@ -4,6 +4,7 @@ import java.util.List;
 import java.sql.*;
 import CloudSoft.domain.ObservationDateCheck;
 import CloudSoft.domain.CityCheck;
+import CloudSoft.domain.Cloud;
 
 /**
  *
@@ -13,7 +14,12 @@ import CloudSoft.domain.CityCheck;
 
 public interface CloudDao {
     
-    // getCumuloNimbus
-    // getStratoCumulus jne..
+    public Connection getConnection() throws SQLException;
+    
+    public void init() throws SQLException;
+    
+    public void addData() throws SQLException;
+    
+    public Cloud getInformation(String nimi) throws SQLException;
     
 }

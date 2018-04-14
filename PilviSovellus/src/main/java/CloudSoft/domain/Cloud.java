@@ -20,9 +20,27 @@ public class Cloud {
         
     }
     
-    public void sataakoPilvi() {
-        this.sataa = true;
+    public void pilviSataa(boolean arvo) {
+        this.sataa = arvo;
     }
     
-    public void 
+    public void pilviOnIso(boolean arvo) {
+        this.iso = arvo;
+    }
+    
+    public void pilviOnValkoinen(boolean arvo) {
+        this.valkoinenPilvi = arvo;
+    }
+    
+    public void pilviOnLapikuultava(boolean arvo) {
+        this.lapikuultava = arvo;
+    }
+    
+    public void pilviOnSelvaRajainen(boolean arvo) {
+        this.selvaRajainen = arvo;
+    }
+    
+    public void pilvenUlkoNako() {
+        this.ulkoNako = "jotain kivaa";
+    }
 }
