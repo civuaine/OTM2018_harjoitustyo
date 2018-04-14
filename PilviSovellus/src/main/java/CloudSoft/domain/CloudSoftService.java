@@ -1,9 +1,10 @@
 package CloudSoft.domain;
 
+import CloudSoft.dao.CloudDatabase;
+import CloudSoft.dao.ObservationDatabase;
 import CloudSoft.domain.ObservationDateCheck;
 import CloudSoft.domain.CityCheck;
 import CloudSoft.domain.Cloud;
-
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,11 +21,28 @@ public class CloudSoftService {
     private CityCheck CC;
     private ObservationDateCheck ODC;
     private Cloud cloud;
+    private CloudDatabase cloudDatabase;
+    private ObservationDatabase observationDatabase;
 
     public CloudSoftService() {
         this.ODC = new ObservationDateCheck();
         this.CC = new CityCheck();
         this.cloud = new Cloud();
+
+    }
+
+    
+    public void tietokannatKayttovalmiiksi() throws ClassNotFoundException {
+                
+        this.cloudDatabase = new CloudDatabase("jdbc:sqlite:Pilvitietokanta.db");
+        this.observationDatabase = new ObservationDatabase("jdbc:sqlite:Havaintotietokanta.db");
+        
+        this.cloudDatabase.init();
+        this.observationDatabase.init();
+        
+        this.cloudDatabase.addData();
+        this.observationDatabase.addData();
+        
     }
 
     public boolean tarkistaPaikkakunta(String pk) {
@@ -63,10 +81,9 @@ public class CloudSoftService {
     public boolean paivamaaraOikeinAnnettu() {
         return true;
     }
-    
+
 //    public void mikaPilviOnKyseessa() {
 //        if (cloud.sataako == true)
 //        if (cloud.koko == false) jne..
 //    }
-
 }

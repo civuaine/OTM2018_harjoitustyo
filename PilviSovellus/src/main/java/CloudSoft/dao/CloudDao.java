@@ -16,10 +16,10 @@ public interface CloudDao {
     
     public Connection getConnection() throws SQLException;
     
-    public void init() throws SQLException;
+    public void init();
     
-    public void addData() throws SQLException;
+    public void addData();
     
-    public Cloud getInformation(String nimi) throws SQLException;
+    public String getInformation(String nimi) throws SQLException;
     
 }

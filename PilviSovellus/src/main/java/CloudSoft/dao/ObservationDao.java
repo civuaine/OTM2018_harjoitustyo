@@ -11,9 +11,9 @@ import java.util.List;
 public interface ObservationDao {
     
     public Connection getConnection() throws SQLException;
-    public void init() throws SQLException;
+    public void init();
     public void save() throws SQLException;
-    public void AddModelData() throws SQLException;
+    public void addData();
     List<String> getAllByCity() throws SQLException;
     List<String> getAllByDate() throws SQLException;
     

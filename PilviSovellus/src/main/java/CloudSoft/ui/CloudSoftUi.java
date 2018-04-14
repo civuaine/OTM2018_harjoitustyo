@@ -1,5 +1,7 @@
 package CloudSoft.ui;
 
+import CloudSoft.dao.CloudDatabase;
+import CloudSoft.dao.ObservationDatabase;
 import CloudSoft.domain.CloudSoftService;
 import CloudSoft.domain.ObservationDateCheck;
 
@@ -40,8 +42,10 @@ public class CloudSoftUi extends Application {
     private Scene kyselysivu;
 
     @Override
-    public void init() {
+    public void init() throws Exception{
         this.cloudsoftservice = new CloudSoftService();
+        this.cloudsoftservice.tietokannatKayttovalmiiksi();
+        
     }
 
     public void siirryEtusivulle(Button etusivulle, Stage ikkuna) {
