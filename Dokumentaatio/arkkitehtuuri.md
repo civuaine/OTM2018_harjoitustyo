@@ -1,4 +1,4 @@
 # Arkkitehtuurikuvaus
 
 ## Rakenne
-tähän tulee kiva kuva.
+Pilvisovelluksen rakenne noudattaa kolmitasoista kerrosarkkitehtuuria. Alla kuva koodin pakkausrakenteesta:
