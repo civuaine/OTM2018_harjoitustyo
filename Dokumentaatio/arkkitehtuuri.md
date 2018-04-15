@@ -12,6 +12,6 @@ Sovelluksen sovelluslogiikka on siinä mielessä erilainen, että siinä ei ole 
 
 Sovelluksen toiminnallisesta kokonaisuudesta vastaa ainoastaan luokka _CloudSoftService_. Luokka tarjoaa käyttöliittymälle yksinkertaiset metodit päivämäärän ja paikan syötteen tarkistamiseen, tietokannan alustamiseen, havaintojen järjestämiseen jne.
 
-_CloudSoftService_ pääsee käsiksi molempiin olemassa oleviin tietokantoihin, sekä kolmeen erilliseen luokkaan: _CityCheck_, joka vastaa käyttäjän syöttämän paikan oikeellisuuden tarkistamisesta, _ObservationDateCheck_, joka varmistaa, että käyttäjän syöttämä päivämäärä on oikein ja järkevä, sekä _Cloud_, joka kuvaa yhtä pilveä ja sen ominaisuuksia. Näiden lisäksi _CloudSoftService_ pääsee käsiksi pakkauksessa CloudSoft.dao oleviin tietokantoihin rajapinnat _CloudDao_ ja _ObservationDao_ toteuttavien luokkien kautta. Nämä luokat on _CloudSoftService_:n käytettävissä erillisten metodikutsujen kautta.
+_CloudSoftService_ pääsee käsiksi kolmeen erilliseen luokkaan: _CityCheck_, joka vastaa käyttäjän syöttämän paikan oikeellisuuden tarkistamisesta, _ObservationDateCheck_, joka varmistaa, että käyttäjän syöttämä päivämäärä on oikein ja järkevä, sekä _Cloud_, joka kuvaa yhtä pilveä ja sen ominaisuuksia. Näiden lisäksi _CloudSoftService_ pääsee käsiksi pakkauksessa CloudSoft.dao oleviin tietokantoihin rajapinnat _CloudDao_ ja _ObservationDao_ toteuttavien luokkien kautta. Nämä luokat on _CloudSoftService_:n käytettävissä erillisten metodikutsujen kautta.
 
 Alla kuva sovelluksen pakkaus/luokkakaavio hieman tarkemmin:
