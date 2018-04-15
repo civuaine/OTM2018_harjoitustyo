@@ -13,4 +13,6 @@ Käytetty aika oman projektin eteen.
 | 9.4   | 5    | sovelluslogiikka-luokan metodien tekemistä, nappien toiminnallisuuksien lisäämistä, testin tekeminen. |
 | 11.4  | 4    | Koodin refaktorointi, uusia luokkia, joiden toiminnallisuuksien selkeyttäminen, bugien korjailua|
 | 12.4  | 7    | Näkymien muokkaus melko valmiiksi. Tietokantarajapintojen luominen ja tietokantojen rakenteen suunnitteleminen. Kyselyn etenemisen suunnittelu.| 
-| yht   | 20   | | 
+| 14.4  | 9    | Tietokannan suunnittelu ja toteutus pienellä datamäärällä. Koodin refaktorointia ja tietokannan toiminnan tuominen luokkiin, sekä graafiseen käyttöliittymään. |
+| 15.4  | 1    | Checkstylen käyttöönotto ja siihen liittyvä puljaaminen |
+| yht   | 41   | | 
