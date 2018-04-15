@@ -16,4 +16,4 @@ _CloudSoftService_ pääsee käsiksi kolmeen erilliseen luokkaan: _CityCheck_, j
 
 Alla kuva sovelluksen pakkaus/luokkakaavio hieman tarkemmin:
 
-<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/Luokkakaavio.png" width="160">
+<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/Luokkakaavio.png" width="260">
