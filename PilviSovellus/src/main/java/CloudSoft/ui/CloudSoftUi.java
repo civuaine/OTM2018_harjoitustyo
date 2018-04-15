@@ -68,10 +68,10 @@ public class CloudSoftUi extends Application {
         return etusivulle;
     }
     
-    public void paivita(String teksti) {
-        teksti
-        
-    }
+//    public void paivitaSivu(String teksti) {
+//        teksti
+//        
+//    }
 
     @Override
     public void start(Stage ikkuna) throws Exception {
@@ -325,6 +325,7 @@ public class CloudSoftUi extends Application {
                     havaintoTekstiPaikka += yksi + "\n";
                 }
                 // paivita(String havaintoTekstiPaikka)
+                
                 havainnot.setText(havaintoTekstiPaikka);
                //ikkuna.setScene(this.tilastosivu);
             } catch (Exception ex) {
