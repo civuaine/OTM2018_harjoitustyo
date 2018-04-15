@@ -8,7 +8,7 @@ Pilvisovelluksen rakenne noudattaa kolmitasoista kerrosarkkitehtuuria. Alla kuva
 Pakkaus _CloudSoft.ui_ on sovelluksen käyttöliittymästä vastaava pakkaus (toteutettu JavaFX:llä). _CloudSoft.domain_ sisältää sovelluslogiikan koodin ja _CloudSoft.dao_ huolehtii sovelluksen pysyväisaikasesta tallennuksesta, eli toimii sovelluksen ja tietokannan välissä.
 
 ## Sovelluslogiikka
-Sovelluksen sovelluslogiikka on siinä mielessä erilainen, että siinä ei ole yksittäistä käyttäjää, jonka tarvitsisi kirjautua sisään sovellukseen nähdäkseen jotain tiettyä. Sovellus on avoin kaikille, minkä vuoksi sovelluslogiikan muodostavat enemmälti käyttäjän syötteen perusteellinen tarkistaminen, sekä tietojen hakeminen ja vieminen tietokantaan.
+Sovelluksen sovelluslogiikka on siinä mielessä erilainen, että siinä ei ole yksittäistä käyttäjää, jonka tarvitsisi kirjautua sisään sovellukseen nähdäkseen jotain tiettyä. Sovellus on avoin kaikille, minkä vuoksi sovelluslogiikan muodostavat enemmälti käyttäjän syötteen perusteellinen tarkistaminen, sekä tietojen hakeminen ja vieminen tietokantaan. Käyttäjältä kysymysten kysyminen ja niiden hyödyntäminen on hyvin iso (vielä toteuttamaton) osa sovelluksen sovelluslogiikkaa.
 
 Sovelluksen toiminnallisesta kokonaisuudesta vastaa ainoastaan luokka _CloudSoftService_. Luokka tarjoaa käyttöliittymälle yksinkertaiset metodit päivämäärän ja paikan syötteen tarkistamiseen, tietokannan alustamiseen, havaintojen järjestämiseen jne.
 
