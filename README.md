@@ -17,14 +17,11 @@ Jokaiselle käyttäjälle näytetään myös Ilmatieteen laitoksen paikkakuntako
 
 ### testien suorittaminen
 
-HUOM! Tätä sovellusta ei voi käynnistää komentoriviltä! komento 
+Seuraava komento ajaa koodin komentoriviltä:
+```
+mvn compile exec:java -Dexec.mainClass=cloudsoft.ui.CloudSoftUi
 
 ```
-mvn compile exec:java- Dexec.mainClass=cloudsoft.ui.CloudSoftUi
-
-```
-saa aikaan vain virheilmotuksen, jonka alkuperä ei selvinnyt vielä pajassakaan. Netbeansin vihreä nuoli toimii tosin.
-
 
 Testit saa suoritettua komennolla
 
