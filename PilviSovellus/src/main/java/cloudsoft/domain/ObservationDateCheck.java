@@ -77,11 +77,12 @@ public class ObservationDateCheck {
             return false;
         } else if (this.havaintoKuukausi < 1 || this.havaintoKuukausi > 12) {
             return false;
-        } else if (this.havaintoPaiva < 28 || this.havaintoPaiva > 31) {
+        } else if (this.havaintoPaiva < 1 || this.havaintoPaiva > 31) {
             return false;
         } else {
             return true;
         }
+
     }
 
     public boolean havaintoEiTulevaisuudessa() {

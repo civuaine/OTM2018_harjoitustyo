@@ -39,6 +39,8 @@ public class CityCheck {
     public boolean paikkakuntaEiTyhja(String havaintoPaikkakunta) {
         if (havaintoPaikkakunta.isEmpty()) {
             return false;
+        } else if(havaintoPaikkakunta.trim().isEmpty()) {
+            return false;
         }
         return true;
     }
