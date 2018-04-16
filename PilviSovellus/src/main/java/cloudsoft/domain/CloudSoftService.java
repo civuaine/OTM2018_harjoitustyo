@@ -55,7 +55,7 @@ public class CloudSoftService {
     }
 
     public List<String> getHavainnotPaikka() throws Exception {
-        List<String> havainnot = this.observationDatabase.getAllByDate();
+        List<String> havainnot = this.observationDatabase.getAllByCity();
         return havainnot;
     }
 

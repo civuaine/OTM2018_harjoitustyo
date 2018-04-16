@@ -1,5 +1,6 @@
 package databasetests;
 
+import cloudsoft.dao.CloudDatabase;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -12,29 +13,34 @@ import static org.junit.Assert.*;
  * Tämä testiluokka testaa pilvitietokantaluokan metodeja.
  */
 public class CloudDatabaseTest {
-    
-    public CloudDatabaseTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+
+    private CloudDatabase clouddatabase;
     
     @Before
     public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+        //this.clouddatabase = new CloudDatabase(address);
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void konstruktoriAsettaaTietokannanOsoitteenOikein() throws Exception {
+        String osoite = "string";
+        this.clouddatabase = new CloudDatabase(osoite);
+        String address = osoite;
+        assertEquals("string", address);
+    }
+
+//    @Test 
+//    public void initLuoTietokannan() {
+//        
+//    }
+
+//    @Test
+//    public void getInfortmationPalauttaaEnnusteenJosPilviOlemassaTietokannassa() throws Exception{
+//        clouddatabase.init();
+//        clouddatabase.addData();
+//        "jdbc:sqlite:Pilvitietokanta.db"    
+//        
+//        String ennuste = clouddatabase.getInformation("Cirrocumulus");
+//        assertEquals("epävakautta yläilmakehässä. Mahdollisesti rintama tulossa.",ennuste);
+//    }
 }

@@ -42,7 +42,7 @@
                 <version>0.8.0</version>
                 <configuration>
                     <excludes>
-                        <exclude>cloudSoft/ui/*</exclude>
+                        <exclude>cloudsoft/ui/*</exclude>
                     </excludes>
                 </configuration>           
                 <executions>

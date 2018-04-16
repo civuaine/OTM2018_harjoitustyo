@@ -1,5 +1,6 @@
 package databasetests;
 
+import cloudsoft.dao.ObservationDatabase;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -14,28 +15,19 @@ import static org.junit.Assert.*;
 
 public class ObservationDatabaseTest {
     
-    public ObservationDatabaseTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    private ObservationDatabase observationdatabase;
     
     @Before
     public void setUp() {
+        //this.observationdatabase = new ObservationDatabase();
     }
     
-    @After
-    public void tearDown() {
+    @Test
+    public void konstruktoriAsettaaTietokannanOsoitteenOikein() throws Exception {
+        String osoite = "string";
+        this.observationdatabase = new ObservationDatabase(osoite);
+        String address = osoite;
+        assertEquals("string", address);
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }
