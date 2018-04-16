@@ -20,7 +20,7 @@ Jokaiselle käyttäjälle näytetään myös Ilmatieteen laitoksen paikkakuntako
 HUOM! Tätä sovellusta ei voi käynnistää komentoriviltä! komento 
 
 ```
-mvn compile exec:java-Dexec.mainClass=CloudSoft.ui.CloudSoftUi
+mvn compile exec:java- Dexec.mainClass=cloudsoft.ui.CloudSoftUi
 
 ```
 saa aikaan vain virheilmotuksen, jonka alkuperä ei selvinnyt vielä pajassakaan. Netbeansin vihreä nuoli toimii tosin.
