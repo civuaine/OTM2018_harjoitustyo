@@ -15,4 +15,5 @@ Käytetty aika oman projektin eteen.
 | 12.4  | 7    | Näkymien muokkaus melko valmiiksi. Tietokantarajapintojen luominen ja tietokantojen rakenteen suunnitteleminen. Kyselyn etenemisen suunnittelu.| 
 | 14.4  | 9    | Tietokannan suunnittelu ja toteutus pienellä datamäärällä. Koodin refaktorointia ja tietokannan toiminnan tuominen luokkiin, sekä tietojen näyttäminen graafisessa käyttöliittymässä. |
 | 15.4  | 1    | Checkstylen käyttöönotto ja siihen liittyvä puljaaminen |
-| yht   | 41   | | 
+| 16.4  | 5    | Checkstylevirheiden korjaaminen. Testipakettien ja testiluokkien tekeminen. Testien tekeminen|
+| yht   | 46   | | 
