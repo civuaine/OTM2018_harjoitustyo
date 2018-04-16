@@ -1,10 +1,10 @@
-package CloudSoft.domain;
+package cloudsoft.domain;
 
-import CloudSoft.dao.CloudDatabase;
-import CloudSoft.dao.ObservationDatabase;
-import CloudSoft.domain.ObservationDateCheck;
-import CloudSoft.domain.CityCheck;
-import CloudSoft.domain.Cloud;
+import cloudsoft.dao.CloudDatabase;
+import cloudsoft.dao.ObservationDatabase;
+import cloudsoft.domain.ObservationDateCheck;
+import cloudsoft.domain.CityCheck;
+import cloudsoft.domain.Cloud;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,15 +18,15 @@ import java.util.Date;
  */
 public class CloudSoftService {
 
-    private CityCheck CC;
-    private ObservationDateCheck ODC;
+    private CityCheck cc;
+    private ObservationDateCheck odc;
     private Cloud cloud;
     private CloudDatabase cloudDatabase;
     private ObservationDatabase observationDatabase;
 
     public CloudSoftService() {
-        this.ODC = new ObservationDateCheck();
-        this.CC = new CityCheck();
+        this.odc = new ObservationDateCheck();
+        this.cc = new CityCheck();
         this.cloud = new Cloud();
 
     }
@@ -41,16 +41,11 @@ public class CloudSoftService {
 
         if (observationDatabase.getAllByDate() == null) {
             this.observationDatabase.addData();
-        } else {
-            // älä tee mitään
         }
-        
-        if(cloudDatabase.onTyhja()) {
-            this.cloudDatabase.addData();            
-        } else {
-            // älä tee mitään
+
+        if (cloudDatabase.onTyhja()) {
+            this.cloudDatabase.addData();
         }
-        
 
     }
 
@@ -65,18 +60,18 @@ public class CloudSoftService {
     }
 
     public boolean tarkistaPaikkakunta(String pk) {
-        if (CC.paikkakuntaSisaltaaVainKirjaimia(pk) && CC.paikkakuntaOnOlemassa(pk) && CC.paikkakuntaEiTyhja(pk)) {
+        if (cc.paikkakuntaSisaltaaVainKirjaimia(pk) && cc.paikkakuntaOnOlemassa(pk) && cc.paikkakuntaEiTyhja(pk)) {
             return true;
         }
         return false;
     }
 
     public boolean tarkistaPaivamaara(String pvm) {
-        ODC.tanaanStringiksi();
+        odc.tanaanStringiksi();
 
-        boolean a = ODC.paivamaaranMuotoTarkistin(pvm);
-        boolean b = ODC.paivamaaraJarkeva();
-        boolean c = ODC.havaintoEiTulevaisuudessa();
+        boolean a = odc.paivamaaranMuotoTarkistin(pvm);
+        boolean b = odc.paivamaaraJarkeva();
+        boolean c = odc.havaintoEiTulevaisuudessa();
         if (a && b && c) {
             return true;
         } else {
@@ -85,7 +80,7 @@ public class CloudSoftService {
     }
 
     public boolean annetaankoLahivuorokausienEnnuste() {
-        if (!ODC.annetaankoEnnuste3vrkPaahan()) {
+        if (!odc.annetaankoEnnuste3vrkPaahan()) {
             return false;
         } else {
             return true;
@@ -101,8 +96,4 @@ public class CloudSoftService {
         return true;
     }
 
-//    public void mikaPilviOnKyseessa() {
-//        if (cloud.sataako == true)
-//        if (cloud.koko == false) jne..
-//    }
 }

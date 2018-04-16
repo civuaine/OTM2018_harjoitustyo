@@ -1,6 +1,7 @@
-package CloudSoft.domain;
+package cloudsoft.domain;
 
 import java.util.*;
+
 /**
  *
  * Tämä luokka vastaa kaikesta paikkakuntaan tai kaupunkiin liittyvästä
@@ -25,19 +26,18 @@ public class CityCheck {
                 return false;
             }
         }
-        
+
         this.havaintoPaikkakunta = havaintoPaikkakunta;
         return true;
     }
-    
-    
+
     public boolean paikkakuntaOnOlemassa(String havaintoPaikkakunta) {
         //Testataan löytyykö annettua paikkakuntaa IL:n tietokannasta
         return true;
     }
-    
+
     public boolean paikkakuntaEiTyhja(String havaintoPaikkakunta) {
-        if(havaintoPaikkakunta.isEmpty()) {
+        if (havaintoPaikkakunta.isEmpty()) {
             return false;
         }
         return true;

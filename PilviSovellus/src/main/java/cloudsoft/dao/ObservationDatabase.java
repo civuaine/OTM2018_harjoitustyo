@@ -1,4 +1,4 @@
-package CloudSoft.dao;
+package cloudsoft.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -84,65 +84,47 @@ public class ObservationDatabase implements ObservationDao {
     @Override
     public List<String> getAllByCity() throws SQLException {
         List<String> kaupunginMukaan = new ArrayList<>();
-
         try (Connection conn = getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Havainnot ORDER BY paikka ASC");
-
             ResultSet rs = stmt.executeQuery();
-
-            boolean hasOne = rs.next();
-            if (!hasOne) {
+            if (!(rs.next())) { // hasnext
                 return null;
             }
-
             while (rs.next()) {
                 String paikka = rs.getString("paikka");
                 String paivamaara = rs.getString("paivamaara");
                 String pilvi = rs.getString("pilvi");
                 kaupunginMukaan.add(new String(paikka + "    " + paivamaara + "    " + pilvi));
             }
-
             conn.close();
             return kaupunginMukaan;
-
         } catch (Throwable t) {
             // jos jotain menee pieleen, mitään ei palauteta
         }
-
         return kaupunginMukaan;
     }
 
     @Override
     public List<String> getAllByDate() throws SQLException {
-
         List<String> paivanMukaan = new ArrayList<>();
-
         try (Connection conn = getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Havainnot ORDER BY paivamaara DESC");
-
             ResultSet rs = stmt.executeQuery();
-
-            boolean hasOne = rs.next();
-            if (!hasOne) {
+            if (!(rs.next())) {
                 return null;
             }
-
             while (rs.next()) {
                 String paikka = rs.getString("paikka");
                 String paivamaara = rs.getString("paivamaara");
                 String pilvi = rs.getString("pilvi");
                 paivanMukaan.add(new String(paikka + "    " + paivamaara + "    " + pilvi));
             }
-
             conn.close();
             return paivanMukaan;
-
         } catch (Throwable t) {
             // jos jotain menee pieleen, mitään ei palauteta
         }
-
         return paivanMukaan;
-
     }
 
 }

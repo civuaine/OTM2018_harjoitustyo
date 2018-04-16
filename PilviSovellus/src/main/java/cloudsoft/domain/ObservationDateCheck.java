@@ -1,4 +1,4 @@
-package CloudSoft.domain;
+package cloudsoft.domain;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,7 +10,6 @@ import java.util.Date;
  *
  * Luokka vastaa annetun päivämäärän muodon ja oikeellisuuden tarkastamisesta
  */
-
 public class ObservationDateCheck {
 
     private int paivaTanaan;
@@ -24,7 +23,7 @@ public class ObservationDateCheck {
     public ObservationDateCheck() {
         // tyhjä konstruktori
     }
-    
+
     public void tanaanStringiksi() {
         //tänään    
         // Ei käyttäjän syötettä, joten ei tarvitse testata paivamaaraOnInteger-metodilla.

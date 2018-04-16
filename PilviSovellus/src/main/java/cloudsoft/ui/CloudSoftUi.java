@@ -1,9 +1,9 @@
-package CloudSoft.ui;
+package cloudsoft.ui;
 
-import CloudSoft.dao.CloudDatabase;
-import CloudSoft.dao.ObservationDatabase;
-import CloudSoft.domain.CloudSoftService;
-import CloudSoft.domain.ObservationDateCheck;
+import cloudsoft.dao.CloudDatabase;
+import cloudsoft.dao.ObservationDatabase;
+import cloudsoft.domain.CloudSoftService;
+import cloudsoft.domain.ObservationDateCheck;
 
 import java.awt.Image;
 import java.io.FileInputStream;
@@ -67,12 +67,11 @@ public class CloudSoftUi extends Application {
 
         return etusivulle;
     }
-    
+
 //    public void paivitaSivu(String teksti) {
 //        teksti
 //        
 //    }
-
     @Override
     public void start(Stage ikkuna) throws Exception {
 //graafisten käyttöliittymän asettelijat
@@ -304,11 +303,11 @@ public class CloudSoftUi extends Application {
             try {
                 String havaintoTekstiUusi = "";
                 List<String> havpvm = cloudsoftservice.getHavainnotPaiva();
-                
-                for(String yksi : havpvm) {
+
+                for (String yksi : havpvm) {
                     havaintoTekstiUusi += yksi + "\n";
                 }
-                
+
                 havainnot.setText(havaintoTekstiUusi);
                 //ikkuna.setScene(this.tilastosivu);
             } catch (Exception ex) {
@@ -320,14 +319,14 @@ public class CloudSoftUi extends Application {
             try {
                 String havaintoTekstiPaikka = "";
                 List<String> havpaikka = cloudsoftservice.getHavainnotPaikka();
-                
-                for(String yksi : havpaikka) {
+
+                for (String yksi : havpaikka) {
                     havaintoTekstiPaikka += yksi + "\n";
                 }
                 // paivita(String havaintoTekstiPaikka)
-                
+
                 havainnot.setText(havaintoTekstiPaikka);
-               //ikkuna.setScene(this.tilastosivu);
+                //ikkuna.setScene(this.tilastosivu);
             } catch (Exception ex) {
                 //älä tee mitään
             }

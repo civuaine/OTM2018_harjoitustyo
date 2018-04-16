@@ -1,6 +1,6 @@
-package CloudSoft.dao;
+package cloudsoft.dao;
 
-import CloudSoft.domain.Cloud;
+import cloudsoft.domain.Cloud;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -112,7 +112,7 @@ public class CloudDatabase implements CloudDao {
     }
 
     public boolean onTyhja() throws Exception {
-        
+
         try (Connection conn = getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Pilvet");
 

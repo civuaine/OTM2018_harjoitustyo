@@ -5,6 +5,7 @@
  */
 package CloudSoft.domain;
 
+import cloudsoft.domain.CloudSoftService;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
