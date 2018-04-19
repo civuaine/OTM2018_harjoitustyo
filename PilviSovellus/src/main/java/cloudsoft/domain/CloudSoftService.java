@@ -67,11 +67,9 @@ public class CloudSoftService {
     }
 
     public boolean tarkistaPaivamaara(String pvm) {
-        odc.tanaanStringiksi();
-
         boolean a = odc.paivamaaranMuotoTarkistin(pvm);
         boolean b = odc.paivamaaraJarkeva();
-        boolean c = odc.havaintoEiTulevaisuudessa();
+        boolean c = odc.havaintoEiTulevaisuudessa();            
         if (a && b && c) {
             return true;
         } else {

@@ -21,7 +21,31 @@ public class ObservationDateCheck {
     private Date pvmTanaan;
 
     public ObservationDateCheck() {
-        // tyhjä konstruktori
+        tanaanStringiksi();
+    }
+
+    public void setpv(int pv) {
+        this.havaintoPaiva = pv;
+    }
+
+    public void setkk(int kk) {
+        this.havaintoKuukausi = kk;
+    }
+
+    public void setvvvv(int vvvv) {
+        this.havaintoVuosi = vvvv;
+    }
+
+    public int getpv() {
+        return this.havaintoPaiva;
+    }
+
+    public int getkk() {
+        return this.havaintoKuukausi;
+    }
+
+    public int getvvvv() {
+        return this.havaintoVuosi;
     }
 
     public void tanaanStringiksi() {
@@ -38,6 +62,10 @@ public class ObservationDateCheck {
         int pvNyt = Integer.parseInt(nytLista.get(2));
 
         this.pvmTanaan = new Date(vuosiNyt, kkNyt, pvNyt);
+        this.paivaTanaan = pvNyt;
+        this.kuukausiTanaan = kkNyt;
+        this.vuosiTanaan = vuosiNyt;
+
     }
 
     public boolean paivamaaraOnInteger(String s) {
@@ -55,16 +83,13 @@ public class ObservationDateCheck {
     }
 
     public boolean paivamaaranMuotoTarkistin(String annettupvm) {
-        // tarkistetaan päivämäärän oikea muoto --> kolme osaa, jotka kaikki on Integer
-        //annettu päivämäärä    
-
+        // tarkistetaan päivämäärän oikea muoto --> kolme osaa, jotka kaikki on Integer (ei stringejä)
         List<String> annettupvmLista = Arrays.asList(annettupvm.split("/"));
-        // tarkistetaan onko annettupvm varmasti integer, ettei ole string
 
         if (paivamaaraOnInteger(annettupvmLista.get(0)) && paivamaaraOnInteger(annettupvmLista.get(1)) && paivamaaraOnInteger(annettupvmLista.get(2))) {
-            this.havaintoVuosi = Integer.parseInt(annettupvmLista.get(2));
-            this.havaintoKuukausi = Integer.parseInt(annettupvmLista.get(1));
-            this.havaintoPaiva = Integer.parseInt(annettupvmLista.get(0));
+            setvvvv(Integer.parseInt(annettupvmLista.get(2)));
+            setkk(Integer.parseInt(annettupvmLista.get(1)));
+            setpv(Integer.parseInt(annettupvmLista.get(0)));
             return true;
         } else {
             return false;
@@ -96,7 +121,7 @@ public class ObservationDateCheck {
     }
 
     public boolean annetaankoEnnuste3vrkPaahan() {
-        if ((this.vuosiTanaan >= this.havaintoVuosi) && (this.kuukausiTanaan >= this.havaintoKuukausi)) {
+        if ((this.vuosiTanaan == this.havaintoVuosi) && (this.kuukausiTanaan == this.havaintoKuukausi)) {
             if ((this.paivaTanaan - this.havaintoPaiva) <= 3) {
                 return true;
             }

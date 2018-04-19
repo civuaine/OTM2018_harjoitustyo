@@ -68,10 +68,6 @@ public class CloudSoftUi extends Application {
         return etusivulle;
     }
 
-//    public void paivitaSivu(String teksti) {
-//        teksti
-//        
-//    }
     @Override
     public void start(Stage ikkuna) throws Exception {
 //graafisten käyttöliittymän asettelijat
@@ -200,12 +196,12 @@ public class CloudSoftUi extends Application {
         });
 
         pvmNappi.setOnAction((event) -> {
-            String pvmnauha = pvmNappi.getText();
+            String pvmnauha = pvm.getText();
             Boolean pvmtesti = cloudsoftservice.tarkistaPaivamaara(pvmnauha);
 
-            if (pvmtesti) { // VAIHDA!! huutomerkki eteen
-                hyvaksymistekstiPvm.setText("Tarkista päivämäärä, anna se muodossa pp/kk/vvvv "
-                        + "\nhavainnon pitää olla vuoden 1950 jälkeen tehty, havaintoaika ei voi olla myöskään tulevaisuudessa");
+            if (!pvmtesti) { // VAIHDA!! huutomerkki eteen
+                hyvaksymistekstiPvm.setText("Tarkista päivämäärä, anna se muodossa pp/kk/vvvv tai p/k/vvvv"
+                        + "\nhavainnon pitää olla vuoden 1950 jälkeen tehty, havaintoaika ei voi olla tulevaisuudessa");
                 hyvaksymistekstiPvm.setTextFill(Color.FIREBRICK);
             } else {
                 hyvaksymistekstiPvm.setText("Päivämäärä annettu!");
@@ -309,7 +305,6 @@ public class CloudSoftUi extends Application {
                 }
 
                 havainnot.setText(havaintoTekstiUusi);
-                //ikkuna.setScene(this.tilastosivu);
             } catch (Exception ex) {
                 //älä tee mitään
             }
@@ -319,14 +314,16 @@ public class CloudSoftUi extends Application {
             try {
                 String havaintoTekstiPaikka = "";
                 List<String> havpaikka = cloudsoftservice.getHavainnotPaikka();
-
+                //System.out.println(havpaikka.size()); ///////////
                 for (String yksi : havpaikka) {
                     havaintoTekstiPaikka += yksi + "\n";
+                    //System.out.println(laskuri);
+                    //System.out.println(havaintoTekstiPaikka); /////////////
+                    //System.out.println("");
+                    //laskuri++;
                 }
-                // paivita(String havaintoTekstiPaikka)
 
                 havainnot.setText(havaintoTekstiPaikka);
-                //ikkuna.setScene(this.tilastosivu);
             } catch (Exception ex) {
                 //älä tee mitään
             }

@@ -16,13 +16,6 @@ import static org.junit.Assert.*;
 public class ObservationDateTest {
 
     private ObservationDateCheck observationdatecheck;
-    private int paivaTanaan;
-    private int havaintoPaiva;
-    private int kuukausiTanaan;
-    private int havaintoKuukausi;
-    private int vuosiTanaan;
-    private int havaintoVuosi;
-    private Date pvmTanaan;
 
     @Before
     public void setUp() {
@@ -56,155 +49,153 @@ public class ObservationDateTest {
 
     @Test
     public void paivamaaraJarkevaPalauttaaFalseJosVuosiYli2018() {
-        this.havaintoPaiva = 29;
-        this.havaintoKuukausi = 11;
-        this.havaintoVuosi = 2019;
+        observationdatecheck.setpv(29);
+        observationdatecheck.setkk(11);
+        observationdatecheck.setvvvv(2019);
+
         assertEquals(false, observationdatecheck.paivamaaraJarkeva());
     }
 
     @Test
     public void paivamaaraJarkevaPalauttaaFalseJosVuosiAlle1950() {
-        this.havaintoPaiva = 29;
-        this.havaintoKuukausi = 11;
-        this.havaintoVuosi = 1949;
+        observationdatecheck.setpv(29);
+        observationdatecheck.setkk(11);
+        observationdatecheck.setvvvv(1949);
         assertEquals(false, observationdatecheck.paivamaaraJarkeva());
     }
 
     @Test
     public void paivamaaraJarkevaPalauttaaFalseJosKuukausiYli12() {
-        this.havaintoPaiva = 5;
-        this.havaintoKuukausi = 13;
-        this.havaintoVuosi = 2017;
+        observationdatecheck.setpv(5);
+        observationdatecheck.setkk(13);
+        observationdatecheck.setvvvv(2017);
         assertEquals(false, observationdatecheck.paivamaaraJarkeva());
     }
 
     @Test
     public void paivamaaraJarkevaPalauttaaFalseJosKuukausiAlle1() {
-        this.havaintoPaiva = 29;
-        this.havaintoKuukausi = 0;
-        this.havaintoVuosi = 2018;
+        observationdatecheck.setpv(29);
+        observationdatecheck.setkk(0);
+        observationdatecheck.setvvvv(2017);
         assertEquals(false, observationdatecheck.paivamaaraJarkeva());
     }
 
     @Test
     public void paivamaaraJarkevaPalauttaaFalseJosPaivaYli31() {
-        this.havaintoPaiva = 32;
-        this.havaintoKuukausi = 11;
-        this.havaintoVuosi = 2017;
+        observationdatecheck.setpv(32);
+        observationdatecheck.setkk(11);
+        observationdatecheck.setvvvv(2017);
         assertEquals(false, observationdatecheck.paivamaaraJarkeva());
     }
 
     @Test
     public void paivamaaraJarkevaPalauttaaFalseJosPaivaAlle1() {
-        this.havaintoPaiva = 0;
-        this.havaintoKuukausi = 12;
-        this.havaintoVuosi = 2017;
+        observationdatecheck.setpv(0);
+        observationdatecheck.setkk(9);
+        observationdatecheck.setvvvv(2017);
         assertEquals(false, observationdatecheck.paivamaaraJarkeva());
     }
 
-//    @Test
-//    public void paivamaaraJarkevaPalauttaaTrueJosPaivaOn31() {
-//        this.havaintoPaiva = 31;
-//        this.havaintoKuukausi = 9;
-//        this.havaintoVuosi = 2017;
-//        assertEquals(true, observationdatecheck.paivamaaraJarkeva());
-//    }
-//
-//    @Test
-//    public void paivamaaraJarkevaPalauttaaTrueJosPaivaOn1() {
-//        this.havaintoPaiva = 1;
-//        this.havaintoKuukausi = 9;
-//        this.havaintoVuosi = 2017;
-//        assertEquals(true, observationdatecheck.paivamaaraJarkeva());
-//    }
-//
-//    @Test
-//    public void paivamaaraJarkevaPalauttaaTrueJosKuukausiOn1() {
-//        this.havaintoPaiva = 15;
-//        this.havaintoKuukausi = 1;
-//        this.havaintoVuosi = 2017;
-//        assertEquals(true, observationdatecheck.paivamaaraJarkeva());
-//    }
-//
-//    @Test
-//    public void paivamaaraJarkevaPalauttaaTrueJosKuukausiOn12() {
-//        this.havaintoPaiva = 15;
-//        this.havaintoKuukausi = 12;
-//        this.havaintoVuosi = 2017;
-//        assertEquals(true, observationdatecheck.paivamaaraJarkeva());
-//    }
-//    
-//    @Test
-//    public void paivamaaraJarkevaPalauttaaTrueJosvuosiOn1950() {
-//        this.havaintoPaiva = 10;
-//        this.havaintoKuukausi = 8;
-//        this.havaintoVuosi = 1950;
-//        assertEquals(true, observationdatecheck.paivamaaraJarkeva());
-//    }
-//    
-//    @Test
-//    public void paivamaaraJarkevaPalauttaaTrueJosvuosiOn2018() {
-//        this.havaintoPaiva = 10;
-//        this.havaintoKuukausi = 8;
-//        this.havaintoVuosi = 2018;
-//        assertEquals(true, observationdatecheck.paivamaaraJarkeva());
-//    }    
-//    
-//
-//    @Test
-//    public void paivamaaraJarkevaPalauttaaTrueJosKaikkiOk() {
-//        this.havaintoPaiva = 31;
-//        this.havaintoKuukausi = 12;
-//        this.havaintoVuosi = 2017;
-//        assertEquals(true, observationdatecheck.paivamaaraJarkeva());
-//    }
     @Test
-    public void paivamaaraEitulevaisuudessaPalauttaaTrueJosHavaintoPaivaEnnenTataPaivaa() {
-        observationdatecheck.tanaanStringiksi();
-        this.havaintoPaiva = 14;
-        this.havaintoKuukausi = 4;
-        this.havaintoVuosi = 2018;
+    public void paivamaaraJarkevaPalauttaaTrueJosPaivaOn31() {
+        observationdatecheck.setpv(31);
+        observationdatecheck.setkk(9);
+        observationdatecheck.setvvvv(2017);
+        assertEquals(true, observationdatecheck.paivamaaraJarkeva());
+    }
 
+    @Test
+    public void paivamaaraJarkevaPalauttaaTrueJosPaivaOn1() {
+        observationdatecheck.setpv(1);
+        observationdatecheck.setkk(9);
+        observationdatecheck.setvvvv(2017);
+        assertEquals(true, observationdatecheck.paivamaaraJarkeva());
+    }
+
+    @Test
+    public void paivamaaraJarkevaPalauttaaTrueJosKuukausiOn1() {
+        observationdatecheck.setpv(15);
+        observationdatecheck.setkk(1);
+        observationdatecheck.setvvvv(2017);
+        assertEquals(true, observationdatecheck.paivamaaraJarkeva());
+    }
+
+    @Test
+    public void paivamaaraJarkevaPalauttaaTrueJosKuukausiOn12() {
+        observationdatecheck.setpv(15);
+        observationdatecheck.setkk(12);
+        observationdatecheck.setvvvv(2017);
+        assertEquals(true, observationdatecheck.paivamaaraJarkeva());
+    }
+
+    @Test
+    public void paivamaaraJarkevaPalauttaaTrueJosvuosiOn1950() {
+        observationdatecheck.setpv(10);
+        observationdatecheck.setkk(8);
+        observationdatecheck.setvvvv(1950);
+        assertEquals(true, observationdatecheck.paivamaaraJarkeva());
+    }
+
+    @Test
+    public void paivamaaraJarkevaPalauttaaTrueJosvuosiOn2018() {
+        observationdatecheck.setpv(29);
+        observationdatecheck.setkk(11);
+        observationdatecheck.setvvvv(2018);
+        assertEquals(true, observationdatecheck.paivamaaraJarkeva());
+    }
+
+    @Test
+    public void paivamaaraJarkevaPalauttaaTrueJosKaikkiOk() {
+        observationdatecheck.setpv(31);
+        observationdatecheck.setkk(12);
+        observationdatecheck.setvvvv(2017);
+        assertEquals(true, observationdatecheck.paivamaaraJarkeva());
+    }
+
+    @Test
+    public void havaintoEitulevaisuudessaPalauttaaTrueJosHavaintoPaivaEnnenTataPaivaa() {
+        //observationdatecheck.tanaanStringiksi();
+        observationdatecheck.setpv(14);
+        observationdatecheck.setkk(4);
+        observationdatecheck.setvvvv(2018);
         assertEquals(true, observationdatecheck.havaintoEiTulevaisuudessa());
     }
 
     @Test
     public void havaintoEitulevaisuudessaPalauttaaFalseJosHavaintoPaivaTulevaisuudessa() {
-        observationdatecheck.tanaanStringiksi();
-        this.havaintoPaiva = 14;
-        this.havaintoKuukausi = 4;
-        this.havaintoVuosi = 2019;
-
-        assertEquals(true, observationdatecheck.havaintoEiTulevaisuudessa());
+        //observationdatecheck.tanaanStringiksi();
+        observationdatecheck.setpv(20);
+        observationdatecheck.setkk(6);
+        observationdatecheck.setvvvv(2018);
+        assertEquals(false, observationdatecheck.havaintoEiTulevaisuudessa());
     }
+//
+//    @Test
+//    public void havaintoEitulevaisuudessaPalauttaaTrueJosHavaintoTanaan() {
+//        //observationdatecheck.tanaanStringiksi();
+//        observationdatecheck.setpv(19);
+//        observationdatecheck.setkk(4);
+//        observationdatecheck.setvvvv(2018);
+//        assertEquals(true, observationdatecheck.havaintoEiTulevaisuudessa());
+//    }
 
-    //TOIMII
-    @Test 
-    public void havaintoEitulevaisuudessaPalauttaaTrueJosHavaintoTanaan() {
-        observationdatecheck.tanaanStringiksi();
-        
-        this.havaintoPaiva = 16;
-        this.havaintoKuukausi = 4;
-        this.havaintoVuosi = 2018;
-        
-        assertEquals(true, observationdatecheck.havaintoEiTulevaisuudessa());
-    }    
-    
-    @Test
-    public void annetaankoEnnuste3vrkPaahanPalauttaaTrueJosHavainnostaKulunutMax3Pv() {
-        observationdatecheck.tanaanStringiksi();
-        observationdatecheck.paivamaaranMuotoTarkistin("13/4/2018");
-        
+//    @Test
+//    public void annetaankoEnnuste3vrkPaahanPalauttaaTrueJosHavainnostaKulunutMax3Pv() {
+//        //observationdatecheck.tanaanStringiksi();
+//        observationdatecheck.setpv(18);
+//        observationdatecheck.setkk(4);
+//        observationdatecheck.setvvvv(2018);
+//        assertEquals(true, observationdatecheck.annetaankoEnnuste3vrkPaahan());
+//    }
+//
+//    @Test
+//    public void annetaankoEnnuste3vrkPaahanPalauttaaFalseJosHavainnostaKulunutYli3Pv() {
+//        //observationdatecheck.tanaanStringiksi();
+//        observationdatecheck.setpv(12);
+//        observationdatecheck.setkk(4);
+//        observationdatecheck.setvvvv(2018);
+//        assertEquals(false, observationdatecheck.annetaankoEnnuste3vrkPaahan());
+//    }
+//
 
-        assertEquals(true, observationdatecheck.havaintoEiTulevaisuudessa());
-    }
-    
-    @Test
-    public void annetaankoEnnuste3vrkPaahanPalauttaaFalseJosHavainnostaKulunutYli3Pv() {
-        observationdatecheck.tanaanStringiksi();
-        observationdatecheck.paivamaaranMuotoTarkistin("12/4/2018");
-        
-
-        assertEquals(true, observationdatecheck.havaintoEiTulevaisuudessa());
-    }    
 }

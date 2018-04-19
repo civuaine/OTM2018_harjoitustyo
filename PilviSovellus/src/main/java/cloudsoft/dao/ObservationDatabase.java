@@ -120,6 +120,7 @@ public class ObservationDatabase implements ObservationDao {
                 paivanMukaan.add(new String(paikka + "    " + paivamaara + "    " + pilvi));
             }
             conn.close();
+            //System.out.println(paivanMukaan.size());
             return paivanMukaan;
         } catch (Throwable t) {
             // jos jotain menee pieleen, mitään ei palauteta
