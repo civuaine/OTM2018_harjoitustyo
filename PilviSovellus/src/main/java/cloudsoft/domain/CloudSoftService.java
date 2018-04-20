@@ -32,14 +32,13 @@ public class CloudSoftService {
     }
 
     public void tietokannatKayttovalmiiksi() throws Exception {
-
         this.cloudDatabase = new CloudDatabase("jdbc:sqlite:Pilvitietokanta.db");
         this.observationDatabase = new ObservationDatabase("jdbc:sqlite:Havaintotietokanta.db");
 
         this.cloudDatabase.init();
         this.observationDatabase.init();
 
-        if (observationDatabase.getAllByDate() == null) {
+        if (observationDatabase.getAllByDate().isEmpty()) {
             this.observationDatabase.addData();
         }
 

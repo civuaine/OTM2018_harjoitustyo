@@ -36,14 +36,13 @@ public class ObservationDatabase implements ObservationDao {
         List<String> luontilauseet = createDatabase();
 
         try (Connection conn = getConnection()) {
-            Statement st = conn.createStatement();
-
+            Statement stmt = conn.createStatement();
             // suoritetaan komennot
             for (String lause : luontilauseet) {
-                st.executeUpdate(lause);
+                stmt.executeUpdate(lause);
             }
-
-        } catch (Throwable t) {
+            conn.close();
+        } catch (Exception e) {
             // jos tietokantataulu on jo olemassa, ei komentoja suoriteta
         }
     }
@@ -56,27 +55,41 @@ public class ObservationDatabase implements ObservationDao {
     }
 
     @Override
-    public void save() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void save(String paikka, String paivamaara, String pilvi) throws SQLException {
+
+        try (Connection conn = getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES (?,?,?)");
+            stmt.setString(1, paikka);
+            stmt.setString(2, paivamaara);
+            stmt.setString(3, pilvi);
+            stmt.executeUpdate();
+            conn.close();
+        } catch (Exception e) {
+            // jos tietokantataulu on jo olemassa, ei komentoja suoriteta
+        }
     }
 
     @Override
     public void addData() {
         List<String> lauseet = new ArrayList<>();
 
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Hanko', '10.4.2018', 'Altostratus')");
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Jyväskylä', '8.4.2018', 'Cirrus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Jyväskylä', '10.4.2018', 'Altostratus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Maarianhamina', '8.4.2018', 'Cirrus')");
         lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Helsinki', '12.4.2018', 'Stratocumulus')");
-
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Äänekoski', '18.4.1995', 'Cirrostratus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Oulu', '31.5.2010', 'Stratus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Viitasaari', '26.6.2012', 'Cumulonimbus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Rovaniemi', '19.5.2017', 'Cumulonimbus')");
+        int i = 0;
         try (Connection conn = getConnection()) {
-            Statement st = conn.createStatement();
-
-            // suoritetaan komennot
+            Statement stmt = conn.createStatement();
             for (String lause : lauseet) {
-                st.executeUpdate(lause);
+                stmt.executeUpdate(lause);
             }
-
-        } catch (Throwable t) {
+ 
+            conn.close();
+        } catch (Exception e) {
+            //System.err.print(e.getMessage());
             // jos tietokantataulu on jo olemassa, ei komentoja suoriteta
         }
     }
@@ -87,18 +100,21 @@ public class ObservationDatabase implements ObservationDao {
         try (Connection conn = getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Havainnot ORDER BY paikka ASC");
             ResultSet rs = stmt.executeQuery();
-            if (!(rs.next())) { // hasnext
-                return null;
-            }
+//            if (!(rs.next())) { // hasnext
+//                return null;
+//            }
             while (rs.next()) {
+                
                 String paikka = rs.getString("paikka");
+                System.out.println(paikka+"\n");
                 String paivamaara = rs.getString("paivamaara");
                 String pilvi = rs.getString("pilvi");
-                kaupunginMukaan.add(new String(paikka + "    " + paivamaara + "    " + pilvi));
+                String rivi = paikka + "        " + paivamaara + "        " + pilvi;
+                kaupunginMukaan.add(rivi);
             }
             conn.close();
             return kaupunginMukaan;
-        } catch (Throwable t) {
+        } catch (Exception e) {
             // jos jotain menee pieleen, mitään ei palauteta
         }
         return kaupunginMukaan;
@@ -110,19 +126,20 @@ public class ObservationDatabase implements ObservationDao {
         try (Connection conn = getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Havainnot ORDER BY paivamaara DESC");
             ResultSet rs = stmt.executeQuery();
-            if (!(rs.next())) {
-                return null;
-            }
+//            if (!(rs.next())) {
+//                return null;
+//            }
             while (rs.next()) {
                 String paikka = rs.getString("paikka");
+                System.out.println(paikka+"\n");
                 String paivamaara = rs.getString("paivamaara");
                 String pilvi = rs.getString("pilvi");
-                paivanMukaan.add(new String(paikka + "    " + paivamaara + "    " + pilvi));
+                String rivi = paikka + "        " + paivamaara + "        " + pilvi;
+                paivanMukaan.add(rivi);
             }
             conn.close();
-            //System.out.println(paivanMukaan.size());
             return paivanMukaan;
-        } catch (Throwable t) {
+        } catch (Exception e) {
             // jos jotain menee pieleen, mitään ei palauteta
         }
         return paivanMukaan;

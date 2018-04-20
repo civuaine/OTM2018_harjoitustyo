@@ -38,11 +38,9 @@ public class CloudDatabase implements CloudDao {
         List<String> luontilauseet = createDatabase();
 
         try (Connection conn = getConnection()) {
-            Statement st = conn.createStatement();
-
-            // suoritetaan komennot
+            Statement stmt = conn.createStatement();
             for (String lause : luontilauseet) {
-                st.executeUpdate(lause);
+                stmt.executeUpdate(lause);
             }
 
         } catch (Throwable t) {
@@ -75,13 +73,11 @@ public class CloudDatabase implements CloudDao {
         lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Cirrostratus', 'Hienoja haloilmiöitä!')");
 
         try (Connection conn = getConnection()) {
-            Statement st = conn.createStatement();
-
-            // suoritetaan komennot
+            Statement stmt = conn.createStatement();
             for (String lause : lauseet) {
-                st.executeUpdate(lause);
+                stmt.executeUpdate(lause);
             }
-
+            conn.close();
         } catch (Throwable t) {
             // jos tietokantataulu on jo olemassa, ei komentoja suoriteta
         }
@@ -96,8 +92,7 @@ public class CloudDatabase implements CloudDao {
             stmt.setString(1, nimi);
 
             ResultSet rs = stmt.executeQuery();
-            boolean hasOne = rs.next();
-            if (!hasOne) {
+            if (!rs.next()) {
                 return null;
             }
             String ennuste = rs.getString("ennuste");
@@ -117,9 +112,7 @@ public class CloudDatabase implements CloudDao {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Pilvet");
 
             ResultSet rs = stmt.executeQuery();
-
-            boolean hasOne = rs.next();
-            return !hasOne; // jos on tyhjä --> true
+            return !rs.next(); // jos on tyhjä --> true
         }
     }
 

@@ -14,7 +14,7 @@ public interface ObservationDao {
 
     public void init();
 
-    public void save() throws SQLException;
+    public void save(String paikka, String paivamaara, String pilvi) throws SQLException;
 
     public void addData();
 
