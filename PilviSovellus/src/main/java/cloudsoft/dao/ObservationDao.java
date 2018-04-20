@@ -1,6 +1,7 @@
 package cloudsoft.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface ObservationDao {
 
     public void init();
 
-    public void save(String paikka, String paivamaara, String pilvi) throws SQLException;
+    public void save(String paikka, Date paivamaara, String pilvi) throws SQLException;
 
     public void addData();
 

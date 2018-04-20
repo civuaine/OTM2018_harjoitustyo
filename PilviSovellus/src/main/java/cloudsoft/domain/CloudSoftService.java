@@ -5,12 +5,10 @@ import cloudsoft.dao.ObservationDatabase;
 import cloudsoft.domain.ObservationDateCheck;
 import cloudsoft.domain.CityCheck;
 import cloudsoft.domain.Cloud;
+import java.sql.Date;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Date;
+
 
 /**
  *
@@ -60,6 +58,7 @@ public class CloudSoftService {
 
     public boolean tarkistaPaikkakunta(String pk) {
         if (cc.paikkakuntaSisaltaaVainKirjaimia(pk) && cc.paikkakuntaOnOlemassa(pk) && cc.paikkakuntaEiTyhja(pk)) {
+            this.cc.setPaikkakunta(pk);
             return true;
         }
         return false;
@@ -93,4 +92,15 @@ public class CloudSoftService {
         return true;
     }
 
+    public void tallennaHavainto(String pilvi) throws Exception {
+        
+        int paiva = odc.getpv();
+        int kk = odc.getkk();
+        int vuosi = odc.getvvvv();
+        Date paivays = new Date(vuosi,kk,paiva);
+        String paikka = this.cc.getPaikkakunta();
+        
+        observationDatabase.save(paikka, paivays, pilvi);
+    }
+    
 }

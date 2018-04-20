@@ -15,6 +15,14 @@ public class CityCheck {
     public CityCheck() {
         // tyhjä konstrukotri
     }
+    
+    public String getPaikkakunta() {
+        return this.havaintoPaikkakunta;
+    }
+    
+    public void setPaikkakunta(String pk) {
+        this.havaintoPaikkakunta = pk;
+    }
 
     public boolean paikkakuntaSisaltaaVainKirjaimia(String havaintoPaikkakunta) {
         // tallennetaan havaintopaikkakunta muistiin IL:n dataa varten.

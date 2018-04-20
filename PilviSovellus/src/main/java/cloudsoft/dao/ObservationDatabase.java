@@ -1,6 +1,7 @@
 package cloudsoft.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -55,12 +56,13 @@ public class ObservationDatabase implements ObservationDao {
     }
 
     @Override
-    public void save(String paikka, String paivamaara, String pilvi) throws SQLException {
+    public void save(String paikka, Date paivamaara, String pilvi) throws SQLException {
 
+        
         try (Connection conn = getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES (?,?,?)");
             stmt.setString(1, paikka);
-            stmt.setString(2, paivamaara);
+            stmt.setDate(2, paivamaara);
             stmt.setString(3, pilvi);
             stmt.executeUpdate();
             conn.close();
@@ -73,13 +75,13 @@ public class ObservationDatabase implements ObservationDao {
     public void addData() {
         List<String> lauseet = new ArrayList<>();
 
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Jyväskylä', '10.4.2018', 'Altostratus')");
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Maarianhamina', '8.4.2018', 'Cirrus')");
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Helsinki', '12.4.2018', 'Stratocumulus')");
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Äänekoski', '18.4.1995', 'Cirrostratus')");
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Oulu', '31.5.2010', 'Stratus')");
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Viitasaari', '26.6.2012', 'Cumulonimbus')");
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Rovaniemi', '19.5.2017', 'Cumulonimbus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Jyväskylä', '2018-04-10', 'Altostratus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Maarianhamina', '2018-04-08', 'Cirrus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Helsinki', '2018-04-12', 'Stratocumulus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Äänekoski', '1995-04-18', 'Cirrostratus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Oulu', '2010-05-31', 'Stratus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Viitasaari', '2012-11-23', 'Cumulonimbus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Rovaniemi', '2017-06-19', 'Cumulonimbus')");
         int i = 0;
         try (Connection conn = getConnection()) {
             Statement stmt = conn.createStatement();
