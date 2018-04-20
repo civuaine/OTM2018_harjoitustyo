@@ -58,7 +58,8 @@ public class CloudSoftService {
 
     public boolean tarkistaPaikkakunta(String pk) {
         if (cc.paikkakuntaSisaltaaVainKirjaimia(pk) && cc.paikkakuntaOnOlemassa(pk) && cc.paikkakuntaEiTyhja(pk)) {
-            this.cc.setPaikkakunta(pk);
+            String pienilla = pk.toLowerCase();
+            this.cc.setPaikkakunta(pienilla.substring(0, 1).toUpperCase() + pienilla.substring(1));
             return true;
         }
         return false;

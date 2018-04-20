@@ -231,6 +231,10 @@ public class CloudSoftUi extends Application {
 
         havAsettelu.setCenter(pvmJaPaikka);
 
+        
+        
+        
+        
 // kyselysivu
         // asettlija = kysAsettelu
         //jatkoNapin toiminta
@@ -263,6 +267,12 @@ public class CloudSoftUi extends Application {
         kysAsettelu.setCenter(eka);
         kysAsettelu.setBottom(edellisNapit);
 
+        
+        
+        
+        
+        
+        
 //Tilasto
         // asettelija = tilAsettelu
         //Otsikko
@@ -314,13 +324,8 @@ public class CloudSoftUi extends Application {
             try {
                 String havaintoTekstiPaikka = "";
                 List<String> havpaikka = cloudsoftservice.getHavainnotPaikka();
-                //System.out.println(havpaikka.size()); ///////////
                 for (String yksi : havpaikka) {
                     havaintoTekstiPaikka += yksi + "\n";
-                    //System.out.println(laskuri);
-                    //System.out.println(havaintoTekstiPaikka); /////////////
-                    //System.out.println("");
-                    //laskuri++;
                 }
 
                 havainnot.setText(havaintoTekstiPaikka);
