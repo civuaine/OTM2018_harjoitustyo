@@ -108,7 +108,6 @@ public class ObservationDatabase implements ObservationDao {
             while (rs.next()) {
                 
                 String paikka = rs.getString("paikka");
-                System.out.println(paikka+"\n");
                 String paivamaara = rs.getString("paivamaara");
                 String pilvi = rs.getString("pilvi");
                 String rivi = paikka + "        " + paivamaara + "        " + pilvi;
@@ -133,7 +132,6 @@ public class ObservationDatabase implements ObservationDao {
 //            }
             while (rs.next()) {
                 String paikka = rs.getString("paikka");
-                System.out.println(paikka+"\n");
                 String paivamaara = rs.getString("paivamaara");
                 String pilvi = rs.getString("pilvi");
                 String rivi = paikka + "        " + paivamaara + "        " + pilvi;

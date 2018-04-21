@@ -269,6 +269,11 @@ public class CloudSoftUi extends Application {
 
         
         
+        //cloud.pilviSataa(true);
+        
+        
+        
+        
         
         
         
