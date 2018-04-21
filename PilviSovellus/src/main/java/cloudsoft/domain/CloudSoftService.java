@@ -104,7 +104,9 @@ public class CloudSoftService {
         observationDatabase.save(paikka, paivays, pilvi);
     }
     
-    public String etsiPilvi() throws Exception{
+    public String noudaEnnustePilvenPerusteella() throws Exception{
+        this.cloud.etsiPilvi();
+        
         String pilvi = cloud.getPilvi();
         if(pilvi.equals("Pilveä ei löydy")) {
             return "Pilveä ei löydy tietokannasta antamillasi tiedoilla";
