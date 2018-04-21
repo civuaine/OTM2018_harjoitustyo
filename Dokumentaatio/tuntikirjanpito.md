@@ -16,6 +16,6 @@ Käytetty aika oman projektin eteen.
 | 14.4  | 9    | Tietokannan suunnittelu ja toteutus pienellä datamäärällä. Koodin refaktorointia ja tietokannan toiminnan tuominen luokkiin, sekä tietojen näyttäminen graafisessa käyttöliittymässä. |
 | 15.4  | 1    | Checkstylen käyttöönotto ja siihen liittyvä puljaaminen |
 | 16.4  | 5    | Checkstylevirheiden korjaaminen. Testipakettien ja testiluokkien tekeminen. Testien tekeminen|
-| 20.4  | 4    | Päivämäärä- ja paikkakuntabugin korjaaminen. Tietokannan päivämääriin liittyvän järjestämisen korjaaminen|
+| 20.4  | 6    | Päivämäärä- ja paikkakuntabugin korjaaminen. Tietokannan päivämääriin liittyvän järjestämisen korjaaminen|
 | 21.4  | 5    | Sovelluslogiikan rakentaminen kyselyn järjestämistä varten, jarin generointimahdollisuuden luominen, checkstyle-virheiden korjaaminen.
-| yht   | 55   | | 
+| yht   | 57   | | 
