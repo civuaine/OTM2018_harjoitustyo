@@ -1,4 +1,4 @@
-    package cloudsoft.dao;
+package cloudsoft.dao;
 
 import cloudsoft.domain.Cloud;
 import java.sql.Connection;
@@ -60,7 +60,6 @@ public class CloudDatabase implements CloudDao {
     @Override
     public void addData() {
         List<String> lauseet = new ArrayList<>();
-
         lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Stratus', 'hyvä sää tulossa!')");
         lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Stratocumulus', 'katotaan millanen sää tulee.')");
         lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Cumulus', 'Saas nähä sataako.')");
@@ -77,11 +76,10 @@ public class CloudDatabase implements CloudDao {
             for (String lause : lauseet) {
                 stmt.executeUpdate(lause);
             }
-            conn.close();
+            //conn.close();
         } catch (Throwable t) {
-            // jos tietokantataulu on jo olemassa, ei komentoja suoriteta
+            //ei tee mitään jos virhe
         }
-
     }
 
     @Override

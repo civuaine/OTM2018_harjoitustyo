@@ -9,7 +9,6 @@ import java.sql.Date;
 
 import java.util.List;
 
-
 /**
  *
  * Sovelluslogiikasta vastaava luokka.
@@ -68,7 +67,7 @@ public class CloudSoftService {
     public boolean tarkistaPaivamaara(String pvm) {
         boolean a = odc.paivamaaranMuotoTarkistin(pvm);
         boolean b = odc.paivamaaraJarkeva();
-        boolean c = odc.havaintoEiTulevaisuudessa();            
+        boolean c = odc.havaintoEiTulevaisuudessa();
         if (a && b && c) {
             return true;
         } else {
@@ -94,26 +93,26 @@ public class CloudSoftService {
     }
 
     public void tallennaHavainto(String pilvi) throws Exception {
-        
+
         int paiva = odc.getpv();
         int kk = odc.getkk();
         int vuosi = odc.getvvvv();
-        Date paivays = new Date(vuosi,kk,paiva);
+        Date paivays = new Date(vuosi, kk, paiva);
         String paikka = this.cc.getPaikkakunta();
-        
+
         observationDatabase.save(paikka, paivays, pilvi);
     }
-    
-    public String noudaEnnustePilvenPerusteella() throws Exception{
+
+    public String noudaEnnustePilvenPerusteella() throws Exception {
         this.cloud.etsiPilvi();
-        
+
         String pilvi = cloud.getPilvi();
-        if(pilvi.equals("Pilveä ei löydy")) {
+        if (pilvi.equals("Pilveä ei löydy")) {
             return "Pilveä ei löydy tietokannasta antamillasi tiedoilla";
         } else {
             String ennuste = cloudDatabase.getInformation(pilvi);
             return ennuste;
         }
     }
-    
+
 }

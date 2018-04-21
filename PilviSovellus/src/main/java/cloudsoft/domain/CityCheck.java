@@ -7,7 +7,6 @@ import java.util.*;
  * Tämä luokka vastaa kaikesta paikkakuntaan tai kaupunkiin liittyvästä
  * tarkastamisesta.
  */
-
 public class CityCheck {
 
     private String havaintoPaikkakunta;
@@ -15,11 +14,11 @@ public class CityCheck {
     public CityCheck() {
         // tyhjä konstrukotri
     }
-    
+
     public String getPaikkakunta() {
         return this.havaintoPaikkakunta;
     }
-    
+
     public void setPaikkakunta(String pk) {
         this.havaintoPaikkakunta = pk;
     }
@@ -47,7 +46,7 @@ public class CityCheck {
     public boolean paikkakuntaEiTyhja(String havaintoPaikkakunta) {
         if (havaintoPaikkakunta.isEmpty()) {
             return false;
-        } else if(havaintoPaikkakunta.trim().isEmpty()) {
+        } else if (havaintoPaikkakunta.trim().isEmpty()) {
             return false;
         }
         return true;
