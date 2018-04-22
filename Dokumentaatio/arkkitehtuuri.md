@@ -23,6 +23,6 @@ Alla kuva sovelluksen pakkaus/luokkakaavio hieman tarkemmin:
 
 Alla sekvenssikaavio kuvaamaan mitä tapahtuu kun käyttäjä painaa tallenna-nappia päivämäärää tallennettaessa.
 
-<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/paivays_sekvenssikaavio.png" width="700">
+<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/paivays_sekvenssikaavio.png" width="800">
 
 Painikkeen painamiseen reagoiva tapahtumakäsittelijä kutsuu sovelluslogiikasta vastaavan luokan _CloudSoftService_ metodia tarkistaPaivamaara antaen sille parametriksi käyttäjän syötteen. Sovelluslogiikka selvittää useamman tarkistuksen kautta, että päivämäärä on oikein annettu (päivä, kk, vuosi), se ei sisällä kirjaimia, se on järkevä (13. kuukausi ei esim mahdollinen jne) ja että päiväys ei ole tulevaisuudessa. Näiden jälkeen jos kaikki metodit palauttavat true, niin sovelluslogiikan tarkistaPaivamaara-metodi palauttaa true, jolloin käyttöliittymä näyttää käyttäjälle tekstin "Päivämäärä annettu!".
