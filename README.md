@@ -45,4 +45,16 @@ mvn jxr:jxr checkstyle:checkstyle
 saa checkstyle raportin (tarkastelu: _target/site/checkstyle.html_).
 
 
+## Jar-tiedoston generointi
 
+Komennolla
+```
+mvn package
+```
+generoi hakemistoon target suoritettavan jar-tiedoston PilviSovellus-1.0-SNAPSHOT.jar
+Itse siirrän .jar-tiedoston hakemistosta _target_ hakemistoon _PilviSovellus_ ennen komentoriviltä ajamista.
+
+PilviSovellus-kansiosta voi ajaa käskyn
+```
+java -jar PilviSovellus-1.0-SNAPSHOT.jar
+```
