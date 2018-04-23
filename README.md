@@ -12,6 +12,9 @@ Jokaiselle käyttäjälle näytetään myös Ilmatieteen laitoksen paikkakuntako
 
 [Työaikakirjanpito](https://github.com/civuaine/OTM2018_harjoitustyo/blob/master/Dokumentaatio/tuntikirjanpito.md)
 
+## Releaset
+
+[Viikko 5](https://github.com/civuaine/OTM2018_harjoitustyo/releases/tag/Viikko5)
 
 ## Komentorivitoiminnot
 
