@@ -69,8 +69,8 @@ public class Cloud {
         return this.selvaRajainen;
     }
 
-    public void setPilvenUlkoNako() {
-        this.ulkoNako = "jotain kivaa";
+    public void setPilvenUlkoNako(String arvo) {
+        this.ulkoNako = arvo;
     }
 
     public String getPilvenUlkoNako() {
@@ -86,7 +86,6 @@ public class Cloud {
     }
 
     // metodit sateen tyypille ja olomuodolle.
-    
     // lisää myös falseominaisuudet mukaan vielä (jokaisella mahd.monta arvoa joita katsotaan)
     // lisää vielä pilven ulkonäölliset ja tarkentavat ominaisuudet
     public void etsiPilvi() {
@@ -100,15 +99,15 @@ public class Cloud {
             setPilvi("Stratus"); // voi sataa tai olla satamatta
         } else if ((this.sataa == false) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.selvaRajainen == false) && (this.iso == false)) {
             setPilvi("Cirrus");
-        } else if ((this.sataa == false) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.iso == true) && (this.selvaRajainen == false)) {
+        } else if ((this.sataa == false) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.iso == true) && (this.selvaRajainen == false) && (this.getPilvenUlkoNako().equals("tasainen"))) {
             setPilvi("Cirrostratus");
         } else if ((this.sataa == true) && (this.valkoinenPilvi == false) && (this.iso == true) && (this.lapikuultava == true) && (this.selvaRajainen == false)) {
             setPilvi("Altostratus"); // voi sataa tai olla satamatta, iso tai melko iso
-        } else if ((this.sataa == false) && (this.iso == true) && (this.lapikuultava == true) && (this.valkoinenPilvi == true)) {
+        } else if ((this.sataa == false) && (this.iso == true) && (this.lapikuultava == true) && (this.valkoinenPilvi == true) && (this.selvaRajainen == true)) {
             setPilvi("Altocumulus"); // valkoinen tai harmaa, koko vaihtelee
         } else if ((this.iso == true) && (this.selvaRajainen == true) && (this.valkoinenPilvi == true) && (this.sataa == false)) {
             setPilvi("Stratocumulus"); // sataa tai ei sada, harmaa tai valkoinen
-        } else if ((this.sataa == false) && (this.iso == true) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.selvaRajainen == false)) {
+        } else if ((this.sataa == false) && (this.iso == true) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.selvaRajainen == false) && (this.getPilvenUlkoNako().equals("palleroinen"))) {
             setPilvi("Cirrocumulus"); //laaja tai melkolaaja
         }
     }

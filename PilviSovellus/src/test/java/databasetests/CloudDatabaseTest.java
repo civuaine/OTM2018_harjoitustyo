@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 public class CloudDatabaseTest {
 
     private CloudDatabase clouddatabase;
-    
+
     @Before
     public void setUp() {
         //this.clouddatabase = new CloudDatabase(address);
@@ -28,19 +28,4 @@ public class CloudDatabaseTest {
         String address = osoite;
         assertEquals("string", address);
     }
-
-//    @Test 
-//    public void initLuoTietokannan() {
-//        
-//    }
-
-//    @Test
-//    public void getInfortmationPalauttaaEnnusteenJosPilviOlemassaTietokannassa() throws Exception{
-//        clouddatabase.init();
-//        clouddatabase.addData();
-//        "jdbc:sqlite:Pilvitietokanta.db"    
-//        
-//        String ennuste = clouddatabase.getInformation("Cirrocumulus");
-//        assertEquals("epävakautta yläilmakehässä. Mahdollisesti rintama tulossa.",ennuste);
-//    }
 }

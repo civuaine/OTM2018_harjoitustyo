@@ -22,12 +22,14 @@ import java.util.List;
 public class CloudSoftServiceTest {
 
     private CloudSoftService cloudsoftservice;
+    private Cloud cloud;
 
     @Before
     public void setUp() throws Exception {
 
         this.cloudsoftservice = new CloudSoftService();
         this.cloudsoftservice.tietokannatKayttovalmiiksi();
+        this.cloud = new Cloud();
 
     }
 
@@ -58,6 +60,11 @@ public class CloudSoftServiceTest {
     }
 
     @Test
+    public void tarkistaPaikkakuntaPalauttaaFalseKunJokuKolmestaEhdostaVaarin() {
+        assertEquals(false, cloudsoftservice.tarkistaPaikkakunta(""));
+    }
+
+    @Test
     public void tarkistaPaivamaaraPalauttaaTrueKunKaikkiKunnossa() {
         assertEquals(true, cloudsoftservice.tarkistaPaivamaara("13/4/2018"));
     }
@@ -67,15 +74,86 @@ public class CloudSoftServiceTest {
         assertEquals(false, cloudsoftservice.tarkistaPaivamaara("12.4.2018"));
     }
 
-//    @Test
-//    public void annetaankoLahivuorokausienEnnustePalauttaaTrueJosAlle3pvEroaHavainnollaJaTallapaivalla() {
-//        cloudsoftservice.tarkistaPaivamaara("15/4/2018");
-//        assertEquals(true, cloudsoftservice.annetaankoLahivuorokausienEnnuste());
-//    }
-//
-//    @Test
-//    public void annetaankoLahivuorokausienEnnustePalauttaaFalseJosYli3pvEroaHavainnollaJaTallapaivalla() {
-//        cloudsoftservice.tarkistaPaivamaara("10/4/2018");
-//        assertEquals(false, cloudsoftservice.annetaankoLahivuorokausienEnnuste());
-//    }
+    @Test
+    public void annetaankoLahivuorokausienEnnustePalauttaaTrueJosAlle3pvEroaHavainnollaJaTallapaivalla() {
+        cloudsoftservice.tarkistaPaivamaara("23/4/2018");
+        assertEquals(true, cloudsoftservice.annetaankoLahivuorokausienEnnuste());
+    }
+
+    @Test
+    public void annetaankoLahivuorokausienEnnustePalauttaaFalseJosYli3pvEroaHavainnollaJaTallapaivalla() {
+        cloudsoftservice.tarkistaPaivamaara("10/4/2018");
+        assertEquals(false, cloudsoftservice.annetaankoLahivuorokausienEnnuste());
+    }
+
+    @Test
+    public void paikkakuntaOikeinAnnettuPalauttaaTrue() {
+        assertEquals(true, cloudsoftservice.paikkakuntaOikeinAnnettu());
+    }
+
+    @Test
+    public void paivamaaraOikeinAnnettuPalauttaaTrue() {
+        assertEquals(true, cloudsoftservice.paivamaaraOikeinAnnettu());
+    }
+
+    @Test
+    public void setSadeAsettaaoikeinTrue() {
+        cloudsoftservice.setSade(true);
+        assertEquals(true, cloudsoftservice.getSade());
+    }
+
+    @Test
+    public void setSadeAsettaaoikeinFalse() {
+        cloudsoftservice.setSade(false);
+        assertEquals(false, cloudsoftservice.getSade());
+    }
+
+    @Test
+    public void setKokoAsettaaOikeinTrue() {
+        cloudsoftservice.setKoko(true);
+        assertEquals(true, cloudsoftservice.getKoko());
+    }
+
+    @Test
+    public void setKokoAsettaaOikeinfalse() {
+        cloudsoftservice.setKoko(false);
+        assertEquals(false, cloudsoftservice.getKoko());
+    }
+
+    @Test
+    public void setVariAsettaaoikeinTrue() {
+        cloudsoftservice.setVari(true);
+        assertEquals(true, cloudsoftservice.getVari());
+    }
+
+    @Test
+    public void setVariAsettaaoikeinFalse() {
+        cloudsoftservice.setVari(false);
+        assertEquals(false, cloudsoftservice.getVari());
+    }
+
+    @Test
+    public void setLapikuultavaAsettaaOikeinTrue() {
+        cloudsoftservice.setLapikuultava(true);
+        assertEquals(true, cloudsoftservice.getLapikuultava());
+    }
+
+    @Test
+    public void setLapikuultavaAsettaaOikeinFalse() {
+        cloudsoftservice.setLapikuultava(false);
+        assertEquals(false, cloudsoftservice.getLapikuultava());
+    }
+
+    @Test
+    public void setSelvaRajainenAsettaaOikeinTrue() {
+        cloudsoftservice.setSelvarajainen(true);
+        assertEquals(true, cloudsoftservice.getSelvarajainen());
+    }
+
+    @Test
+    public void setSelvaRajainenAsettaaOikeinFalse() {
+        cloudsoftservice.setSelvarajainen(false);
+        assertEquals(false, cloudsoftservice.getSelvarajainen());
+    }
+
 }

@@ -95,21 +95,39 @@ public class CloudSoftService {
     public void setSade(boolean arvo) {
         this.cloud.setPilviSataa(arvo);
     }
+    public boolean getSade() {
+        return this.cloud.getPilvisataa();
+    }
 
     public void setKoko(boolean arvo) {
         this.cloud.setPilviOnIso(arvo);
+    }
+    
+    public boolean getKoko() {
+        return this.cloud.getPilviOnIso();
     }
 
     public void setVari(boolean arvo) {
         this.cloud.setPilviOnValkoinen(arvo);
     }
-
+    
+    public boolean getVari() {
+        return this.cloud.getPilviOnValkoinen();
+    }
     public void setLapikuultava(boolean arvo) {
         this.cloud.setPilviOnLapikuultava(arvo);
+    }
+    
+    public boolean getLapikuultava() {
+        return this.cloud.getPilviOnLapikuultava();
     }
 
     public void setSelvarajainen(boolean arvo) {
         this.cloud.setPilviOnSelvaRajainen(arvo);
+    }
+    
+    public boolean getSelvarajainen() {
+        return this.cloud.getPilviOnSelvarajainen();
     }
 
     public void tallennaHavainto(String pilvi) throws Exception {

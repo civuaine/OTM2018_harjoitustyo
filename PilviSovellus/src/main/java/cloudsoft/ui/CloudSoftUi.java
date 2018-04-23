@@ -192,7 +192,7 @@ public class CloudSoftUi extends Application {
         VBox paikkakuntaKokonaisuus = new VBox();
         VBox pvmKokonaisuus = new VBox();
         HBox pvmJaPaikka = new HBox();
-        
+
         Label paikkakuntaTeksti = new Label("Anna havaintopaikkakunnan nimi:");
         Label pvmTeksti = new Label("Anna havaintopäivämäärä (pp/kk/vvvv TAI p/k/vvvv):");
 
@@ -322,10 +322,10 @@ public class CloudSoftUi extends Application {
             } else if (kysymys.getText().equals(kokokysymys())) {
                 this.cloudsoftservice.setKoko(true);
                 kysymys.setText(varikysymys());
-            } else if(kysymys.getText().equals(varikysymys())) {
+            } else if (kysymys.getText().equals(varikysymys())) {
                 this.cloudsoftservice.setVari(true);
                 kysymys.setText(lapinakyvakysymys());
-            } else if(kysymys.getText().equals(lapinakyvakysymys())) {
+            } else if (kysymys.getText().equals(lapinakyvakysymys())) {
                 this.cloudsoftservice.setLapikuultava(true);
                 kysymys.setText(selvarajainenkysymys());
             } else if (kysymys.getText().equals(selvarajainenkysymys())) {
@@ -348,10 +348,10 @@ public class CloudSoftUi extends Application {
             } else if (kysymys.getText().equals(kokokysymys())) {
                 this.cloudsoftservice.setKoko(false);
                 kysymys.setText(varikysymys());
-            } else if(kysymys.getText().equals(varikysymys())) {
+            } else if (kysymys.getText().equals(varikysymys())) {
                 this.cloudsoftservice.setVari(false);
                 kysymys.setText(lapinakyvakysymys());
-            } else if(kysymys.getText().equals(lapinakyvakysymys())) {
+            } else if (kysymys.getText().equals(lapinakyvakysymys())) {
                 this.cloudsoftservice.setLapikuultava(false);
                 kysymys.setText(selvarajainenkysymys());
             } else if (kysymys.getText().equals(selvarajainenkysymys())) {
@@ -361,7 +361,7 @@ public class CloudSoftUi extends Application {
                     //System.out.println("lapinakyvyysSisalta: " + this.cloud.getPilviOnLapikuultava());
                     String ennuste = cloudsoftservice.noudaEnnustePilvenPerusteella();
                     kysymys.setText("Kysely on valmis. Alla ennuste, mitä havaitsemasi pilvi voi tarkoittaa"
-                            + " lähituntien/-päivien sään kannalta (Tulee monipuolistumaan. Tulokset vielä vähän höpöjä ja testitasolla)\n" + ennuste);
+                            + " lähituntien/-päivien sään kannalta (Kysely ja tämä sivu tulee monipuolistumaan. Tulokset vielä vähän höpöjä ja testitasolla)\n" + ennuste);
                 } catch (Exception ex) {
                 }
             }

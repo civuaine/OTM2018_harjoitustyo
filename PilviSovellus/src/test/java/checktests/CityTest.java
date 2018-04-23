@@ -45,6 +45,12 @@ public class CityTest {
     @Test
     public void paikkakuntaEiTyhjaPalauttaaTrueJosPaikkakuntaKenttaSisaltaaJotain() {
         assertEquals(true, citycheck.paikkakuntaEiTyhja("Jyväskylä2"));
-    }    
+    }   
+    
+    @Test
+    public void getPaikkakuntaPalauttaaOikein() {
+        citycheck.setPaikkakunta("Tuusula");
+        assertEquals("Tuusula", citycheck.getPaikkakunta());
+    }
 
 }
