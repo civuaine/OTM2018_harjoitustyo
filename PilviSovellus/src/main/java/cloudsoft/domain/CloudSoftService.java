@@ -92,6 +92,26 @@ public class CloudSoftService {
         return true;
     }
 
+    public void setSade(boolean arvo) {
+        this.cloud.setPilviSataa(arvo);
+    }
+
+    public void setKoko(boolean arvo) {
+        this.cloud.setPilviOnIso(arvo);
+    }
+
+    public void setVari(boolean arvo) {
+        this.cloud.setPilviOnValkoinen(arvo);
+    }
+
+    public void setLapikuultava(boolean arvo) {
+        this.cloud.setPilviOnLapikuultava(arvo);
+    }
+
+    public void setSelvarajainen(boolean arvo) {
+        this.cloud.setPilviOnSelvaRajainen(arvo);
+    }
+
     public void tallennaHavainto(String pilvi) throws Exception {
 
         int paiva = odc.getpv();
@@ -104,9 +124,17 @@ public class CloudSoftService {
     }
 
     public String noudaEnnustePilvenPerusteella() throws Exception {
+//        System.out.println("Sade: " + this.cloud.getPilvisataa());
+//        System.out.println("Koko: " + this.cloud.getPilviOnIso());
+//        System.out.println("Väri: " + this.cloud.getPilviOnValkoinen());
+//        System.out.println("Läpikuultavuus: " + this.cloud.getPilviOnLapikuultava());
+//        System.out.println("Selvärajaisuus: " + this.cloud.getPilviOnSelvarajainen());
+
         this.cloud.etsiPilvi();
 
         String pilvi = cloud.getPilvi();
+        //System.out.println("ennen if ja else:" + pilvi);
+        
         if (pilvi.equals("Pilveä ei löydy")) {
             return "Pilveä ei löydy tietokannasta antamillasi tiedoilla";
         } else {

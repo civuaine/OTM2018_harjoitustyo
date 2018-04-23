@@ -28,36 +28,65 @@ public class Cloud {
         this.pilvi = nimi;
     }
 
-    // pilven ominaisuuksien setterit ja getterit ilman sanoja set ja get
-    public void pilviSataa(boolean arvo) {
+    //setterit ja getterit
+    public void setPilviSataa(boolean arvo) {
         this.sataa = arvo;
     }
 
-    public void pilviOnIso(boolean arvo) {
+    public boolean getPilvisataa() {
+        return this.sataa;
+    }
+
+    public void setPilviOnIso(boolean arvo) {
         this.iso = arvo;
     }
 
-    public void pilviOnValkoinen(boolean arvo) {
+    public boolean getPilviOnIso() {
+        return this.iso;
+    }
+
+    public void setPilviOnValkoinen(boolean arvo) {
         this.valkoinenPilvi = arvo;
     }
 
-    public void pilviOnLapikuultava(boolean arvo) {
+    public boolean getPilviOnValkoinen() {
+        return this.valkoinenPilvi;
+    }
+
+    public void setPilviOnLapikuultava(boolean arvo) {
         this.lapikuultava = arvo;
     }
 
-    public void pilviOnSelvaRajainen(boolean arvo) {
+    public boolean getPilviOnLapikuultava() {
+        return this.lapikuultava;
+    }
+
+    public void setPilviOnSelvaRajainen(boolean arvo) {
         this.selvaRajainen = arvo;
     }
 
-    public void pilvenUlkoNako() {
+    public boolean getPilviOnSelvarajainen() {
+        return this.selvaRajainen;
+    }
+
+    public void setPilvenUlkoNako() {
         this.ulkoNako = "jotain kivaa";
     }
 
-    public void ukkostaa(boolean arvo) {
+    public String getPilvenUlkoNako() {
+        return this.ulkoNako;
+    }
+
+    public void setUkkostaa(boolean arvo) {
         this.ukkostaa = arvo;
     }
 
+    public boolean getUkkostaa() {
+        return this.ukkostaa;
+    }
+
     // metodit sateen tyypille ja olomuodolle.
+    
     // lisää myös falseominaisuudet mukaan vielä (jokaisella mahd.monta arvoa joita katsotaan)
     // lisää vielä pilven ulkonäölliset ja tarkentavat ominaisuudet
     public void etsiPilvi() {

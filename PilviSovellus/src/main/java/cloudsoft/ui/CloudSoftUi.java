@@ -2,6 +2,7 @@ package cloudsoft.ui;
 
 import cloudsoft.dao.CloudDatabase;
 import cloudsoft.dao.ObservationDatabase;
+import cloudsoft.domain.Cloud;
 import cloudsoft.domain.CloudSoftService;
 import cloudsoft.domain.ObservationDateCheck;
 
@@ -14,6 +15,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -47,7 +49,6 @@ public class CloudSoftUi extends Application {
     public void init() throws Exception {
         this.cloudsoftservice = new CloudSoftService();
         this.cloudsoftservice.tietokannatKayttovalmiiksi();
-
     }
 
     public void siirryEtusivulle(Button etusivulle, Stage ikkuna) {
@@ -66,6 +67,31 @@ public class CloudSoftUi extends Application {
         BorderPane.setMargin(etusivulle, new Insets(20));
 
         return etusivulle;
+    }
+
+    public String sadekysymys() {
+        String kyssari = "Sataako havaitsemasi pilvi?";
+        return kyssari;
+    }
+
+    public String kokokysymys() {
+        String kyssari = "Onko pilvi iso (peittääkö pilvi taivaan horisontaalipinta-alasta 6/8 - 8/8)";
+        return kyssari;
+    }
+
+    public String varikysymys() {
+        String kyssari = "Onko pilvi kokonaan valkoinen (ei harmaita osia)";
+        return kyssari;
+    }
+
+    public String lapinakyvakysymys() {
+        String kyssari = "Onko pilvi läpikuultava, eli voiko sen läpi erottaa Auringon sijainnin?";
+        return kyssari;
+    }
+
+    public String selvarajainenkysymys() {
+        String kyssari = "Onko pilvi selvärajainen (selvärajainen pilvi ei näytä kuitumaiselta)";
+        return kyssari;
     }
 
     @Override
@@ -166,7 +192,7 @@ public class CloudSoftUi extends Application {
         VBox paikkakuntaKokonaisuus = new VBox();
         VBox pvmKokonaisuus = new VBox();
         HBox pvmJaPaikka = new HBox();
-
+        
         Label paikkakuntaTeksti = new Label("Anna havaintopaikkakunnan nimi:");
         Label pvmTeksti = new Label("Anna havaintopäivämäärä (pp/kk/vvvv TAI p/k/vvvv):");
 
@@ -225,16 +251,13 @@ public class CloudSoftUi extends Application {
         pvmJaPaikka.getChildren().addAll(paikkakuntaKokonaisuus, pvmKokonaisuus);
         pvmJaPaikka.setSpacing(30);
         pvmJaPaikka.setPadding(new Insets(20));
+        pvmJaPaikka.setAlignment(Pos.CENTER);
 //        pvmJaPaikka.setAlignment(Pos.BOTTOM_CENTER);
 //        HBox.setHgrow(paikkakuntaKokonaisuus, Priority.ALWAYS);
 //        HBox.setHgrow(pvmKokonaisuus, Priority.ALWAYS);
 
         havAsettelu.setCenter(pvmJaPaikka);
 
-        
-        
-        
-        
 // kyselysivu
         // asettlija = kysAsettelu
         //jatkoNapin toiminta
@@ -248,7 +271,8 @@ public class CloudSoftUi extends Application {
             }
         });
 
-        Label eka = new Label("Ensimmäinen kysymys");
+        Label kysymys = new Label();
+        kysymys.setAlignment(Pos.TOP_CENTER);
         VBox edellisNapit = new VBox();
         Button edellinen = new Button("Edellinen");
 
@@ -264,20 +288,85 @@ public class CloudSoftUi extends Application {
             ikkuna.setScene(this.havaintosivu);
         });
 
-        kysAsettelu.setCenter(eka);
-        kysAsettelu.setBottom(edellisNapit);
+        Button kylla = new Button("Kyllä");
+        //kylla.setDefaultButton(true);
 
-        
-        
-        //cloud.pilviSataa(true);
-        
-        
-        
-        
-        
-        
-        
-        
+        Button ei = new Button("Ei");
+        //ei.setDefaultButton(false);
+
+        HBox kylEi = new HBox();
+        VBox ulkoasu = new VBox();
+
+        kylEi.getChildren().addAll(kylla, ei);
+        kylEi.setSpacing(50);
+        kylEi.setPadding(new Insets(20));
+        kylEi.setAlignment(Pos.CENTER);
+        HBox.setHgrow(kylEi, Priority.ALWAYS);
+
+        ulkoasu.getChildren().addAll(kysymys, kylEi);
+        ulkoasu.setSpacing(70);
+        ulkoasu.setPadding(new Insets(20));
+        VBox.setVgrow(ulkoasu, Priority.ALWAYS);
+        ulkoasu.setAlignment(Pos.CENTER);
+        //kysAsettelu.setTop(kysymys);
+        kysAsettelu.setBottom(edellisNapit);
+        kysAsettelu.setCenter(ulkoasu);
+
+        // itse kysely
+        kysymys.setText(sadekysymys());
+
+        kylla.setOnAction((event) -> {
+            if (kysymys.getText().equals(sadekysymys())) {
+                this.cloudsoftservice.setSade(true);
+                kysymys.setText(kokokysymys());
+            } else if (kysymys.getText().equals(kokokysymys())) {
+                this.cloudsoftservice.setKoko(true);
+                kysymys.setText(varikysymys());
+            } else if(kysymys.getText().equals(varikysymys())) {
+                this.cloudsoftservice.setVari(true);
+                kysymys.setText(lapinakyvakysymys());
+            } else if(kysymys.getText().equals(lapinakyvakysymys())) {
+                this.cloudsoftservice.setLapikuultava(true);
+                kysymys.setText(selvarajainenkysymys());
+            } else if (kysymys.getText().equals(selvarajainenkysymys())) {
+                this.cloudsoftservice.setSelvarajainen(true);
+                try {
+                    //System.out.println("sadesisalta: ");
+                    //System.out.println("lapinakyvyysSisalta: ");
+                    String ennuste = cloudsoftservice.noudaEnnustePilvenPerusteella();
+                    kysymys.setText("Kysely on valmis. Alla ennuste, mitä havaitsemasi pilvi voi tarkoittaa"
+                            + " lähituntien sään kannalta (Tulee monipuolistumaan. Tulokset vielä vähän höpöjä ja testitasolla)\n" + ennuste);
+                } catch (Exception ex) {
+                }
+            }
+        });
+
+        ei.setOnAction((event) -> {
+            if (kysymys.getText().equals(sadekysymys())) {
+                this.cloudsoftservice.setSade(false);
+                kysymys.setText(kokokysymys());
+            } else if (kysymys.getText().equals(kokokysymys())) {
+                this.cloudsoftservice.setKoko(false);
+                kysymys.setText(varikysymys());
+            } else if(kysymys.getText().equals(varikysymys())) {
+                this.cloudsoftservice.setVari(false);
+                kysymys.setText(lapinakyvakysymys());
+            } else if(kysymys.getText().equals(lapinakyvakysymys())) {
+                this.cloudsoftservice.setLapikuultava(false);
+                kysymys.setText(selvarajainenkysymys());
+            } else if (kysymys.getText().equals(selvarajainenkysymys())) {
+                this.cloudsoftservice.setSelvarajainen(false);
+                try {
+                    //System.out.println("sadesisalta: " + this.cloud.getPilvisataa());
+                    //System.out.println("lapinakyvyysSisalta: " + this.cloud.getPilviOnLapikuultava());
+                    String ennuste = cloudsoftservice.noudaEnnustePilvenPerusteella();
+                    kysymys.setText("Kysely on valmis. Alla ennuste, mitä havaitsemasi pilvi voi tarkoittaa"
+                            + " lähituntien/-päivien sään kannalta (Tulee monipuolistumaan. Tulokset vielä vähän höpöjä ja testitasolla)\n" + ennuste);
+                } catch (Exception ex) {
+                }
+            }
+        });
+
 //Tilasto
         // asettelija = tilAsettelu
         //Otsikko

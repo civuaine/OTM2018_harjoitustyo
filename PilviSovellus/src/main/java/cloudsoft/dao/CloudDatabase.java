@@ -86,7 +86,7 @@ public class CloudDatabase implements CloudDao {
     public String getInformation(String nimi) throws SQLException {
 
         try (Connection conn = getConnection()) {
-            PreparedStatement stmt = conn.prepareStatement("SELECT Pilvi.ennuste WHERE Pilvi.nimi = ?");
+            PreparedStatement stmt = conn.prepareStatement("SELECT Pilvet.ennuste FROM Pilvet WHERE Pilvet.nimi = ?");
             stmt.setString(1, nimi);
 
             ResultSet rs = stmt.executeQuery();
@@ -96,7 +96,7 @@ public class CloudDatabase implements CloudDao {
             String ennuste = rs.getString("ennuste");
             conn.close();
 
-            return ennuste;
+            return "Havaitsemasi pilvi: " + nimi + ".\nLähitulevaisuuden sää: " + ennuste;
 
         } catch (Throwable t) {
             // jos jotain menee pieleen, mitään ei palauteta
