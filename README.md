@@ -14,7 +14,7 @@ Jokaiselle käyttäjälle näytetään myös Ilmatieteen laitoksen paikkakuntako
 
 ## Releaset
 
-[Viikko 5](https://github.com/civuaine/OTM2018_harjoitustyo/releases/tag/Viikko5)
+[Viikko 5](https://github.com/civuaine/OTM2018_harjoitustyo/releases/tag/viikko5)
 
 ## Komentorivitoiminnot
 
