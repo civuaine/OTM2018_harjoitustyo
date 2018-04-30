@@ -1,10 +1,16 @@
 package cloudsoft.domain;
 
+import java.io.*;
+import org.apache.commons.httpclient.*;
+import org.apache.commons.httpclient.methods.*;
+
 import cloudsoft.dao.CloudDatabase;
 import cloudsoft.dao.ObservationDatabase;
 import cloudsoft.domain.ObservationDateCheck;
 import cloudsoft.domain.CityCheck;
 import cloudsoft.domain.Cloud;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.sql.Date;
 
 import java.util.List;
@@ -95,6 +101,7 @@ public class CloudSoftService {
     public void setSade(boolean arvo) {
         this.cloud.setPilviSataa(arvo);
     }
+
     public boolean getSade() {
         return this.cloud.getPilvisataa();
     }
@@ -102,7 +109,7 @@ public class CloudSoftService {
     public void setKoko(boolean arvo) {
         this.cloud.setPilviOnIso(arvo);
     }
-    
+
     public boolean getKoko() {
         return this.cloud.getPilviOnIso();
     }
@@ -110,14 +117,15 @@ public class CloudSoftService {
     public void setVari(boolean arvo) {
         this.cloud.setPilviOnValkoinen(arvo);
     }
-    
+
     public boolean getVari() {
         return this.cloud.getPilviOnValkoinen();
     }
+
     public void setLapikuultava(boolean arvo) {
         this.cloud.setPilviOnLapikuultava(arvo);
     }
-    
+
     public boolean getLapikuultava() {
         return this.cloud.getPilviOnLapikuultava();
     }
@@ -125,7 +133,7 @@ public class CloudSoftService {
     public void setSelvarajainen(boolean arvo) {
         this.cloud.setPilviOnSelvaRajainen(arvo);
     }
-    
+
     public boolean getSelvarajainen() {
         return this.cloud.getPilviOnSelvarajainen();
     }
@@ -152,13 +160,53 @@ public class CloudSoftService {
 
         String pilvi = cloud.getPilvi();
         //System.out.println("ennen if ja else:" + pilvi);
-        
+
         if (pilvi.equals("Pilveä ei löydy")) {
             return "Pilveä ei löydy tietokannasta antamillasi tiedoilla";
         } else {
             String ennuste = cloudDatabase.getInformation(pilvi);
             return ennuste;
         }
+    }
+
+    // yahoon säärajapinnan käyttö
+    public void yahoowebservice() throws Exception { // annetaan paikkakunta metodiin muuttujana.
+//
+//        String kaupunki = "Helsinki"; // paikkakunta sisältää vain kirjaimia (sisältö tarkistettu).
+//        String baseURL = "https://query.yahooapis.com/v1/public/yql?q=";
+//        String query = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=" + kaupunki + ")and u='C'";
+//        String fullURLString = baseURL + URLEncoder.encode(query, "UTF-8") + "&format=json";
+//        
+//        URL fullURL = new URL(fullURLString);
+//        InputStream is = fullURL.openStream();
+        
+        // JSON parser --> GSON esimerkiksi
+        
+        
+        
+        
+        String request = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22Helsinki%22)and%20u%3D'c'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+        HttpClient client = new HttpClient();
+        GetMethod method = new GetMethod(request);
+
+        // Send GET request
+        int statusCode = client.executeMethod(method);
+
+        if (statusCode != HttpStatus.SC_OK) {
+            System.err.println("Method failed: " + method.getStatusLine());
+        }
+        InputStream rstream = null;
+
+        // Get the response body
+        rstream = method.getResponseBodyAsStream();
+
+        // Process the response from Yahoo! Web Services
+        BufferedReader br = new BufferedReader(new InputStreamReader(rstream));
+        String line;
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+        }
+        br.close();
     }
 
 }
