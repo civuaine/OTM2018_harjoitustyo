@@ -69,5 +69,5 @@ Itse siirrän .jar-tiedoston hakemistosta _target_ hakemistoon _PilviSovellus_ e
 
 PilviSovellus-kansiosta voi ajaa käskyn
 ```
-java -jar PilviSovellus-1.0-SNAPSHOT.jar
+java -jar target/PilviSovellus-1.0-SNAPSHOT.jar
 ```
