@@ -56,6 +56,7 @@ JavaDoc generoidaan komennolla
 ```
 mvn javadoc:javadoc
 ```
+JavaDocia voi tarkistella selaimessa avaamalla tiedoston index.html kyseiseltä polulta: target/site/apidocs/index.html
 
 ## Jar-tiedoston generointi
 
