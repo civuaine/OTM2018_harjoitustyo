@@ -22,5 +22,5 @@ Käytetty aika oman projektin eteen.
 | 23.4  | 4    | Testien lisääminen ja päivittäminen, Kyselyn hiominen, jar-tiedoston ajaminen, checkstylejen korjaus, ensimmäisen releasen tekeminen.
 | 24.4  | 4    | Säätietojen noutamisen suunnittelu yahoon palvelusta.|
 | 29.4  | 4    | Yahoon säätietojen noutamisen ensimmäinen toteutus|
-| 2.5   | 4    | Yahoon säätietojen noutamisen kanssa kikkailua, gson-kirjastoa jne..|
+| 2.5   | 4    | Yahoon säätietojen noutamisen kanssa kikkailua, gson-kirjastoa jne. Javadocin käyttöönotto, sovelluksen arkkitehtuurikuvauksen täydentäminen|
 | yht   | 78   | | 
