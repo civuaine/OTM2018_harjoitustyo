@@ -10,7 +10,7 @@ java -jar PilviSovellus.jar
 Sovellus käynnistyy päänäkymään, jossa on ohjeteksti ja kaksi nappulaa, joista toisesta pääsee katsomaan tilastoja havainnoista
 ja toisesta tekemään pilvihavainnon.
 
-<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/Yleisnakyma.png" width="400">
+<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/Yleisnakyma.png" width="1000">
 
 ## Tilastojen havainnoista -näkymä
 
