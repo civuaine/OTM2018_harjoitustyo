@@ -10,23 +10,30 @@ java -jar PilviSovellus.jar
 Sovellus käynnistyy päänäkymään, jossa on ohjeteksti ja kaksi nappulaa, joista toisesta pääsee katsomaan tilastoja havainnoista
 ja toisesta tekemään pilvihavainnon.
 
--kuva
+<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/Yleisnakyma.png" width="400">
 
 ## Tilastojen havainnoista -näkymä
 
 Voit katsella muiden käyttäjien tekemiä pilvihavaintoja ja järjestellä ne joko päivämään tai havaintopaikan mukaan nappeja
 painamalla.
--kuva
+
+<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/Tilastoja.png" width="400">
 
 ## Havainnon tekeminen
 Jos valitset päänäkymässä napin "Tee havainto", sinulta kysytään havaintopaikkakuntaa ja päivämäärää, jolloin pilvihavainnon teit.
 Syötä päivämäärä ohjeen antamassa muodossa.
--kuva
+
+<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/TeeHavainto.png" width="400">
 
 ## Kysely
 Varsinaisessa kyselyssä pyri valitsemaan se vaihtoehto, joka on mahdollisimman lähelle todellisuutta.
+
+<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/Kysely.png" width="400">
+
 Jos antamiesi tietojen perusteella löytyy pilvi tietokannasta, saat lopuksi näytölle ennusteen siitä mitä pilvi voi kertoa
 tulevasta säästä. Saat myös paikkakuntakohtaisen sääennusteen, jotta voit verrata kuinka hyvin (tai huonosti) havintosi täsmää
 todellisuuden kanssa. Voit lopussa halutessasi tallentaa pilvihavainnon tietokantaan.
+
+
 
 
