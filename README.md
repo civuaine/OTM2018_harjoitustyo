@@ -6,6 +6,8 @@ Jokaiselle käyttäjälle näytetään myös Ilmatieteen laitoksen paikkakuntako
 
 ## Dokumentaatio
 
+[Käyttöohje](https://github.com/civuaine/OTM2018_harjoitustyo/blob/master/Dokumentaatio/kayttoohje.md)
+
 [Vaatimusmäärittely](https://github.com/civuaine/OTM2018_harjoitustyo/blob/master/Dokumentaatio/vaatimusmaarittely.md)
 
 [Arkkitehtuurikuvaus](https://github.com/civuaine/OTM2018_harjoitustyo/blob/master/Dokumentaatio/arkkitehtuuri.md)
@@ -15,6 +17,7 @@ Jokaiselle käyttäjälle näytetään myös Ilmatieteen laitoksen paikkakuntako
 ## Releaset
 
 [Viikko 5](https://github.com/civuaine/OTM2018_harjoitustyo/releases/tag/viikko5)
+[Viikko 6]()
 
 ## Komentorivitoiminnot
 
@@ -47,6 +50,12 @@ mvn jxr:jxr checkstyle:checkstyle
 ```
 saa checkstyle raportin (tarkastelu: _target/site/checkstyle.html_).
 
+## JavaDoc
+JavaDoc generoidaan komennolla
+
+```
+mvn javadoc:javadoc
+```
 
 ## Jar-tiedoston generointi
 
