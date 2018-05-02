@@ -20,4 +20,7 @@ Käytetty aika oman projektin eteen.
 | 21.4  | 5    | Sovelluslogiikan rakentaminen kyselyn järjestämistä varten, jarin generointimahdollisuuden luominen, checkstyle-virheiden korjaaminen.
 | 22.4  | 4    | Kyselyyn liittyvien toiminnallisuuksien rakentaminen. |
 | 23.4  | 4    | Testien lisääminen ja päivittäminen, Kyselyn hiominen, jar-tiedoston ajaminen, checkstylejen korjaus, ensimmäisen releasen tekeminen.
-| yht   | 66   | | 
+| 24.4  | 4    | Säätietojen noutamisen suunnittelu yahoon palvelusta.|
+| 29.4  | 4    | Yahoon säätietojen noutamisen ensimmäinen toteutus|
+| 2.5   | 4    | Yahoon säätietojen noutamisen kanssa kikkailua, gson-kirjastoa jne..|
+| yht   | 78   | | 
