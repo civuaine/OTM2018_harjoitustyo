@@ -15,7 +15,7 @@ ja toisesta tekemään pilvihavainnon.
 ## Tilastojen havainnoista -näkymä
 
 Voit katsella muiden käyttäjien tekemiä pilvihavaintoja ja järjestellä ne joko päivämään tai havaintopaikan mukaan nappeja
-painamalla. "Edellinen" nappi vie sinut takaisin etusivulle.
+painamalla. "Etusivulle" nappi vie sinut takaisin etusivulle.
 
 <img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/Tilastoja.png" width="1100">
 
@@ -30,6 +30,7 @@ Varsinaisessa kyselyssä pyri valitsemaan se vaihtoehto, joka on mahdollisimman 
 
 <img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/Kysely.png" width="1100">
 
+"Edellinen" nappi vie sinut takaisin antamaan paikkakunnan ja päivämäärän. "Etusivulle" nappi palauttaa sinut päänäkymään.
 Jos antamiesi tietojen perusteella löytyy pilvi tietokannasta, saat lopuksi näytölle ennusteen siitä mitä pilvi voi kertoa
 tulevasta säästä. Saat myös paikkakuntakohtaisen sääennusteen, jotta voit verrata kuinka hyvin (tai huonosti) havintosi täsmää
 todellisuuden kanssa. Voit lopussa halutessasi tallentaa pilvihavainnon tietokantaan.
