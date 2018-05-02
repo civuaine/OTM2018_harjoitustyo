@@ -15,13 +15,13 @@ ja toisesta tekemään pilvihavainnon.
 ## Tilastojen havainnoista -näkymä
 
 Voit katsella muiden käyttäjien tekemiä pilvihavaintoja ja järjestellä ne joko päivämään tai havaintopaikan mukaan nappeja
-painamalla.
+painamalla. "Edellinen" nappi vie sinut takaisin etusivulle.
 
 <img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/Tilastoja.png" width="1100">
 
 ## Havainnon tekeminen
 Jos valitset päänäkymässä napin "Tee havainto", sinulta kysytään havaintopaikkakuntaa ja päivämäärää, jolloin pilvihavainnon teit.
-Syötä päivämäärä ohjeen antamassa muodossa.
+Syötä päivämäärä ohjeen antamassa muodossa. Jos painat "Etusivulle" nappia sovellus palauttaa sinut päänäkymään.
 
 <img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/TeeHavainto.png" width="1100">
 
