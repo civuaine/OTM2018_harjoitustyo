@@ -334,9 +334,10 @@ public class CloudSoftUi extends Application {
                     //System.out.println("sadesisalta: ");
                     //System.out.println("lapinakyvyysSisalta: ");
                     String ennuste = cloudsoftservice.noudaEnnustePilvenPerusteella();
+                    String saaennuste = cloudsoftservice.tulostaEnnuste();
                     kysymys.setText("Kysely on valmis. Alla ennuste, mitä havaitsemasi pilvi voi tarkoittaa"
-                            + " lähituntien sään kannalta (Tulee monipuolistumaan. Tulokset vielä vähän höpöjä ja testitasolla)\n" + ennuste);
-                cloudsoftservice.yahoowebservice();
+                            + " lähituntien sään kannalta (Tulee monipuolistumaan. Tulokset vielä vähän höpöjä ja testitasolla)\n" + ennuste + "\n" + "JSON:in noutaminen ja sen muuttaminen vielä vaiheessa...: " + saaennuste);
+                    cloudsoftservice.yahoowebservice();
                 } catch (Exception ex) {
                 }
             }
@@ -361,9 +362,9 @@ public class CloudSoftUi extends Application {
                     //System.out.println("sadesisalta: " + this.cloud.getPilvisataa());
                     //System.out.println("lapinakyvyysSisalta: " + this.cloud.getPilviOnLapikuultava());
                     String ennuste = cloudsoftservice.noudaEnnustePilvenPerusteella();
+                    String saaennuste = cloudsoftservice.tulostaEnnuste();
                     kysymys.setText("Kysely on valmis. Alla ennuste, mitä havaitsemasi pilvi voi tarkoittaa"
-                            + " lähituntien/-päivien sään kannalta (Kysely ja tämä sivu tulee monipuolistumaan. Tulokset vielä vähän höpöjä ja testitasolla)\n" + ennuste);
-                    cloudsoftservice.yahoowebservice();
+                            + " lähituntien/-päivien sään kannalta (Kysely ja tämä sivu tulee monipuolistumaan. Tulokset vielä vähän höpöjä ja testitasolla)\n" + ennuste + "\n" + "JSON:in noutaminen ja sen muuttaminen vielä vaiheessa...: " + saaennuste);
                 } catch (Exception ex) {
                 }
             }

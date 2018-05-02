@@ -48,6 +48,9 @@ public class ObservationDateCheck {
         return this.havaintoVuosi;
     }
 
+    /**
+     * Metodi muuttaa sovelluksen käynnistyshetken päivämäärän String-muotoon.
+     */
     public void tanaanStringiksi() {
         //tänään    
         // Ei käyttäjän syötettä, joten ei tarvitse testata paivamaaraOnInteger-metodilla.
@@ -68,6 +71,13 @@ public class ObservationDateCheck {
 
     }
 
+    /**
+     * Metodi tarkistaa että käyttäjän syöttämän päivämäärän osat ovat varmasti
+     * numeroita eikä kirjaimia.
+     *
+     * @param s päivämäärän osa (päivä, kuukausi tai vuosi)
+     * @return true, jos kaikki päivämäärän osaset ovat numeroita
+     */
     public boolean paivamaaraOnInteger(String s) {
         try {
             Integer.parseInt(s);
@@ -82,6 +92,15 @@ public class ObservationDateCheck {
         // s.matches("^[+-]?\\d+$")
     }
 
+    /**
+     * Metodi tarkistaa, että käyttäjä on antanut päivämäärän oikeassa muodossa,
+     * oikeilla välimerkeillä eroteltuna. Päivämäärässä tulee olla oikea määrä
+     * osia (päivä, kk, vuosi).
+     *
+     * @param annettupvm käyttäjän syöttämä päivämäärä
+     * @return true, jos päivämäärä on annettu oikeassa muodossa ja sen kaikki
+     * osat ovat numeroita.
+     */
     public boolean paivamaaranMuotoTarkistin(String annettupvm) {
         // tarkistetaan päivämäärän oikea muoto --> kolme osaa, jotka kaikki on Integer (ei stringejä)
         List<String> annettupvmLista = Arrays.asList(annettupvm.split("/"));
@@ -96,6 +115,12 @@ public class ObservationDateCheck {
         }
     }
 
+    /**
+     * Metodi tarkistaa, että päivämäärän suuruusluokka on järkevä
+     *
+     * @return true,jos suuruusluokka on järkevä (EI saa olla esim
+     * tulevaisuudessa)
+     */
     public boolean paivamaaraJarkeva() {
 
         if (this.havaintoVuosi > 2018 || this.havaintoVuosi < 1950) {
@@ -110,6 +135,12 @@ public class ObservationDateCheck {
 
     }
 
+    /**
+     * Metodi tarkistaa, että käyttäjän syöttämä havaintopäivämäärä ei ole
+     * tulevaisuudessa
+     *
+     * @return true, jos päiväys EI ole tulevaisuudessa, eli on hyväksyttävä
+     */
     public boolean havaintoEiTulevaisuudessa() {
         Date pvmhavainto = new Date(this.havaintoVuosi, this.havaintoKuukausi, this.havaintoPaiva);
 
@@ -120,6 +151,14 @@ public class ObservationDateCheck {
         }
     }
 
+    /**
+     * Metodi tarkistaa kuinka monta päivää sovelluksen käynnistämishetkestä on
+     * havaintopäivään ja päättää sen perusteella onko 7 vrk ennusteen antaminen
+     * järkevää.
+     *
+     * @return true, jos "tämän" päivän ja havaintopäivän välissä on korkeintaan
+     * 3 päivää välissä
+     */
     public boolean annetaankoEnnuste3vrkPaahan() {
         if ((this.vuosiTanaan == this.havaintoVuosi) && (this.kuukausiTanaan == this.havaintoKuukausi)) {
             if ((this.paivaTanaan - this.havaintoPaiva) <= 3) {

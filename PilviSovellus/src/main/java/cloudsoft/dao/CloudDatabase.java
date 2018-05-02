@@ -22,6 +22,12 @@ public class CloudDatabase implements CloudDao {
         this.databaseAddress = databaseAddress;
     }
 
+    /**
+     * Metodi ottaa yhteyden tietokantaan.
+     *
+     * @return yhteyden ottamiseen tarvittavat tiedot: Connection-olio
+     * @throws SQLException
+     */
     @Override
     public Connection getConnection() throws SQLException {
         String dbUrl = System.getenv("JDBC_DATABASE_URL");
@@ -32,6 +38,9 @@ public class CloudDatabase implements CloudDao {
         return DriverManager.getConnection(databaseAddress);
     }
 
+    /**
+     * Metodi luo pilvitietokannan.
+     */
     @Override
     public void init() {
         // luodaan tietokantataulu
@@ -57,6 +66,9 @@ public class CloudDatabase implements CloudDao {
         return lista;
     }
 
+    /**
+     * Metodi lisää testidataa pilvitietokantaan.
+     */
     @Override
     public void addData() {
         List<String> lauseet = new ArrayList<>();
@@ -82,6 +94,13 @@ public class CloudDatabase implements CloudDao {
         }
     }
 
+    /**
+     * Metodi hakee pilveen liittyvän ennusteen, joka on tietokannassa.
+     *
+     * @param nimi pilven nimi
+     * @return Pilven ennuste lähihetkille
+     * @throws SQLException
+     */
     @Override
     public String getInformation(String nimi) throws SQLException {
 
@@ -104,6 +123,14 @@ public class CloudDatabase implements CloudDao {
         }
     }
 
+    /**
+     * Metodi tarkistaa, onko tietokantataulu tyhjä (Testidatan lisäystä
+     * varten).
+     *
+     * @return true, jos tietokantataulu on tyhjä ja testidataa pitää lisätä.
+     * Muuten false.
+     * @throws Exception
+     */
     public boolean onTyhja() throws Exception {
 
         try (Connection conn = getConnection()) {

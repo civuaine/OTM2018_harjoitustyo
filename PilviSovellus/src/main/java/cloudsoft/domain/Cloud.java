@@ -88,6 +88,10 @@ public class Cloud {
     // metodit sateen tyypille ja olomuodolle.
     // lisää myös falseominaisuudet mukaan vielä (jokaisella mahd.monta arvoa joita katsotaan)
     // lisää vielä pilven ulkonäölliset ja tarkentavat ominaisuudet
+    /**
+     * Metodi iteroi käyttäjän syötteen perusteella, mikä havaittu pilvi voisi
+     * olla.
+     */
     public void etsiPilvi() {
         if ((this.sataa == true) && (this.iso == true) && (this.valkoinenPilvi == false) && (this.lapikuultava == false) && (this.selvaRajainen == false)) {
             setPilvi("Nimbostratus");

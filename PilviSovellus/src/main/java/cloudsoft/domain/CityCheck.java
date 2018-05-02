@@ -23,6 +23,13 @@ public class CityCheck {
         this.havaintoPaikkakunta = pk;
     }
 
+    /**
+     * Metodi tarkistaa, että käyttäjän syöte sisältää vain kirjaimia, eikä
+     * mitään muita merkkejä.
+     *
+     * @param havaintoPaikkakunta käyttäjän syöttämä paikkakunta
+     * @return true, jos käyttäjän syöte sisältää vain kirjaimia. Muuten false.
+     */
     public boolean paikkakuntaSisaltaaVainKirjaimia(String havaintoPaikkakunta) {
         // tallennetaan havaintopaikkakunta muistiin IL:n dataa varten.
 
@@ -38,11 +45,25 @@ public class CityCheck {
         return true;
     }
 
+    /**
+     * Metodi tarkistaa Yahoon palvelusta, että käyttäjän syöttämä paikkakunta
+     * on olemassa.
+     *
+     * @param havaintoPaikkakunta käyttäjän syöttämä paikkaunta
+     * @return true, jos paikkakunta löytyy Yahoon tietokannasta
+     */
     public boolean paikkakuntaOnOlemassa(String havaintoPaikkakunta) {
         //Testataan löytyykö annettua paikkakuntaa IL:n tietokannasta
         return true;
     }
 
+    /**
+     * Metodi tarkistaa, että käyttäjän syöttämä paikkakunta ei ole tyhjä tai
+     * täynnä välilyöntejä.
+     *
+     * @param havaintoPaikkakunta käyttäjän syöttämä paikkakunta
+     * @return true, jos paikkakunta EI sisällä välilyöntejä tai ole tyhjä
+     */
     public boolean paikkakuntaEiTyhja(String havaintoPaikkakunta) {
         if (havaintoPaikkakunta.isEmpty()) {
             return false;

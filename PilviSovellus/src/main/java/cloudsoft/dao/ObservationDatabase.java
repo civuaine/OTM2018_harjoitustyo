@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * Vastaa havaintojen lukemisesta ja viemisestä tietokantaan.
+ * Vastaa käyttäjän tekmien havaintojen lukemisesta ja viemisestä tietokantaan.
  */
 public class ObservationDatabase implements ObservationDao {
 
@@ -22,6 +22,13 @@ public class ObservationDatabase implements ObservationDao {
         this.databaseAddress = databaseAddress;
     }
 
+    /**
+     * Metodi ottaa yhteyden tietokantaan ja palauttaa siihen tarvittavat
+     * tiedot, Connecion -olion.
+     *
+     * @return Tietokantayhteyden tiedot
+     * @throws SQLException
+     */
     @Override
     public Connection getConnection() throws SQLException {
         String dbUrl = System.getenv("JDBC_DATABASE_URL");
@@ -32,6 +39,9 @@ public class ObservationDatabase implements ObservationDao {
         return DriverManager.getConnection(databaseAddress);
     }
 
+    /**
+     * Metodi luo tietokannan.
+     */
     @Override
     public void init() {
         List<String> luontilauseet = createDatabase();
@@ -55,10 +65,17 @@ public class ObservationDatabase implements ObservationDao {
         return luontiLista;
     }
 
+    /**
+     * Metodi tallentaa käyttäjän tekemän havainnon tietokantaan.
+     *
+     * @param paikka käyttäjän syöttämä (tarkistettu) havaintopaikka
+     * @param paivamaara käyttäjän syöttämä (tarkistettu) havaintopäivämäärä.
+     * @param pilvi käyttäjän havaitsema pilvi (kyselyn tulos)
+     * @throws SQLException
+     */
     @Override
     public void save(String paikka, Date paivamaara, String pilvi) throws SQLException {
 
-        
         try (Connection conn = getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES (?,?,?)");
             stmt.setString(1, paikka);
@@ -71,6 +88,9 @@ public class ObservationDatabase implements ObservationDao {
         }
     }
 
+    /**
+     * Metodi lisää tietokantaan testidataa.
+     */
     @Override
     public void addData() {
         List<String> lauseet = new ArrayList<>();
@@ -88,7 +108,7 @@ public class ObservationDatabase implements ObservationDao {
             for (String lause : lauseet) {
                 stmt.executeUpdate(lause);
             }
- 
+
             conn.close();
         } catch (Exception e) {
             //System.err.print(e.getMessage());
@@ -96,6 +116,13 @@ public class ObservationDatabase implements ObservationDao {
         }
     }
 
+    /**
+     * Metodi hakee tietokannasta kaikki havainnot paikan mukaan
+     * aakkosjärjestyksessä ja palauttaa ne listamuodossa eteenpäin.
+     *
+     * @return Lista havainnoista
+     * @throws SQLException
+     */
     @Override
     public List<String> getAllByCity() throws SQLException {
         List<String> kaupunginMukaan = new ArrayList<>();
@@ -106,7 +133,7 @@ public class ObservationDatabase implements ObservationDao {
 //                return null;
 //            }
             while (rs.next()) {
-                
+
                 String paikka = rs.getString("paikka");
                 String paivamaara = rs.getString("paivamaara");
                 String pilvi = rs.getString("pilvi");
@@ -121,6 +148,13 @@ public class ObservationDatabase implements ObservationDao {
         return kaupunginMukaan;
     }
 
+    /**
+     * Metodi hakee tietokannasta kaikki havainnot päivämäärän mukaan
+     * järjestettynä (uusin ensin) ja palauttaa ne listamuodossa eteenpäin.
+     *
+     * @return Lista havainnoista
+     * @throws SQLException
+     */
     @Override
     public List<String> getAllByDate() throws SQLException {
         List<String> paivanMukaan = new ArrayList<>();
