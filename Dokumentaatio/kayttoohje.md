@@ -12,7 +12,7 @@ ja toisesta tekemään pilvihavainnon.
 
 -kuva
 
-## Tilastojen katselu -näkymä
+## Tilastojen havainnoista -näkymä
 
 Voit katsella muiden käyttäjien tekemiä pilvihavaintoja ja järjestellä ne joko päivämään tai havaintopaikan mukaan nappeja
 painamalla.
