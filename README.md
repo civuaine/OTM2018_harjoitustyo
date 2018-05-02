@@ -2,7 +2,7 @@
 Pilvisovellus tarjoaa jokaiselle mahdollisuuden ennustaa säätä lähitunneille, tilanteesta riippuen jopa parin päivän päähän. Sovelluksen käyttäjät voivat nähdä myös toistensa tekemiä pilvihavaintoja - tilastoja tehdyistä havainnoista. Käyttäjälle *tarjotaan* mahdollisuus tallentaa oma havainto sovelluksen tietokantaan muiden nähtäville. 
 
 Sovellus kysyy havaitsijalta muutamia kysymyksiä havaitusta pilvestä, joihin havaitsija vastaa niin hyvin kuin voi. Kysymysten tarkoituksena on iteroida havainto kohti oikeaa pilvityyppiä. Jos oikea pilvityyppi löytyy, käyttäjälle kerrotaan mitä kyseinen pilvi voi tarkoitaa lähituntien, jopa lähipäivien sään kannalta.
-Jokaiselle käyttäjälle näytetään myös Ilmatieteen laitoksen paikkakuntakohtainen sääennuste lähipäiville.
+Jokaiselle käyttäjälle näytetään myös Yahoon paikkakuntakohtainen sääennuste lähipäiville.
 
 ## Dokumentaatio
 
