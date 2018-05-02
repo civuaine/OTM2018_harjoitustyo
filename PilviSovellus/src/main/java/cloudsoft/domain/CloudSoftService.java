@@ -181,6 +181,7 @@ public class CloudSoftService {
 //        InputStream is = fullURL.openStream();
         
         // JSON parser --> GSON esimerkiksi
+        // lisätään tekstinä aluksi, ehkä myöhemmin kuvana, jos onnistuu
         
         
         
