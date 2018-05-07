@@ -171,14 +171,14 @@ public class CloudSoftUi extends Application {
         String havteksti = new String(Files.readAllBytes(Paths.get("teksti2.txt")));
         //TextArea havOhje = new TextArea(havteksti);
         Label havOhje = new Label(havteksti);
-
+        
         HBox havApu = new HBox(havOhje);
         havApu.setAlignment(Pos.TOP_CENTER);
         havApu.setPadding(new Insets(20));
         HBox.setHgrow(havOhje, Priority.ALWAYS);
         havOhje.setWrapText(true);
         havOhje.setMaxWidth(700);
-        havOhje.setMaxHeight(60);
+        havOhje.setMaxHeight(100);
         havOhje.setFont(Font.font("aridia", 14));
 
         havAsettelu.setTop(havApu);
@@ -266,7 +266,7 @@ public class CloudSoftUi extends Application {
                 System.out.println("Siirrytään kyselyyn");
                 ikkuna.setScene(this.kyselysivu);
             } else {
-                jatkoHyvaksynta.setText("Tarkista antamasti syötteet!");
+                jatkoHyvaksynta.setText("Tarkista antamasi syötteet!");
                 jatkoHyvaksynta.setTextFill(Color.FIREBRICK);
             }
         });
