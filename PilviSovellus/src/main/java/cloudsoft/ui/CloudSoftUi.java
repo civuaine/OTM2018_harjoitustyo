@@ -94,52 +94,44 @@ public class CloudSoftUi extends Application {
         return kyssari;
     }
 
-    @Override
-    public void start(Stage ikkuna) throws Exception {
-//graafisten käyttöliittymän asettelijat
-        System.out.println("Pilvisovellus on käynnissä...");
-        BorderPane asettelu = new BorderPane();
-        BorderPane havAsettelu = new BorderPane();
-        BorderPane tilAsettelu = new BorderPane();
-        BorderPane kysAsettelu = new BorderPane();
+    public void asetaParametritOikein(Label kysymys, boolean arvo) {
+            if (kysymys.getText().equals(sadekysymys())) {
+                this.cloudsoftservice.setSade(arvo);
+                kysymys.setText(kokokysymys());
+            } else if (kysymys.getText().equals(kokokysymys())) {
+                this.cloudsoftservice.setKoko(arvo);
+                kysymys.setText(varikysymys());
+            } else if (kysymys.getText().equals(varikysymys())) {
+                this.cloudsoftservice.setVari(arvo);
+                kysymys.setText(lapinakyvakysymys());
+            } else if (kysymys.getText().equals(lapinakyvakysymys())) {
+                this.cloudsoftservice.setLapikuultava(arvo);
+                kysymys.setText(selvarajainenkysymys());
+            } else if (kysymys.getText().equals(selvarajainenkysymys())) {
+                this.cloudsoftservice.setSelvarajainen(arvo);
+                try {
+                    //System.out.println("sadesisalta: " + this.cloud.getPilvisataa());
+                    //System.out.println("lapinakyvyysSisalta: " + this.cloud.getPilviOnLapikuultava());
+                    String ennuste = cloudsoftservice.noudaEnnustePilvenPerusteella();
+                    String saaennuste = cloudsoftservice.tulostaEnnuste();
+                    kysymys.setText("Kysely on valmis. Alla ennuste, mitä havaitsemasi pilvi voi tarkoittaa"
+                            + " lähituntien/-päivien sään kannalta (Kysely ja tämä sivu tulee monipuolistumaan. Tulokset vielä vähän höpöjä ja testitasolla)\n" + ennuste + "\n" + "JSON:in noutaminen ja sen muuttaminen vielä vaiheessa...: " + saaennuste);
+                    cloudsoftservice.yahoowebservice();
+                } catch (Exception ex) {
+                }
+            }        
+    } 
+    
+    public BorderPane paaNakyma() throws Exception {
+        BorderPane asettelija = new BorderPane();
 
-        this.paanakyma = new Scene(asettelu, 1850, 1000);
-        this.havaintosivu = new Scene(havAsettelu, 1850, 1000);
-        this.tilastosivu = new Scene(tilAsettelu, 1850, 1000);
-        this.kyselysivu = new Scene(kysAsettelu, 1850, 1000);
-
-//Etusivu
-        // napit
-        Button aloitusNappi = new Button("Tee pilvihavainto");
-        Button statistiikkaNappi = new Button("Tilastoja havainnoista");
-        HBox napit = new HBox(10, aloitusNappi, statistiikkaNappi);
-        napit.setAlignment(Pos.CENTER);
-        HBox.setHgrow(aloitusNappi, Priority.ALWAYS);
-        HBox.setHgrow(statistiikkaNappi, Priority.ALWAYS);
-        aloitusNappi.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        statistiikkaNappi.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        asettelu.setBottom(napit);
-
-        aloitusNappi.setOnAction((event) -> {
-            System.out.println("Tehdään havainto!");
-            ikkuna.setScene(this.havaintosivu);
-
-        });
-
-        statistiikkaNappi.setOnAction((event) -> {
-            System.out.println("Katsellaan tilastoja!");
-            ikkuna.setScene(this.tilastosivu);
-        });
-
-        // tervehdysviesti
         Label tervehdysViesti = new Label("Tervetuloa Pilvisovellukseen!");
         tervehdysViesti.setFont(Font.font("aridia", 40));
         tervehdysViesti.setTextFill(Color.DARKTURQUOISE);
-        asettelu.setTop(tervehdysViesti);
         tervehdysViesti.autosize();
         BorderPane.setAlignment(tervehdysViesti, Pos.TOP_CENTER);
+        asettelija.setTop(tervehdysViesti);
 
-        // TekstiAlue
         String teksti = new String(Files.readAllBytes(Paths.get("teksti.txt")));
         TextArea kayttoOhje = new TextArea(teksti);
 
@@ -151,7 +143,86 @@ public class CloudSoftUi extends Application {
         kayttoOhje.setMaxWidth(700);
         kayttoOhje.setMaxHeight(300);
         kayttoOhje.setFont(Font.font("aridia", 14));
-        asettelu.setCenter(apu);
+        asettelija.setCenter(apu);
+        BorderPane.setMargin(tervehdysViesti, new Insets(20));
+        BorderPane.setMargin(kayttoOhje, new Insets(20));
+        return asettelija;
+    }
+
+    public BorderPane havaintoNakyma() throws Exception {
+        BorderPane asettelija = new BorderPane();
+        String havteksti = new String(Files.readAllBytes(Paths.get("teksti2.txt")));
+        Label havOhje = new Label(havteksti);
+
+        HBox havApu = new HBox(havOhje);
+        havApu.setAlignment(Pos.TOP_CENTER);
+        havApu.setPadding(new Insets(20));
+        HBox.setHgrow(havOhje, Priority.ALWAYS);
+        havOhje.setWrapText(true);
+        havOhje.setMaxWidth(700);
+        havOhje.setMaxHeight(100);
+        havOhje.setFont(Font.font("aridia", 14));
+        asettelija.setTop(havApu);
+        BorderPane.setMargin(havOhje, new Insets(20));
+        return asettelija;
+    }
+    
+    public BorderPane tilastoNakyma() throws Exception{
+        BorderPane asettelija = new BorderPane();
+        String tilastoTeksti = new String(Files.readAllBytes(Paths.get("teksti3.txt")));
+        Label tilastoOhje = new Label(tilastoTeksti);
+        HBox tilApu = new HBox(tilastoOhje);
+        tilApu.setAlignment(Pos.CENTER);
+        tilApu.setPadding(new Insets(20));
+        HBox.setHgrow(tilApu, Priority.ALWAYS);
+        tilastoOhje.setWrapText(true);
+        tilastoOhje.setMaxWidth(700);
+        tilastoOhje.setMaxHeight(80);
+        tilastoOhje.setFont(Font.font("aridia", 14));
+        asettelija.setTop(tilApu);        
+        return asettelija;
+    }
+
+    @Override
+    public void start(Stage ikkuna) throws Exception {
+//graafisten käyttöliittymän asettelijat
+        System.out.println("Pilvisovellus on käynnissä...");
+        BorderPane asettelu = paaNakyma();
+        BorderPane havAsettelu = havaintoNakyma();
+        BorderPane tilAsettelu = tilastoNakyma();
+        BorderPane kysAsettelu = new BorderPane();
+
+        this.paanakyma = new Scene(asettelu, 1850, 1000);
+        this.havaintosivu = new Scene(havAsettelu, 1850, 1000);
+        this.tilastosivu = new Scene(tilAsettelu, 1850, 1000);
+        this.kyselysivu = new Scene(kysAsettelu, 1850, 1000);
+
+//Etusivu
+        // napit
+
+        Button aloitusNappi = new Button("Tee pilvihavainto");
+        Button statistiikkaNappi = new Button("Tilastoja havainnoista");
+
+        HBox napit = new HBox(10, aloitusNappi, statistiikkaNappi);
+        napit.setAlignment(Pos.CENTER);
+        HBox.setHgrow(aloitusNappi, Priority.ALWAYS);
+        HBox.setHgrow(statistiikkaNappi, Priority.ALWAYS);
+        aloitusNappi.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+        statistiikkaNappi.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+        asettelu.setBottom(napit);
+        BorderPane.setMargin(napit, new Insets(20));
+        aloitusNappi.setOnAction((event) -> {
+            System.out.println("Tehdään havainto!");
+            ikkuna.setScene(this.havaintosivu);
+
+        });
+
+        statistiikkaNappi.setOnAction((event) -> {
+            System.out.println("Katsellaan tilastoja!");
+            ikkuna.setScene(this.tilastosivu);
+        });
 
         //String css = CloudSoftUi.class.getResource("/home/sini/Documents/Sini/Helsingin_yliopisto/Tietojenkasittely/OTM2018_harjoitustyo/PilviSovellus/style.css").toExternalForm();
         //taustakuva
@@ -166,25 +237,9 @@ public class CloudSoftUi extends Application {
         ikkuna.show();
 
 //Havaintosivu
-        // asettelija = havAsettelu
-        // Ohjeet
-        String havteksti = new String(Files.readAllBytes(Paths.get("teksti2.txt")));
-        //TextArea havOhje = new TextArea(havteksti);
-        Label havOhje = new Label(havteksti);
-        
-        HBox havApu = new HBox(havOhje);
-        havApu.setAlignment(Pos.TOP_CENTER);
-        havApu.setPadding(new Insets(20));
-        HBox.setHgrow(havOhje, Priority.ALWAYS);
-        havOhje.setWrapText(true);
-        havOhje.setMaxWidth(700);
-        havOhje.setMaxHeight(100);
-        havOhje.setFont(Font.font("aridia", 14));
-
-        havAsettelu.setTop(havApu);
-
+    // asettelija = havAsettelu
         // nappi
-        // tänne voi tuunaa, että muuttuu sovelluksen ikkunan koon kasvaessa/pienetessä
+        // tänne voi tuunaa, jos haluaa ikkunan koon muuttuvan
         Button havNappi = etusivuNappi(havAsettelu);
         siirryEtusivulle(havNappi, ikkuna);
 
@@ -216,7 +271,6 @@ public class CloudSoftUi extends Application {
             } else {
                 hyvaksymistekstiPaikkakunta.setText("Paikkakunta annettu!");
                 hyvaksymistekstiPaikkakunta.setTextFill(Color.DARKOLIVEGREEN);
-                //cloudsoftservice.paikkakuntaOikeinAnnettu();
             }
 
         });
@@ -225,7 +279,7 @@ public class CloudSoftUi extends Application {
             String pvmnauha = pvm.getText();
             Boolean pvmtesti = cloudsoftservice.tarkistaPaivamaara(pvmnauha);
 
-            if (!pvmtesti) { // VAIHDA!! huutomerkki eteen
+            if (!pvmtesti) { 
                 hyvaksymistekstiPvm.setText("Tarkista päivämäärä, anna se muodossa pp/kk/vvvv tai p/k/vvvv"
                         + "\nhavainnon pitää olla vuoden 1950 jälkeen tehty, havaintoaika ei voi olla tulevaisuudessa");
                 hyvaksymistekstiPvm.setTextFill(Color.FIREBRICK);
@@ -252,9 +306,6 @@ public class CloudSoftUi extends Application {
         pvmJaPaikka.setSpacing(30);
         pvmJaPaikka.setPadding(new Insets(20));
         pvmJaPaikka.setAlignment(Pos.CENTER);
-//        pvmJaPaikka.setAlignment(Pos.BOTTOM_CENTER);
-//        HBox.setHgrow(paikkakuntaKokonaisuus, Priority.ALWAYS);
-//        HBox.setHgrow(pvmKokonaisuus, Priority.ALWAYS);
 
         havAsettelu.setCenter(pvmJaPaikka);
 
@@ -289,10 +340,7 @@ public class CloudSoftUi extends Application {
         });
 
         Button kylla = new Button("Kyllä");
-        //kylla.setDefaultButton(true);
-
         Button ei = new Button("Ei");
-        //ei.setDefaultButton(false);
 
         HBox kylEi = new HBox();
         VBox ulkoasu = new VBox();
@@ -308,7 +356,6 @@ public class CloudSoftUi extends Application {
         ulkoasu.setPadding(new Insets(20));
         VBox.setVgrow(ulkoasu, Priority.ALWAYS);
         ulkoasu.setAlignment(Pos.CENTER);
-        //kysAsettelu.setTop(kysymys);
         kysAsettelu.setBottom(edellisNapit);
         kysAsettelu.setCenter(ulkoasu);
 
@@ -316,76 +363,17 @@ public class CloudSoftUi extends Application {
         kysymys.setText(sadekysymys());
 
         kylla.setOnAction((event) -> {
-            if (kysymys.getText().equals(sadekysymys())) {
-                this.cloudsoftservice.setSade(true);
-                kysymys.setText(kokokysymys());
-            } else if (kysymys.getText().equals(kokokysymys())) {
-                this.cloudsoftservice.setKoko(true);
-                kysymys.setText(varikysymys());
-            } else if (kysymys.getText().equals(varikysymys())) {
-                this.cloudsoftservice.setVari(true);
-                kysymys.setText(lapinakyvakysymys());
-            } else if (kysymys.getText().equals(lapinakyvakysymys())) {
-                this.cloudsoftservice.setLapikuultava(true);
-                kysymys.setText(selvarajainenkysymys());
-            } else if (kysymys.getText().equals(selvarajainenkysymys())) {
-                this.cloudsoftservice.setSelvarajainen(true);
-                try {
-                    //System.out.println("sadesisalta: ");
-                    //System.out.println("lapinakyvyysSisalta: ");
-                    String ennuste = cloudsoftservice.noudaEnnustePilvenPerusteella();
-                    String saaennuste = cloudsoftservice.tulostaEnnuste();
-                    kysymys.setText("Kysely on valmis. Alla ennuste, mitä havaitsemasi pilvi voi tarkoittaa"
-                            + " lähituntien sään kannalta (Tulee monipuolistumaan. Tulokset vielä vähän höpöjä ja testitasolla)\n" + ennuste + "\n" + "JSON:in noutaminen ja sen muuttaminen vielä vaiheessa...: " + saaennuste);
-                    cloudsoftservice.yahoowebservice();
-                } catch (Exception ex) {
-                }
-            }
+            asetaParametritOikein(kysymys, true);
         });
 
         ei.setOnAction((event) -> {
-            if (kysymys.getText().equals(sadekysymys())) {
-                this.cloudsoftservice.setSade(false);
-                kysymys.setText(kokokysymys());
-            } else if (kysymys.getText().equals(kokokysymys())) {
-                this.cloudsoftservice.setKoko(false);
-                kysymys.setText(varikysymys());
-            } else if (kysymys.getText().equals(varikysymys())) {
-                this.cloudsoftservice.setVari(false);
-                kysymys.setText(lapinakyvakysymys());
-            } else if (kysymys.getText().equals(lapinakyvakysymys())) {
-                this.cloudsoftservice.setLapikuultava(false);
-                kysymys.setText(selvarajainenkysymys());
-            } else if (kysymys.getText().equals(selvarajainenkysymys())) {
-                this.cloudsoftservice.setSelvarajainen(false);
-                try {
-                    //System.out.println("sadesisalta: " + this.cloud.getPilvisataa());
-                    //System.out.println("lapinakyvyysSisalta: " + this.cloud.getPilviOnLapikuultava());
-                    String ennuste = cloudsoftservice.noudaEnnustePilvenPerusteella();
-                    String saaennuste = cloudsoftservice.tulostaEnnuste();
-                    kysymys.setText("Kysely on valmis. Alla ennuste, mitä havaitsemasi pilvi voi tarkoittaa"
-                            + " lähituntien/-päivien sään kannalta (Kysely ja tämä sivu tulee monipuolistumaan. Tulokset vielä vähän höpöjä ja testitasolla)\n" + ennuste + "\n" + "JSON:in noutaminen ja sen muuttaminen vielä vaiheessa...: " + saaennuste);
-                } catch (Exception ex) {
-                }
-            }
+            asetaParametritOikein(kysymys, false);
         });
 
 //Tilasto
         // asettelija = tilAsettelu
         //Otsikko
-        String tilastoTeksti = new String(Files.readAllBytes(Paths.get("teksti3.txt")));
-        //TextArea tilastoOhje = new TextArea(tilastoTeksti);
-        Label tilastoOhje = new Label(tilastoTeksti);
-        HBox tilApu = new HBox(tilastoOhje);
-        tilApu.setAlignment(Pos.CENTER);
-        tilApu.setPadding(new Insets(20));
-        HBox.setHgrow(tilApu, Priority.ALWAYS);
-        tilastoOhje.setWrapText(true);
-        tilastoOhje.setMaxWidth(700);
-        tilastoOhje.setMaxHeight(80);
-        tilastoOhje.setFont(Font.font("aridia", 14));
-        tilAsettelu.setTop(tilApu);
-
+        
         // Tietokannan havainnot
         String havaintoTeksti = "";
         final Label havainnot = new Label();
@@ -443,13 +431,6 @@ public class CloudSoftUi extends Application {
         tilastot.setPadding(new Insets(20));
 
         tilAsettelu.setCenter(tilastot);
-
-        // Yleinen asettelu sivujen komponenteille
-        BorderPane.setMargin(napit, new Insets(20));
-        BorderPane.setMargin(tervehdysViesti, new Insets(20));
-        BorderPane.setMargin(kayttoOhje, new Insets(20));
-        BorderPane.setMargin(havOhje, new Insets(20));
-
     }
 
     @Override
