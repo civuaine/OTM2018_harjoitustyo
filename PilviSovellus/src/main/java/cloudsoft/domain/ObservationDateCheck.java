@@ -54,11 +54,11 @@ public class ObservationDateCheck {
     public void tanaanStringiksi() {
         //tänään    
         // Ei käyttäjän syötettä, joten ei tarvitse testata paivamaaraOnInteger-metodilla.
-        SimpleDateFormat tanaan = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat tanaan = new SimpleDateFormat("yyyy.MM.dd");
         Date pvmNyt = new Date();
         String nyt = tanaan.format(pvmNyt);
 
-        List<String> nytLista = Arrays.asList(nyt.split("/"));
+        List<String> nytLista = Arrays.asList(nyt.split("\\."));
 
         int vuosiNyt = Integer.parseInt(nytLista.get(0));
         int kkNyt = Integer.parseInt(nytLista.get(1));
@@ -103,7 +103,7 @@ public class ObservationDateCheck {
      */
     public boolean paivamaaranMuotoTarkistin(String annettupvm) {
         // tarkistetaan päivämäärän oikea muoto --> kolme osaa, jotka kaikki on Integer (ei stringejä)
-        List<String> annettupvmLista = Arrays.asList(annettupvm.split("/"));
+        List<String> annettupvmLista = Arrays.asList(annettupvm.split("\\."));
 
         if (paivamaaraOnInteger(annettupvmLista.get(0)) && paivamaaraOnInteger(annettupvmLista.get(1)) && paivamaaraOnInteger(annettupvmLista.get(2))) {
             setvvvv(Integer.parseInt(annettupvmLista.get(2)));

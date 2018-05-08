@@ -153,7 +153,10 @@ public class CloudSoftService {
     public boolean paivamaaraOikeinAnnettu() {
         return true;
     }
-
+    public String getPilvi() {
+        return this.cloud.getPilvi();
+    }
+    
     public void setSade(boolean arvo) {
         this.cloud.setPilviSataa(arvo);
     }

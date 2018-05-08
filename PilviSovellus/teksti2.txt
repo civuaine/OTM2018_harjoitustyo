@@ -1,3 +1,3 @@
 						       TEE HAVAINTO!
 
-Syötä alla oleviin kenttiin havaintopaikkakunnan (jolla havainnon teit) nimi ja havaintopäivämäärä. "Jatka" nappulan takana sinulta kysytään kysymyksiä. Valitse havaintoasi parhaiten kuvaava vastaus.
+Syötä alla oleviin kenttiin havaintopaikkakunnan nimi ja havaintopäivämäärä, sekä paina "Tallenna". "Jatka" nappulan takana sinulta kysytään kysymyksiä. Valitse havaintoasi parhaiten kuvaava vastaus.
