@@ -168,7 +168,7 @@ public class CloudSoftUi extends Application {
         TextArea kayttoOhje = new TextArea(teksti);
         kayttoOhje.setEditable(false);
         kayttoOhje.getStyleClass().addAll("model-text-area");
-        
+
         HBox apu = new HBox(kayttoOhje);
         apu.setAlignment(Pos.CENTER);
         apu.setPadding(new Insets(20));
@@ -215,6 +215,15 @@ public class CloudSoftUi extends Application {
         tilastoOhje.setFont(Font.font("aridia", 14));
         asettelija.setTop(tilApu);
         return asettelija;
+    }
+
+    public void haeHavainnotUudestaan(Label havainnot) throws Exception{
+        String havaintoTeksti = "";
+        List<String> hav = cloudsoftservice.getHavainnotPaiva();
+        for (String yksi : hav) {
+            havaintoTeksti += yksi + "\n";
+        }
+        havainnot.setText(havaintoTeksti);
     }
 
 //    public BorderPane kyselyNakyma() throws Exception {
@@ -264,10 +273,14 @@ public class CloudSoftUi extends Application {
             nollaaKaikkiAnnetutParametrit();
 
         });
-
+        final Label havainnot = new Label();
         statistiikkaNappi.setOnAction((event) -> {
-            System.out.println("Katsellaan tilastoja!");
-            ikkuna.setScene(this.tilastosivu);
+            try {
+                System.out.println("Katsellaan tilastoja!");
+                haeHavainnotUudestaan(havainnot);
+                ikkuna.setScene(this.tilastosivu);
+            } catch (Exception ex) {
+            }
         });
 
         //String css = CloudSoftUi.class.getResource("/home/sini/Documents/Sini/Helsingin_yliopisto/Tietojenkasittely/OTM2018_harjoitustyo/PilviSovellus/style.css").toExternalForm();
@@ -373,7 +386,6 @@ public class CloudSoftUi extends Application {
         edellisNapit.setSpacing(10);
         edellisNapit.setPadding(new Insets(20));
 
-
         Button kylla = new Button("Kyllä");
         Button ei = new Button("Ei");
 
@@ -442,14 +454,14 @@ public class CloudSoftUi extends Application {
         // asettelija = tilAsettelu
         //Otsikko
         // Tietokannan havainnot
-        String havaintoTeksti = "";
-        final Label havainnot = new Label();
-        List<String> hav = cloudsoftservice.getHavainnotPaiva();
-        for (String yksi : hav) {
-            havaintoTeksti += yksi + "\n";
-        }
-        havainnot.setText(havaintoTeksti);
-
+        //String havaintoTeksti = "";
+        //final Label havainnot = new Label();
+        //List<String> hav = cloudsoftservice.getHavainnotPaiva();
+        //for (String yksi : hav) {
+        //    havaintoTeksti += yksi + "\n";
+        //}
+        //havainnot.setText(havaintoTeksti);
+        haeHavainnotUudestaan(havainnot);
         // napit
         Button tilNappi = etusivuNappi(tilAsettelu);
         siirryEtusivulle(tilNappi, ikkuna);

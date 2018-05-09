@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +63,7 @@ public class ObservationDatabase implements ObservationDao {
     private List<String> createDatabase() {
         List<String> luontiLista = new ArrayList<>();
 
-        luontiLista.add("CREATE TABLE Havainnot (paikka varchar(200), paivamaara varchar(20), pilvi varchar(20))");
+        luontiLista.add("CREATE TABLE Havainnot (paikka varchar(200), paivamaara Date, pilvi varchar(20))");
         return luontiLista;
     }
 
@@ -74,12 +76,11 @@ public class ObservationDatabase implements ObservationDao {
      * @throws SQLException
      */
     @Override
-    public void save(String paikka, Date paivamaara, String pilvi) throws SQLException {
-
+    public void save(String paikka, String paivamaara, String pilvi) throws SQLException {
         try (Connection conn = getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES (?,?,?)");
             stmt.setString(1, paikka);
-            stmt.setDate(2, paivamaara);
+            stmt.setDate(2, java.sql.Date.valueOf(paivamaara));
             stmt.setString(3, pilvi);
             stmt.executeUpdate();
             conn.close();
@@ -95,13 +96,13 @@ public class ObservationDatabase implements ObservationDao {
     public void addData() {
         List<String> lauseet = new ArrayList<>();
 
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Jyväskylä', '2018-04-10', 'Altostratus')");
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Maarianhamina', '2018-04-08', 'Cirrus')");
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Helsinki', '2018-04-12', 'Stratocumulus')");
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Äänekoski', '1995-04-18', 'Cirrostratus')");
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Oulu', '2010-05-31', 'Stratus')");
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Viitasaari', '2012-11-23', 'Cumulonimbus')");
-        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Rovaniemi', '2017-06-19', 'Cumulonimbus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Jyväskylä', '1523350800000', 'Altostratus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Maarianhamina', '1523178000000', 'Cirrus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Helsinki', '1523523600000', 'Stratocumulus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Äänekoski', '806403600000', 'Cirrostratus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Oulu', '1275296400000', 'Stratus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Viitasaari', '1353661200000', 'Cumulonimbus')");
+        lauseet.add("INSERT INTO Havainnot (paikka, paivamaara, pilvi) VALUES ('Rovaniemi', '1497862800000', 'Cumulonimbus')");
         int i = 0;
         try (Connection conn = getConnection()) {
             Statement stmt = conn.createStatement();
@@ -117,66 +118,38 @@ public class ObservationDatabase implements ObservationDao {
     }
 
     /**
-     * Metodi hakee tietokannasta kaikki havainnot paikan mukaan
-     * aakkosjärjestyksessä ja palauttaa ne listamuodossa eteenpäin.
+     * Metodi hakee tietokannasta havainnot paikkojen mukaan
+     * aakkosjärjestyksessä tai päivämäärän mukaan aikajärjestyksessä (uusin
+     * ensin) riippuen parametrista paikkaTaiPaivays.
      *
-     * @return Lista havainnoista
-     * @throws SQLException
+     * @param paikkaTaiPaivays kumman mukaan tietokannan sisältö järjestetään:
+     * paikan mukaan vai päiväyksen mukaan
+     * @return Järjestetty lista havainnoista
      */
     @Override
-    public List<String> getAllByCity() throws SQLException {
-        List<String> kaupunginMukaan = new ArrayList<>();
+    public List<String> getAllObservations(String paikkaTaiPaivays) throws SQLException {
+        List<String> listaHavainnoista = new ArrayList<>();
+        String lause = "";
         try (Connection conn = getConnection()) {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Havainnot ORDER BY paikka ASC");
-            ResultSet rs = stmt.executeQuery();
-//            if (!(rs.next())) { // hasnext
-//                return null;
-//            }
-            while (rs.next()) {
-
-                String paikka = rs.getString("paikka");
-                String paivamaara = rs.getString("paivamaara");
-                String pilvi = rs.getString("pilvi");
-                String rivi = paikka + "        " + paivamaara + "        " + pilvi;
-                kaupunginMukaan.add(rivi);
+            if (paikkaTaiPaivays.equals("paikka")) {
+                lause = "SELECT * FROM Havainnot ORDER BY paikka ASC";
+            } else if (paikkaTaiPaivays.equals("paivays")) {
+                lause = "SELECT * FROM Havainnot ORDER BY paivamaara DESC";
             }
-            conn.close();
-            return kaupunginMukaan;
-        } catch (Exception e) {
-            // jos jotain menee pieleen, mitään ei palauteta
-        }
-        return kaupunginMukaan;
-    }
-
-    /**
-     * Metodi hakee tietokannasta kaikki havainnot päivämäärän mukaan
-     * järjestettynä (uusin ensin) ja palauttaa ne listamuodossa eteenpäin.
-     *
-     * @return Lista havainnoista
-     * @throws SQLException
-     */
-    @Override
-    public List<String> getAllByDate() throws SQLException {
-        List<String> paivanMukaan = new ArrayList<>();
-        try (Connection conn = getConnection()) {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Havainnot ORDER BY paivamaara DESC");
+            PreparedStatement stmt = conn.prepareStatement(lause);
             ResultSet rs = stmt.executeQuery();
-//            if (!(rs.next())) {
-//                return null;
-//            }
             while (rs.next()) {
                 String paikka = rs.getString("paikka");
-                String paivamaara = rs.getString("paivamaara");
+                Date paivamaara = rs.getDate("paivamaara");
                 String pilvi = rs.getString("pilvi");
                 String rivi = paikka + "        " + paivamaara + "        " + pilvi;
-                paivanMukaan.add(rivi);
+                listaHavainnoista.add(rivi);
             }
             conn.close();
-            return paivanMukaan;
-        } catch (Exception e) {
-            // jos jotain menee pieleen, mitään ei palauteta
+        } catch (Exception ex) { // tarvitaanko excpetionia?
         }
-        return paivanMukaan;
+        return listaHavainnoista;
+
     }
 
 }

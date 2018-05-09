@@ -15,12 +15,9 @@ public interface ObservationDao {
 
     public void init();
 
-    public void save(String paikka, Date paivamaara, String pilvi) throws SQLException;
+    public void save(String paikka, String paivamaara, String pilvi) throws SQLException;
 
     public void addData();
-
-    List<String> getAllByCity() throws SQLException;
-
-    List<String> getAllByDate() throws SQLException;
-
+    
+    List<String>getAllObservations(String paikkaTaipaivays) throws SQLException;
 }

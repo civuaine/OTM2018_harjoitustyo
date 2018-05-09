@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class CloudSoftService {
         this.cloudDatabase.init();
         this.observationDatabase.init();
 
-        if (observationDatabase.getAllByDate().isEmpty()) {
+        if (observationDatabase.getAllObservations("paivays").isEmpty()) {
             this.observationDatabase.addData();
         }
 
@@ -69,7 +70,7 @@ public class CloudSoftService {
      * @throws Exception
      */
     public List<String> getHavainnotPaiva() throws Exception {
-        List<String> havainnot = this.observationDatabase.getAllByDate();
+        List<String> havainnot = this.observationDatabase.getAllObservations("paivays");
         return havainnot;
     }
 
@@ -81,7 +82,7 @@ public class CloudSoftService {
      * @throws Exception
      */
     public List<String> getHavainnotPaikka() throws Exception {
-        List<String> havainnot = this.observationDatabase.getAllByCity();
+        List<String> havainnot = this.observationDatabase.getAllObservations("paikka");
         return havainnot;
     }
 
@@ -209,9 +210,9 @@ public class CloudSoftService {
         int paiva = odc.getpv();
         int kk = odc.getkk();
         int vuosi = odc.getvvvv();
-        Date paivays = new Date(vuosi, kk, paiva);
+        
+        String paivays = vuosi + "-" + kk + "-" + paiva;
         String paikka = this.cc.getPaikkakunta();
-
         observationDatabase.save(paikka, paivays, pilvi);
     }
 
@@ -223,17 +224,8 @@ public class CloudSoftService {
      * @throws Exception
      */
     public String noudaEnnustePilvenPerusteella() throws Exception {
-//        System.out.println("Sade: " + this.cloud.getPilvisataa());
-//        System.out.println("Koko: " + this.cloud.getPilviOnIso());
-//        System.out.println("Väri: " + this.cloud.getPilviOnValkoinen());
-//        System.out.println("Läpikuultavuus: " + this.cloud.getPilviOnLapikuultava());
-//        System.out.println("Selvärajaisuus: " + this.cloud.getPilviOnSelvarajainen());
-
         this.cloud.etsiPilvi();
-
         String pilvi = cloud.getPilvi();
-        //System.out.println("ennen if ja else:" + pilvi);
-
         if (pilvi.equals("Pilveä ei löydy")) {
             return "Pilveä ei löydy tietokannasta antamillasi tiedoilla";
         } else {
