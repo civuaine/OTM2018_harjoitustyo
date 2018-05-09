@@ -10,6 +10,10 @@ import cloudsoft.domain.ObservationDateCheck;
 import cloudsoft.domain.CityCheck;
 import cloudsoft.domain.Cloud;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.sql.Date;
@@ -154,10 +158,11 @@ public class CloudSoftService {
     public boolean paivamaaraOikeinAnnettu() {
         return true;
     }
+
     public String getPilvi() {
         return this.cloud.getPilvi();
     }
-    
+
     public void setSade(boolean arvo) {
         this.cloud.setPilviSataa(arvo);
     }
@@ -210,7 +215,7 @@ public class CloudSoftService {
         int paiva = odc.getpv();
         int kk = odc.getkk();
         int vuosi = odc.getvvvv();
-        
+
         String paivays = vuosi + "-" + kk + "-" + paiva;
         String paikka = this.cc.getPaikkakunta();
         observationDatabase.save(paikka, paivays, pilvi);
@@ -244,61 +249,73 @@ public class CloudSoftService {
     // yahoon säärajapinnan käyttö
     public String yahoowebservice() throws Exception { // annetaan paikkakunta metodiin muuttujana.
 //        EI TOIMI VIELÄ. TOKAN TULOSTAMINEN EI ONNISTU.
-//        String kaupunki = "Helsinki"; // paikkakunta sisältää vain kirjaimia (sisältö tarkistettu).
-//        String baseURL = "https://query.yahooapis.com/v1/public/yql?q=";
-//        String query = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=" + kaupunki + ")and u='C'";
-//        String fullURLString = baseURL + URLEncoder.encode(query, "UTF-8") + "&format=json";
-//        
-//        URL fullURL = new URL(fullURLString);
-//        System.out.println("eka");
-//        InputStream is = fullURL.openStream();
-//        System.out.println("toka");
-//        BufferedReader br1 = new BufferedReader(new InputStreamReader(is));
-//        System.out.println("kolmas");
-//        String line;
-//        while ((line = br1.readLine()) != null) {
-//            System.out.println(line);
-//        }
-//        br1.close();
-//        // JSON parser --> GSON esimerkiksi
-//        // lisätään tekstinä aluksi, ehkä myöhemmin kuvana, jos onnistuu
-//        Gson gson = new Gson();
-//        CloudSoftService tulos = gson.fromJson(line, CloudSoftService.class);
-//        System.out.println(tulos);
-//        
+        String kaupunki = "helsinki"; // paikkakunta sisältää vain kirjaimia (sisältö tarkistettu).
+        String baseURL = "https://query.yahooapis.com/v1/public/yql?q=";
+        String query = "select item.forecast from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + kaupunki + "')and u='c'";
+        String fullURLString = baseURL + URLEncoder.encode(query, "UTF-8") + "&format=json";
+//        String request = baseURL + URLEncoder.encode(query, "UTF-8") + "&format=json";  
 
-        String request = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22Helsinki%22)and%20u%3D'c'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-        HttpClient client = new HttpClient();
-        GetMethod method = new GetMethod(request);
-
-        // Send GET request
-        int statusCode = client.executeMethod(method);
-
-        if (statusCode != HttpStatus.SC_OK) {
-            System.err.println("Method failed: " + method.getStatusLine());
-        }
-        InputStream rstream = null;
-
-        // Get the response body
-        rstream = method.getResponseBodyAsStream();
-
-        // Process the response from Yahoo! Web Services
-        BufferedReader br = new BufferedReader(new InputStreamReader(rstream));
+        URL fullURL = new URL(fullURLString);
+        System.out.println("eka");
+        InputStream is = fullURL.openStream();
+        System.out.println("toka");
+        BufferedReader br1 = new BufferedReader(new InputStreamReader(is));
+        System.out.println("kolmas");
         String line;
-        while ((line = br.readLine()) != null) {
-            //System.out.println(line);
+        while ((line = br1.readLine()) != null) {
+            System.out.println(line);
             return line;
         }
-        br.close();
-        return null;
+        br1.close();
+        return line;
+        // JSON parser --> GSON esimerkiksi
+        // lisätään tekstinä aluksi, ehkä myöhemmin kuvana, jos onnistuu
+//        Gson gson = new Gson();
+//        System.out.println("neljäs");
+//        CloudSoftService tulos = gson.fromJson(line, CloudSoftService.class);
+//        System.out.println("viides");
+//        
+        //String request = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22Helsinki%22)and%20u%3D'c'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+//        HttpClient client = new HttpClient();
+//        GetMethod method = new GetMethod(request);
+//
+//        // Send GET request
+//        int statusCode = client.executeMethod(method);
+//
+//        if (statusCode != HttpStatus.SC_OK) {
+//            System.err.println("Method failed: " + method.getStatusLine());
+//        }
+//        InputStream rstream = null;
+//
+//        // Get the response body
+//        rstream = method.getResponseBodyAsStream();
+//
+//        // Process the response from Yahoo! Web Services
+//        BufferedReader br = new BufferedReader(new InputStreamReader(rstream));
+//        String line;
+//        while ((line = br.readLine()) != null) {
+//            //System.out.println(line);
+//            return line;
+//        }
+//        br.close();
+//        return "Suoritettu";
     }
 
-    /**
-     * Metodi ojentaa käyttöliittymälle sääennusteen sopivassa muodossa.
-     *
-     * @return sääennuste oikeassa muodossa
-     * @throws Exception
-     */
+    public String parse(String jsonLine) {
+        JsonElement jelement = new JsonParser().parse(jsonLine);
+        JsonObject jobject = jelement.getAsJsonObject();
+        jobject = jobject.getAsJsonObject("data");
+        JsonArray jarray = jobject.getAsJsonArray("translations");
+        jobject = jarray.get(0).getAsJsonObject();
+        String result = jobject.get("translatedText").getAsString();
+        return result;
+    }
+        /**
+         * Metodi ojentaa käyttöliittymälle sääennusteen sopivassa muodossa.
+         *
+         * @return sääennuste oikeassa muodossa
+         * @throws Exception
+         */
     public String tulostaEnnuste() throws Exception {
         String line = yahoowebservice();
         return line;

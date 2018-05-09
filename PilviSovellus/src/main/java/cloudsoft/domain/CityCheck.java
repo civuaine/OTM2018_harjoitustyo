@@ -55,7 +55,7 @@ public class CityCheck {
     public boolean paikkakuntaOnOlemassa(String havaintoPaikkakunta) {
         //Testataan löytyykö annettua paikkakuntaa IL:n tietokannasta
         String pienilla = havaintoPaikkakunta.toLowerCase();
-        String pk = pienilla.substring(0, 1).toUpperCase() + pienilla.substring(1);
+        //kutsu yahoota. täältä vai cloudsfotseivcesta
         return true;
     }
 
