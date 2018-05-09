@@ -24,4 +24,6 @@ Käytetty aika oman projektin eteen.
 | 29.4  | 4    | Yahoon säätietojen noutamisen ensimmäinen toteutus|
 | 2.5   | 5    | Yahoon säätietojen noutamisen kanssa kikkailua (plääh..), gson-kirjastoa (vois olla helpompaa..) jne. Javadocin käyttöönotto, sovelluksen arkkitehtuurikuvauksen täydentäminen, README:n päivitystä, uuden releasen generointi|
 | 7.5   | 4    | Käyttöliittymän koodin siistimistä, sovelluksesta tulleiden kommenttien keräämistä ja niistä toimintasuunnitelman laatiminen koodin ja sovelluksen parantamiseksi.|
-| yht   | 83   | | 
+| 8.5   | 7    | Ohjeiden parantelua, testin uudelleensuorittamismahdollisuus ja graafisen käyttöliittymän parantelua ja siistimistä. Päiväysongelma selvittämistä.|
+| 9.5   | 7    | Päiväysongelman ratkaiseminen, databaseluokan toiston vähentäminen niputtamalla samankaltaiset metodit yhteen. Tilastosivun toiminnan parantaminen. GSON-ongelman ratkaisemista..|
+| yht   | 97   | | 
