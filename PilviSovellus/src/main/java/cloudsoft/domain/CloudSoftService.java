@@ -379,7 +379,7 @@ public class CloudSoftService {
         BufferedReader br1 = new BufferedReader(new InputStreamReader(is));
         String line;
         while ((line = br1.readLine()) != null) {
-            System.out.println(line);
+            //System.out.println(line);
             return line;
         }
         br1.close();

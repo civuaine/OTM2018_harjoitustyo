@@ -154,18 +154,18 @@ public class CloudSoftUi extends Application {
         return kyssari;
     }
 
-    public void sadeKysymykset(Label kysymys, boolean arvo) {
+    public void sataaKysymykset(Label kysymys, boolean arvo, HBox kylEi, Button teeUudestaan, Button tallennaTietokantaan) {
         if (kysymys.getText().equals(sadekysymys())) {
             this.cloudsoftservice.setSade(arvo);
             kysymys.setText(ukkoskysymys());
-        } else if(kysymys.getText().equals(ukkoskysymys())) {
+        } else if (kysymys.getText().equals(ukkoskysymys())) {
             this.cloudsoftservice.setUkkostaa(arvo);
-            kysymys.setText(raekysymys()); 
-        } else if(kysymys.getText().equals(raekysymys())) {
+            kysymys.setText(raekysymys());
+        } else if (kysymys.getText().equals(raekysymys())) {
             this.cloudsoftservice.setsataaRakeita(arvo);
-            if(this.cloudsoftservice.getsataaRakeita() == true) {
+            if (this.cloudsoftservice.getsataaRakeita() == true) {
                 this.cloudsoftservice.setVesiTaiLumi(false);
-                this.cloudsoftservice.setMuuSateenOlomuoto(false);  
+                this.cloudsoftservice.setMuuSateenOlomuoto(false);
                 kysymys.setText(sadekuurokysymys());
             } else {
                 kysymys.setText(vesilumisadekysymys());
@@ -181,48 +181,121 @@ public class CloudSoftUi extends Application {
             }
         } else if (kysymys.getText().equals(sadekuurokysymys())) {
             this.cloudsoftservice.setKuurottainenSade(arvo);
-            if(this.cloudsoftservice.getKuurottainenSade() == true) {
+            if (this.cloudsoftservice.getKuurottainenSade() == true) {
                 kysymys.setText(voimakassadekysymys());
             } else {
                 kysymys.setText(kokokysymys());
             }
-        } else if(kysymys.getText().equals(voimakassadekysymys())) {
+        } else if (kysymys.getText().equals(voimakassadekysymys())) {
             this.cloudsoftservice.setVoimakasSade(arvo);
-            kysymys.setText(kokokysymys());
-        }
-    }
-    
-    
-
-    public void asetaParametritOikein(Label kysymys, boolean arvo, HBox kylEi, Button teeUudestaan, Button tallennaTietokantaan) { //Button tallennaTietokantaan
-        if (kysymys.getText().equals(sadekysymys())) {
-            this.cloudsoftservice.setSade(arvo);
             kysymys.setText(kokokysymys());
         } else if (kysymys.getText().equals(kokokysymys())) {
             this.cloudsoftservice.setKoko(arvo);
+            kysymys.setText(korkeapilvikysymys());
+        } else if (kysymys.getText().equals(korkeapilvikysymys())) {
+            this.cloudsoftservice.setPilviOnKorkea(arvo);
             kysymys.setText(varikysymys());
         } else if (kysymys.getText().equals(varikysymys())) {
             this.cloudsoftservice.setVari(arvo);
+            kysymys.setText(selvarajainenkysymys());
+        } else if (kysymys.getText().equals(selvarajainenkysymys())) {
+            this.cloudsoftservice.setSelvarajainen(arvo);
+            kysymys.setText(lapinakyvakysymys());
+        } else if (kysymys.getText().equals(lapinakyvakysymys())) {
+            this.cloudsoftservice.setLapikuultava(arvo);
+            kysymys.setText(halokysymys());
+        } else if (kysymys.getText().equals(halokysymys())) {
+            this.cloudsoftservice.setHaloja(arvo);
+            tulostaEnnusteKyselynPaatteeksi(kysymys, arvo, kylEi, teeUudestaan, tallennaTietokantaan);
+        }
+    }
+
+    public void eiSadaPilviKysymykset(Label kysymys, boolean arvo, HBox kylEi, Button teeUudestaan, Button tallennaTietokantaan) {
+        if (kysymys.getText().equals(sadekysymys())) {
+            kysymys.setText(harsomainensaikeinenkysymys());
+        } else if (kysymys.getText().equals(harsomainensaikeinenkysymys())) {
+            this.cloudsoftservice.setHarsomainenJaTaiSaikeinen(arvo);
+            kysymys.setText(varikysymys());
+        } else if (kysymys.getText().equals(varikysymys())) {
+            this.cloudsoftservice.setVari(arvo);
+            kysymys.setText(halokysymys());
+        } else if (kysymys.getText().equals(halokysymys())) {
+            this.cloudsoftservice.setHaloja(arvo);
             kysymys.setText(lapinakyvakysymys());
         } else if (kysymys.getText().equals(lapinakyvakysymys())) {
             this.cloudsoftservice.setLapikuultava(arvo);
             kysymys.setText(selvarajainenkysymys());
         } else if (kysymys.getText().equals(selvarajainenkysymys())) {
             this.cloudsoftservice.setSelvarajainen(arvo);
-            try {
-                String ennuste = cloudsoftservice.noudaEnnustePilvenPerusteella();
-                String saaennuste = cloudsoftservice.tulostaEnnuste();
-                kysymys.setText("Kysely on valmis. Alla ennuste, mitä havaitsemasi pilvi voi tarkoittaa"
-                        + " lähituntien/-päivien sään kannalta (Kysely ja tämä sivu tulee monipuolistumaan. Tulokset vielä vähän höpöjä ja testitasolla)\n" + ennuste + "\n" + "JSON:in noutaminen ja sen muuttaminen vielä vaiheessa...: " + saaennuste);
-                kylEi.getChildren().clear();
-                if (!cloudsoftservice.getPilvi().equals("Pilveä ei löydy")) {
-                    kylEi.getChildren().addAll(teeUudestaan, tallennaTietokantaan);
-                } else {
-                    kylEi.getChildren().add(teeUudestaan);
-                }
-
-            } catch (Exception ex) {
+            kysymys.setText(solumainenkysymys());
+        } else if (kysymys.getText().equals(solumainenkysymys())) {
+            this.cloudsoftservice.setSolumainen(arvo);
+            if (this.cloudsoftservice.getSolumainen() == true) {
+                kysymys.setText(isosolukysymys());
+            } else {
+                kysymys.setText(aaltomainenkysymys());
             }
+        } else if (kysymys.getText().equals(isosolukysymys())) {
+            this.cloudsoftservice.setIsoSolu(arvo);
+            kysymys.setText(aaltomainenkysymys());
+        } else if (kysymys.getText().equals(aaltomainenkysymys())) {
+            this.cloudsoftservice.setAaltomainen(arvo);
+            if (this.cloudsoftservice.getAaltomainen() == true) {
+                kysymys.setText(isoaaltokysymys());
+            } else {
+                kysymys.setText(kokokysymys());
+            }
+        } else if (kysymys.getText().equals(isoaaltokysymys())) {
+            this.cloudsoftservice.setIsoAalto(arvo);
+            kysymys.setText(kokokysymys());
+        } else if (kysymys.getText().equals(kokokysymys())) {
+            this.cloudsoftservice.setKoko(arvo);
+            kysymys.setText(korkeapilvikysymys());
+        } else if (kysymys.getText().equals(korkeapilvikysymys())) {
+            this.cloudsoftservice.setPilviOnKorkea(arvo);
+            kysymys.setText(pilventummapohjatornivalkoinenkysymys());
+        } else if (kysymys.getText().equals(pilventummapohjatornivalkoinenkysymys())) {
+            this.cloudsoftservice.setTummaPohjaValkoinenTorni(arvo);
+            kysymys.setText(kukkakaalikysymys());
+        } else if (kysymys.getText().equals(kukkakaalikysymys())) {
+            this.cloudsoftservice.setKukkakaalimainen(arvo);
+            tulostaEnnusteKyselynPaatteeksi(kysymys, arvo, kylEi, teeUudestaan, tallennaTietokantaan);
+        }
+    }
+
+    public void asetaParametritOikein(Label kysymys, boolean arvo, HBox kylEi, Button teeUudestaan, Button tallennaTietokantaan) { //Button tallennaTietokantaan
+        if (kysymys.getText().equals(sadekysymys())) { // vain eka kysymys
+            this.cloudsoftservice.setSade(arvo);
+            if (this.cloudsoftservice.getSade() == true) {
+                //System.out.println(this.cloudsoftservice.getSade());
+                sataaKysymykset(kysymys, arvo, kylEi, teeUudestaan, tallennaTietokantaan);
+            } else {
+                eiSadaPilviKysymykset(kysymys, arvo, kylEi, teeUudestaan, tallennaTietokantaan);
+            }
+        } else { // muut kysymykset
+            if (this.cloudsoftservice.getSade() == true) {
+                sataaKysymykset(kysymys, arvo, kylEi, teeUudestaan, tallennaTietokantaan);
+            } else {
+                eiSadaPilviKysymykset(kysymys, arvo, kylEi, teeUudestaan, tallennaTietokantaan);
+            }
+        }
+
+    }
+
+    public void tulostaEnnusteKyselynPaatteeksi(Label kysymys, boolean arvo, HBox kylEi, Button teeUudestaan, Button tallennaTietokantaan) {
+        try {
+            String ennuste = cloudsoftservice.noudaEnnustePilvenPerusteella();
+            String saaennuste = cloudsoftservice.tulostaEnnuste();
+            kysymys.setText("Kysely on valmis. Alla ennuste, mitä havaitsemasi pilvi voi tarkoittaa"
+                    + " lähituntien/-päivien sään kannalta\n" + ennuste + "\n" + "JSON:in noutaminen ja sen muuttaminen vielä vaiheessa...: " + saaennuste);
+            kylEi.getChildren().clear();
+            if (!cloudsoftservice.getPilvi().equals("Pilveä ei löydy")) {
+                kylEi.getChildren().addAll(teeUudestaan, tallennaTietokantaan);
+            } else {
+                kylEi.getChildren().add(teeUudestaan);
+            }
+
+        } catch (Exception ex) {
         }
     }
 
@@ -458,17 +531,6 @@ public class CloudSoftUi extends Application {
 
 // kyselysivu
         // asettlija = kysAsettelu
-        //jatkoNapin toiminta
-//        jatkoNappi.setOnAction((event) -> {
-//            if ((hyvaksymistekstiPaikkakunta.getText().equals("Paikkakunta annettu!")) && (hyvaksymistekstiPvm.getText().equals("Päivämäärä annettu!"))) {
-//                System.out.println("Siirrytään kyselyyn");
-//                ikkuna.setScene(this.kyselysivu); // tuleeko tänne alustuskäsky...
-//                suoritaKysely(kysymys, kylla, ei, kylEi, teeUudestaan, tallennaTietokantaan);
-//            } else {
-//                jatkoHyvaksynta.setText("Tarkista antamasi syötteet!");
-//                jatkoHyvaksynta.setTextFill(Color.FIREBRICK);
-//            }
-//        });
         Label kysymys = new Label();
         kysymys.setAlignment(Pos.TOP_CENTER);
         VBox edellisNapit = new VBox();
@@ -530,20 +592,7 @@ public class CloudSoftUi extends Application {
         teeUudestaan.setOnAction((event) -> {
             nollaaKaikkiAnnetutParametrit();
             ikkuna.setScene(this.havaintosivu);
-            //alusta jatkonappi
         });
-//        teeUudestaan.setOnAction((event) -> {
-//            nollaaKaikkiAnnetutParametrit(paikkakunta, pvm, hyvaksymistekstiPaikkakunta, hyvaksymistekstiPvm);
-//            kysymys.setText(sadekysymys());
-//            kylla.setOnAction((event1) -> {
-//                asetaParametritOikein(kysymys, true, kylEi, teeUudestaan, tallennaTietokantaan); // label, boolean arvo, hbox, button uudestaan ja tietokantaan
-//            });
-//
-//            ei.setOnAction((event2) -> {
-//                asetaParametritOikein(kysymys, false, kylEi, teeUudestaan, tallennaTietokantaan);
-//            });
-//        });
-
 //Tilasto
         // asettelija = tilAsettelu
         //Otsikko
