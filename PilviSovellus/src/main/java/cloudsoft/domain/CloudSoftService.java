@@ -322,13 +322,6 @@ public class CloudSoftService {
     public boolean getHaloja() {
         return this.cloud.getHaloja();
     }
-//    public void setSumuinen(boolean arvo) {
-//        this.cloud.setSumuinen(arvo);
-//    }
-//    
-//    public boolean getSumuinen() {
-//        return this.cloud.getSumuinen();
-//    }    
 
     /**
      * Metodi kutsuu sopivasti muita metodeja, jotta käyttäjän tekemä havainto

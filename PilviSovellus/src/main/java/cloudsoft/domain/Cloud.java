@@ -12,8 +12,6 @@ public class Cloud {
     private boolean lapikuultava;
     private boolean selvaRajainen;
     private boolean ukkostaa;
-    //private String ulkoNako;  // miten kysytään viimeinen asia.. Haetaanko tietokannasta ulko
-    //näkötekstit ja käyttäjä valitsee vai...
     private String pilvi;
     private boolean sataaVettaTaiLunta;
     private boolean sataaRakeita;
@@ -28,7 +26,6 @@ public class Cloud {
     private boolean harsomainenJaTaiSaikeinen;
     private boolean kukkakaalimainen;
     private boolean korkeaPilvi;
-    private boolean sumuinen;
     private boolean haloja;
 
     public Cloud() {
@@ -92,13 +89,6 @@ public class Cloud {
         return this.selvaRajainen;
     }
 
-//    public void setPilvenUlkoNako(String arvo) {
-//        this.ulkoNako = arvo;
-//    }
-//
-//    public String getPilvenUlkoNako() {
-//        return this.ulkoNako;
-//    }
     public void setUkkostaa(boolean arvo) {
         this.ukkostaa = arvo;
     }
@@ -202,22 +192,16 @@ public class Cloud {
     public boolean getKukkakaalimainen() {
         return this.kukkakaalimainen;
     }
-    
+
     public void setHaloja(boolean arvo) {
         this.haloja = arvo;
     }
 
-    public boolean getHaloja(){
+    public boolean getHaloja() {
         return this.haloja;
     }
-//    public void setSumuinen(boolean arvo) {
-//        this.sumuinen = arvo;
-//    }
-//    
-//    public boolean getSumuinen() {
-//        return this.sumuinen;
-//    }
-    public boolean onkoPilviCumulus() { 
+
+    public boolean onkoPilviCumulus() {
         if ((this.sataa == true) && (this.sataaVettaTaiLunta == true) && (this.kuurottainenSade == true) && (this.voimakasSade == false)) {
             return true;
         } else if ((this.sataa == false) && (this.kukkakaalimainen == true) && (this.iso == false)
@@ -239,7 +223,7 @@ public class Cloud {
     }
 
     public boolean onkoPilviAltoStratus() {
-        if((this.harsomainenJaTaiSaikeinen == true) && (this.valkoinenPilvi == false) && (this.lapikuultava == true) && (this.haloja == false)) {
+        if ((this.harsomainenJaTaiSaikeinen == true) && (this.valkoinenPilvi == false) && (this.lapikuultava == true) && (this.haloja == false)) {
             return true;
         } else if ((this.sataa == true) && (this.sataaVettaTaiLunta == true) && (this.kuurottainenSade == false) && (this.valkoinenPilvi == false) && (this.iso == true) && (this.lapikuultava == true)
                 && (this.haloja == false)) {
@@ -252,7 +236,7 @@ public class Cloud {
     }
 
     public boolean onkoPilviStratoCumulus() {
-        if((this.aaltomainen == true) && (this.isoAalto == true) && (this.valkoinenPilvi == false)) {
+        if ((this.aaltomainen == true) && (this.isoAalto == true) && (this.valkoinenPilvi == false)) {
             return true;
         } else if ((this.sataa == true) && (this.sataaVettaTaiLunta == true) && (this.kuurottainenSade == false) && (this.iso == true)
                 && (this.korkeaPilvi == false) && (this.valkoinenPilvi == false) && (this.selvaRajainen == true)) {
@@ -282,26 +266,26 @@ public class Cloud {
             return false;
         }
     }
-    
+
     public boolean onkoPilviCirrus() {
         if ((this.harsomainenJaTaiSaikeinen == true) && (this.haloja == false) && (this.valkoinenPilvi == true) && (this.lapikuultava == true)) {
             return true;
-        } 
+        }
         return false;
     }
 
     public boolean onkoPilviCirroStratus() {
-        if((this.harsomainenJaTaiSaikeinen == true) && (this.haloja == true) && (this.valkoinenPilvi == true)) {
+        if ((this.harsomainenJaTaiSaikeinen == true) && (this.haloja == true) && (this.valkoinenPilvi == true)) {
             return true;
-        } else if((this.sataa == false) && (this.lapikuultava == true) && (this.harsomainenJaTaiSaikeinen == true) && (this.valkoinenPilvi == true)) {
+        } else if ((this.sataa == false) && (this.lapikuultava == true) && (this.harsomainenJaTaiSaikeinen == true) && (this.valkoinenPilvi == true)) {
             return true;
         } else {
             return false;
         }
     }
-    
+
     public boolean onkoPilviAltoCumulus() {
-        if((this.solumainen == true) && (this.isoSolu == true) && (this.valkoinenPilvi == false)) {
+        if ((this.solumainen == true) && (this.isoSolu == true) && (this.valkoinenPilvi == false)) {
             return true;
         } else if ((this.sataa == false) && (this.valkoinenPilvi == false) && (this.korkeaPilvi == false) && (this.lapikuultava == false) && (this.harsomainenJaTaiSaikeinen == false)) {
             return true;
@@ -309,47 +293,63 @@ public class Cloud {
             return false;
         }
     }
-    
+
     public boolean onkoPilviCirroCumulus() {
-        if((this.solumainen == true) && (this.isoSolu == false) && (this.lapikuultava == true)) {
+        if ((this.solumainen == true) && (this.isoSolu == false) && (this.lapikuultava == true)) {
             return true;
-        } else if((this.aaltomainen == true) && (this.isoAalto == false) && (this.lapikuultava == true)) {
+        } else if ((this.aaltomainen == true) && (this.isoAalto == false) && (this.lapikuultava == true)) {
             return true;
-        } else if((this.sataa == false) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.harsomainenJaTaiSaikeinen == false)) {
+        } else if ((this.sataa == false) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.harsomainenJaTaiSaikeinen == false)) {
             return true;
         } else {
             return false;
         }
     }
-    
-    // metodit sateen tyypille ja olomuodolle.
-    // lisää myös falseominaisuudet mukaan vielä (jokaisella mahd.monta arvoa joita katsotaan)
-    // lisää vielä pilven ulkonäölliset ja tarkentavat ominaisuudet
+
     /**
      * Metodi iteroi käyttäjän syötteen perusteella, mikä havaittu pilvi voisi
      * olla.
      */
     public void etsiPilvi() {
-        if ((this.sataa == true) && (this.iso == true) && (this.valkoinenPilvi == false) && (this.lapikuultava == false) && (this.selvaRajainen == false)) {
-            setPilvi("Nimbostratus");
-        } else if ((this.sataa == true) && (this.ukkostaa == true) && (this.valkoinenPilvi == true)) {
-            setPilvi("Cumulonimbus");
-        } else if ((this.iso == false) && (this.selvaRajainen == true) && (this.valkoinenPilvi == true)) {
-            setPilvi("Cumulus"); // voi sataa tai olla satamatta
-        } else if ((this.sataa == false) && (this.iso == true) && (this.valkoinenPilvi == false) && (this.selvaRajainen == false)) {
-            setPilvi("Stratus"); // voi sataa tai olla satamatta
-        } else if ((this.sataa == false) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.selvaRajainen == false) && (this.iso == false)) {
-            setPilvi("Cirrus");
-        } else if ((this.sataa == false) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.iso == true) && (this.selvaRajainen == false)) {
-            setPilvi("Cirrostratus");
-        } else if ((this.sataa == true) && (this.valkoinenPilvi == false) && (this.iso == true) && (this.lapikuultava == true) && (this.selvaRajainen == false)) {
-            setPilvi("Altostratus"); // voi sataa tai olla satamatta, iso tai melko iso
-        } else if ((this.sataa == false) && (this.iso == true) && (this.lapikuultava == true) && (this.valkoinenPilvi == true) && (this.selvaRajainen == true)) {
-            setPilvi("Altocumulus"); // valkoinen tai harmaa, koko vaihtelee
-        } else if ((this.iso == true) && (this.selvaRajainen == true) && (this.valkoinenPilvi == true) && (this.sataa == false)) {
-            setPilvi("Stratocumulus"); // sataa tai ei sada, harmaa tai valkoinen
-        } else if ((this.sataa == false) && (this.iso == true) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.selvaRajainen == false)) {
-            setPilvi("Cirrocumulus"); //laaja tai melkolaaja
-        }
+        if(onkoPilviCumulus()) {setPilvi("Cumulus");}
+        else if(onkoPilviStratus()) {setPilvi("Stratus");}
+        else if(onkoPilviAltoStratus()) {setPilvi("Altostratus");}
+        else if(onkoPilviStratoCumulus()) {setPilvi("Stratocumulus");}
+        else if(onkoPilviNimboStratus()) {setPilvi("Nimbostratus");}
+        else if(onkoPilviCumuloNimbus()) {setPilvi("Cumulonimbus");}
+        else if(onkoPilviCirrus()) {setPilvi("Cirrus");}
+        else if(onkoPilviCirroStratus()) {setPilvi("Cirrostratus");}
+        else if(onkoPilviAltoCumulus()) {setPilvi("Altocumulus");}
+        else if(onkoPilviCirroCumulus()) {setPilvi("cirrocumulus");}
     }
+    
+    
+    
+    
+    
+    
+    
+//    public void etsiPilvi() {
+//        if ((this.sataa == true) && (this.iso == true) && (this.valkoinenPilvi == false) && (this.lapikuultava == false) && (this.selvaRajainen == false)) {
+//            setPilvi("Nimbostratus");
+//        } else if ((this.sataa == true) && (this.ukkostaa == true) && (this.valkoinenPilvi == true)) {
+//            setPilvi("Cumulonimbus");
+//        } else if ((this.iso == false) && (this.selvaRajainen == true) && (this.valkoinenPilvi == true)) {
+//            setPilvi("Cumulus"); // voi sataa tai olla satamatta
+//        } else if ((this.sataa == false) && (this.iso == true) && (this.valkoinenPilvi == false) && (this.selvaRajainen == false)) {
+//            setPilvi("Stratus"); // voi sataa tai olla satamatta
+//        } else if ((this.sataa == false) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.selvaRajainen == false) && (this.iso == false)) {
+//            setPilvi("Cirrus");
+//        } else if ((this.sataa == false) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.iso == true) && (this.selvaRajainen == false)) {
+//            setPilvi("Cirrostratus");
+//        } else if ((this.sataa == true) && (this.valkoinenPilvi == false) && (this.iso == true) && (this.lapikuultava == true) && (this.selvaRajainen == false)) {
+//            setPilvi("Altostratus"); // voi sataa tai olla satamatta, iso tai melko iso
+//        } else if ((this.sataa == false) && (this.iso == true) && (this.lapikuultava == true) && (this.valkoinenPilvi == true) && (this.selvaRajainen == true)) {
+//            setPilvi("Altocumulus"); // valkoinen tai harmaa, koko vaihtelee
+//        } else if ((this.iso == true) && (this.selvaRajainen == true) && (this.valkoinenPilvi == true) && (this.sataa == false)) {
+//            setPilvi("Stratocumulus"); // sataa tai ei sada, harmaa tai valkoinen
+//        } else if ((this.sataa == false) && (this.iso == true) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.selvaRajainen == false)) {
+//            setPilvi("Cirrocumulus"); //laaja tai melkolaaja
+//        }
+//    }
 }

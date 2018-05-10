@@ -64,7 +64,7 @@ public class CloudSoftUi extends Application {
     }
 
     public String kokokysymys() {
-        String kyssari = "Onko pilvi iso (peittääkö pilvi taivaan horisontaalipinta-alasta 6/8 - 8/8)";
+        String kyssari = "Onko pilvi iso horisontaalisuunnassa?";
         return kyssari;
     }
 
@@ -74,7 +74,7 @@ public class CloudSoftUi extends Application {
     }
 
     public String lapinakyvakysymys() {
-        String kyssari = "Onko pilvi läpikuultava, eli voiko sen läpi erottaa Auringon sijainnin?";
+        String kyssari = "Onko pilvi läpikuultava, eli voiko sen läpi erottaa esimerkiksi auringon sijainnin?";
         return kyssari;
     }
 
@@ -82,6 +82,117 @@ public class CloudSoftUi extends Application {
         String kyssari = "Onko pilvi selvärajainen (selvärajainen pilvi ei näytä kuitumaiselta)";
         return kyssari;
     }
+
+    public String ukkoskysymys() {
+        String kyssari = "Ukkostaako?";
+        return kyssari;
+    }
+
+    public String vesilumisadekysymys() {
+        String kyssari = "Sataako pilvi vettä tai lunta?";
+        return kyssari;
+    }
+
+    public String raekysymys() {
+        String kyssari = "Sataako pilvi rakeita?";
+        return kyssari;
+    }
+
+    public String sadekuurokysymys() {
+        String kyssari = "Onko sade kuuroluonteista eli voimakkuudeltaan vaihtelevaa ja voimakasta?";
+        return kyssari;
+    }
+
+    public String voimakassadekysymys() {
+        String kyssari = "Onko sade voimakasta?";
+        return kyssari;
+    }
+
+    public String pilventummapohjatornivalkoinenkysymys() {
+        String kyssari = "Onko pilvellä tummempi alaosa ja valkoinen 'torniosa' (pystyulottuvuus)? Pilven pohja saattaa olla aivan tasainen.";
+        return kyssari;
+    }
+
+    public String solumainenkysymys() {
+        String kyssari = "Näyttääkö pilvi solumaiselta? Pilvi voi näyttää koostuvan esimerkiksi laikuista, kokkareista tai palleroista.";
+        return kyssari;
+    }
+
+    public String isosolukysymys() {
+        String kyssari = "Onko yksittäisen solun koko melko iso? Jos ojennat käden eteesi kohti taivasta, yksittäisen solun koko tässä tapauksessa olisi vähintään kahden sormen levyinen?";
+        return kyssari;
+    }
+
+    public String aaltomainenkysymys() {
+        String kyssari = "Onko pilvellä aaltomainen rakenne? Pilvi voi muistuttaa aaltoja, rullia tai laattoja";
+        return kyssari;
+    }
+
+    public String isoaaltokysymys() {
+        String kyssari = "Onko pilven yksittäinen aaltomuoto melko suuri? Jos ojennat käden eteesi kohti taivasta, yksittäisen solun koko tässä tapauksessa olisi vähintää kahden sormen levyinen";
+        return kyssari;
+    }
+
+    public String harsomainensaikeinenkysymys() {
+        String kyssari = "Näyttääkö pilvi harsomaiselta ja / tai säikeiseltä? Pilvi voi näyttää tasaiselta 'peitolta' taivaalla ja se voi olla niin ohut, että se näyttää vain hieman vaalentavan taivaan väriä.";
+        return kyssari;
+    }
+
+    public String kukkakaalikysymys() {
+        String kyssari = "Näyttääkö pilvi kukkakaalimaiselta eli kumpuilevalta ja röpelöiseltä";
+        return kyssari;
+    }
+
+    public String korkeapilvikysymys() {
+        String kyssari = "Onko pilvellä pystyulottuvuutta eli korkeutta? Tässä tapauksessa  pilvi voi näyttää kukkakaalimaiselta ja kumpuilevalta, eikä sen läpi voi nähdä. Pilvi EI näytä lättänältä, "
+                + "eikä harsomaiselta";
+        return kyssari;
+    }
+
+    public String halokysymys() {
+        String kyssari = "Näkyykö auringon lähellä tai ympärillä taivaalla haloilmiiöitä?";
+        return kyssari;
+    }
+
+    public void sadeKysymykset(Label kysymys, boolean arvo) {
+        if (kysymys.getText().equals(sadekysymys())) {
+            this.cloudsoftservice.setSade(arvo);
+            kysymys.setText(ukkoskysymys());
+        } else if(kysymys.getText().equals(ukkoskysymys())) {
+            this.cloudsoftservice.setUkkostaa(arvo);
+            kysymys.setText(raekysymys()); 
+        } else if(kysymys.getText().equals(raekysymys())) {
+            this.cloudsoftservice.setsataaRakeita(arvo);
+            if(this.cloudsoftservice.getsataaRakeita() == true) {
+                this.cloudsoftservice.setVesiTaiLumi(false);
+                this.cloudsoftservice.setMuuSateenOlomuoto(false);  
+                kysymys.setText(sadekuurokysymys());
+            } else {
+                kysymys.setText(vesilumisadekysymys());
+            }
+        } else if (kysymys.getText().equals(vesilumisadekysymys())) {
+            this.cloudsoftservice.setVesiTaiLumi(arvo);
+            if (this.cloudsoftservice.getVesiTaiLumi() == true) {
+                this.cloudsoftservice.setMuuSateenOlomuoto(false);
+                kysymys.setText(sadekuurokysymys());
+            } else {
+                this.cloudsoftservice.setMuuSateenOlomuoto(true);
+                kysymys.setText(sadekuurokysymys());
+            }
+        } else if (kysymys.getText().equals(sadekuurokysymys())) {
+            this.cloudsoftservice.setKuurottainenSade(arvo);
+            if(this.cloudsoftservice.getKuurottainenSade() == true) {
+                kysymys.setText(voimakassadekysymys());
+            } else {
+                kysymys.setText(kokokysymys());
+            }
+        } else if(kysymys.getText().equals(voimakassadekysymys())) {
+            this.cloudsoftservice.setVoimakasSade(arvo);
+            kysymys.setText(kokokysymys());
+        }
+    }
+    
+    
 
     public void asetaParametritOikein(Label kysymys, boolean arvo, HBox kylEi, Button teeUudestaan, Button tallennaTietokantaan) { //Button tallennaTietokantaan
         if (kysymys.getText().equals(sadekysymys())) {
@@ -200,7 +311,7 @@ public class CloudSoftUi extends Application {
         return asettelija;
     }
 
-    public void haeHavainnotUudestaan(Label havainnot) throws Exception{
+    public void haeHavainnotUudestaan(Label havainnot) throws Exception {
         String havaintoTeksti = "";
         List<String> hav = cloudsoftservice.getHavainnotPaiva();
         for (String yksi : hav) {
