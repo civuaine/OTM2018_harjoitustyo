@@ -202,7 +202,7 @@ public class CloudSoftService {
     public boolean getSelvarajainen() {
         return this.cloud.getPilviOnSelvarajainen();
     }
-    
+
     public void setUkkostaa(boolean arvo) {
         this.cloud.setUkkostaa(arvo);
     }
@@ -299,19 +299,37 @@ public class CloudSoftService {
         return this.cloud.getHarsomainenJaTaiSaikeinen();
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public void setKukkakaalimainen(boolean arvo) {
+        this.cloud.setKukkakaalimainen(arvo);
+    }
+
+    public boolean getKukkakaalimainen() {
+        return this.cloud.getKukkakaalimainen();
+    }
+
+    public void setPilviOnKorkea(boolean arvo) {
+        this.cloud.setPilviOnKorkea(arvo);
+    }
+
+    public boolean getPilviOnKorkea() {
+        return this.cloud.getPilviOnKorkea();
+    }
+
+    public void setHaloja(boolean arvo) {
+        this.cloud.setHaloja(arvo);
+    }
+
+    public boolean getHaloja() {
+        return this.cloud.getHaloja();
+    }
+//    public void setSumuinen(boolean arvo) {
+//        this.cloud.setSumuinen(arvo);
+//    }
+//    
+//    public boolean getSumuinen() {
+//        return this.cloud.getSumuinen();
+//    }    
+
     /**
      * Metodi kutsuu sopivasti muita metodeja, jotta käyttäjän tekemä havainto
      * voidaan tallentaa tietokantaan.
@@ -386,16 +404,17 @@ public class CloudSoftService {
 //        String result = jobject.get("translatedText").getAsString();
 //        return result;
 //    }
-    public void parse (String jsonLine) {
+    public void parse(String jsonLine) {
         Gson gson = new Gson();
         CloudSoftService css = gson.fromJson(jsonLine, CloudSoftService.class);
     }
-        /**
-         * Metodi ojentaa käyttöliittymälle sääennusteen sopivassa muodossa.
-         *
-         * @return sääennuste oikeassa muodossa
-         * @throws Exception
-         */
+
+    /**
+     * Metodi ojentaa käyttöliittymälle sääennusteen sopivassa muodossa.
+     *
+     * @return sääennuste oikeassa muodossa
+     * @throws Exception
+     */
     public String tulostaEnnuste() throws Exception {
         String line = yahoowebservice();
         //String parseLine = parse(line);
