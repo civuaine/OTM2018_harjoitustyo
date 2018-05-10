@@ -26,4 +26,5 @@ Käytetty aika oman projektin eteen.
 | 7.5   | 4    | Käyttöliittymän koodin siistimistä, sovelluksesta tulleiden kommenttien keräämistä ja niistä toimintasuunnitelman laatiminen koodin ja sovelluksen parantamiseksi.|
 | 8.5   | 7    | Ohjeiden parantelua, testin uudelleensuorittamismahdollisuus ja graafisen käyttöliittymän parantelua ja siistimistä. Päiväysongelma selvittämistä.|
 | 9.5   | 7    | Päiväysongelman ratkaiseminen, databaseluokan toiston vähentäminen niputtamalla samankaltaiset metodit yhteen. Tilastosivun toiminnan parantaminen. GSON-ongelman ratkaisemista..|
-| yht   | 97   | | 
+| 10.5  | 10   | Lopullisen kyselyn saaminen kuntoon. Koodin siistiminen. Sinänsä koodi on loppupalautuskunnossa, enää testejä lisää kehiin ja dokumentaatio loppuun. Saas nähä ehtiikö tehä yahoon sääennusteiden noutamista ja parsemista...| 
+| yht   | 107   | | 
