@@ -103,7 +103,6 @@ public class CloudSoftUi extends Application {
                 String saaennuste = cloudsoftservice.tulostaEnnuste();
                 kysymys.setText("Kysely on valmis. Alla ennuste, mitä havaitsemasi pilvi voi tarkoittaa"
                         + " lähituntien/-päivien sään kannalta (Kysely ja tämä sivu tulee monipuolistumaan. Tulokset vielä vähän höpöjä ja testitasolla)\n" + ennuste + "\n" + "JSON:in noutaminen ja sen muuttaminen vielä vaiheessa...: " + saaennuste);
-                cloudsoftservice.yahoowebservice();
                 kylEi.getChildren().clear();
                 if (!cloudsoftservice.getPilvi().equals("Pilveä ei löydy")) {
                     kylEi.getChildren().addAll(teeUudestaan, tallennaTietokantaan);

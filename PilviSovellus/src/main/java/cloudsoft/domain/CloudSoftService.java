@@ -202,7 +202,116 @@ public class CloudSoftService {
     public boolean getSelvarajainen() {
         return this.cloud.getPilviOnSelvarajainen();
     }
+    
+    public void setUkkostaa(boolean arvo) {
+        this.cloud.setUkkostaa(arvo);
+    }
 
+    public boolean getUkkostaa() {
+        return this.cloud.getUkkostaa();
+    }
+
+    public void setVesiTaiLumi(boolean arvo) {
+        this.cloud.setVesiTaiLumi(arvo);
+    }
+
+    public boolean getVesiTaiLumi() {
+        return this.cloud.getVesiTaiLumi();
+    }
+
+    public void setsataaRakeita(boolean arvo) {
+        this.cloud.setsataaRakeita(arvo);
+    }
+
+    public boolean getsataaRakeita() {
+        return this.cloud.getsataaRakeita();
+    }
+
+    public void setMuuSateenOlomuoto(boolean arvo) {
+        this.cloud.setMuuSateenOlomuoto(arvo);
+    }
+
+    public boolean getMuuSateenOlomuoto() {
+        return this.cloud.getMuuSateenOlomuoto();
+    }
+
+    public void setKuurottainenSade(boolean arvo) {
+        this.cloud.setKuurottainenSade(arvo);
+    }
+
+    public boolean getKuurottainenSade() {
+        return this.cloud.getKuurottainenSade();
+    }
+
+    public void setVoimakasSade(boolean arvo) {
+        this.cloud.setVoimakasSade(arvo);
+    }
+
+    public boolean getVoimakasSade() {
+        return this.cloud.getVoimakasSade();
+    }
+
+    public void setTummaPohjaValkoinenTorni(boolean arvo) {
+        this.cloud.setTummaPohjaValkoinenTorni(arvo);
+    }
+
+    public boolean getTummaPohjaValkoinenTorni() {
+        return this.cloud.getTummaPohjaValkoinenTorni();
+    }
+
+    public void setSolumainen(boolean arvo) {
+        this.cloud.setSolumainen(arvo);
+    }
+
+    public boolean getSolumainen() {
+        return this.cloud.getSolumainen();
+    }
+
+    public void setIsoSolu(boolean arvo) {
+        this.cloud.setIsoSolu(arvo);
+    }
+
+    public boolean getIsoSolu() {
+        return this.cloud.getIsoSolu();
+    }
+
+    public void setAaltomainen(boolean arvo) {
+        this.cloud.setAaltomainen(arvo);
+    }
+
+    public boolean getAaltomainen() {
+        return this.cloud.getAaltomainen();
+    }
+
+    public void setIsoAalto(boolean arvo) {
+        this.cloud.setIsoAalto(arvo);
+    }
+
+    public boolean getIsoAalto() {
+        return this.cloud.getIsoAalto();
+    }
+
+    public void setHarsomainenJaTaiSaikeinen(boolean arvo) {
+        this.cloud.setHarsomainenJaTaiSaikeinen(arvo);
+    }
+
+    public boolean getHarsomainenJaTaiSaikeinen() {
+        return this.cloud.getHarsomainenJaTaiSaikeinen();
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * Metodi kutsuu sopivasti muita metodeja, jotta käyttäjän tekemä havainto
      * voidaan tallentaa tietokantaan.
@@ -248,7 +357,6 @@ public class CloudSoftService {
      */
     // yahoon säärajapinnan käyttö
     public String yahoowebservice() throws Exception { // annetaan paikkakunta metodiin muuttujana.
-//        EI TOIMI VIELÄ. TOKAN TULOSTAMINEN EI ONNISTU.
         String kaupunki = "helsinki"; // paikkakunta sisältää vain kirjaimia (sisältö tarkistettu).
         String baseURL = "https://query.yahooapis.com/v1/public/yql?q=";
         String query = "select item.forecast from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + kaupunki + "')and u='c'";
@@ -256,11 +364,8 @@ public class CloudSoftService {
 //        String request = baseURL + URLEncoder.encode(query, "UTF-8") + "&format=json";  
 
         URL fullURL = new URL(fullURLString);
-        System.out.println("eka");
         InputStream is = fullURL.openStream();
-        System.out.println("toka");
         BufferedReader br1 = new BufferedReader(new InputStreamReader(is));
-        System.out.println("kolmas");
         String line;
         while ((line = br1.readLine()) != null) {
             System.out.println(line);
@@ -270,45 +375,20 @@ public class CloudSoftService {
         return line;
         // JSON parser --> GSON esimerkiksi
         // lisätään tekstinä aluksi, ehkä myöhemmin kuvana, jos onnistuu
-//        Gson gson = new Gson();
-//        System.out.println("neljäs");
-//        CloudSoftService tulos = gson.fromJson(line, CloudSoftService.class);
-//        System.out.println("viides");
-//        
-        //String request = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22Helsinki%22)and%20u%3D'c'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-//        HttpClient client = new HttpClient();
-//        GetMethod method = new GetMethod(request);
-//
-//        // Send GET request
-//        int statusCode = client.executeMethod(method);
-//
-//        if (statusCode != HttpStatus.SC_OK) {
-//            System.err.println("Method failed: " + method.getStatusLine());
-//        }
-//        InputStream rstream = null;
-//
-//        // Get the response body
-//        rstream = method.getResponseBodyAsStream();
-//
-//        // Process the response from Yahoo! Web Services
-//        BufferedReader br = new BufferedReader(new InputStreamReader(rstream));
-//        String line;
-//        while ((line = br.readLine()) != null) {
-//            //System.out.println(line);
-//            return line;
-//        }
-//        br.close();
-//        return "Suoritettu";
     }
 
-    public String parse(String jsonLine) {
-        JsonElement jelement = new JsonParser().parse(jsonLine);
-        JsonObject jobject = jelement.getAsJsonObject();
-        jobject = jobject.getAsJsonObject("data");
-        JsonArray jarray = jobject.getAsJsonArray("translations");
-        jobject = jarray.get(0).getAsJsonObject();
-        String result = jobject.get("translatedText").getAsString();
-        return result;
+//    public String parse(String jsonLine) {
+//        JsonElement jelement = new JsonParser().parse(jsonLine);
+//        JsonObject jobject = jelement.getAsJsonObject();
+//        jobject = jobject.getAsJsonObject("data");
+//        JsonArray jarray = jobject.getAsJsonArray("translations");
+//        jobject = jarray.get(0).getAsJsonObject();
+//        String result = jobject.get("translatedText").getAsString();
+//        return result;
+//    }
+    public void parse (String jsonLine) {
+        Gson gson = new Gson();
+        CloudSoftService css = gson.fromJson(jsonLine, CloudSoftService.class);
     }
         /**
          * Metodi ojentaa käyttöliittymälle sääennusteen sopivassa muodossa.
@@ -318,7 +398,8 @@ public class CloudSoftService {
          */
     public String tulostaEnnuste() throws Exception {
         String line = yahoowebservice();
-        return line;
+        //String parseLine = parse(line);
+        return line; // normi line toimii
     }
 
 }
