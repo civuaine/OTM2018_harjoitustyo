@@ -18,7 +18,7 @@ Databaseiden testaus jäi hieman heikolle pohjalle ajan puutteen vuoksi.
 
 Käyttöliittymäkerrosta lukuunottamatta sovelluksen testauksen rivikattavuus on 75% ja haarautumiskattavuus 87%.
 
-<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/lopullinenjacoco.png" width="800">
+<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/lopullinenJacoco.png" width="800">
 
 Testaamatta jäi iso osa cloudin ja cloudsoftservicen settereistä ja gettereistä, sekä jonkin verran tietokannasta.
 
