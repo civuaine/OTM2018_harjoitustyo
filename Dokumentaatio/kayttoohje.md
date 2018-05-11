@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa tiedosto [pilvisovellus.jar]()
+Lataa tiedosto [pilvisovellus.jar](https://github.com/civuaine/OTM2018_harjoitustyo/releases/tag/lopullinen)
 
 ## Konfigurointi
 Ohjelma olettaa, että sen käynnistyshakemistossa on kolme tekstitiedostoa, joista kukin sisältää tekstiä käyttöliittymään.
