@@ -21,7 +21,7 @@ Sovellus kysyy havaitsijalta muutamia kysymyksiä havaitusta pilvestä, joihin h
 
 [Viikko 6](https://github.com/civuaine/OTM2018_harjoitustyo/releases/tag/viikko6)
 
-[Valmis ohjelma](https://github.com/civuaine/OTM2018_harjoitustyo/releases/tag/lopullinen)
+[Loppupalautus](https://github.com/civuaine/OTM2018_harjoitustyo/releases/tag/lopullinen)
 
 ## Komentorivitoiminnot
 
