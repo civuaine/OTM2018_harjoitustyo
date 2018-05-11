@@ -34,22 +34,22 @@ public class ObservationDateTest {
 
     @Test
     public void paivamaaranMuotoTarkistinPalauttaaTrueJosPaivaysOikeinAnnettu() {
-        assertEquals(true, observationdatecheck.paivamaaranMuotoTarkistin("15/04/2018"));
+        assertEquals(true, observationdatecheck.paivamaaranMuotoTarkistin("15.04.2018"));
     }
 
     @Test
     public void paivamaaranMuotoTarkistinPalauttaaTrueJosPaivaysLahesOikeinAnnettu() {
-        assertEquals(true, observationdatecheck.paivamaaranMuotoTarkistin("15/4/2018"));
+        assertEquals(true, observationdatecheck.paivamaaranMuotoTarkistin("15.4.2018"));
     }
 
     @Test
     public void paivamaaranMuotoTarkistinPalauttaaFalseJosPaivaysVaarinAnnettu() {
-        assertEquals(false, observationdatecheck.paivamaaranMuotoTarkistin("15.04.2018"));
+        assertEquals(false, observationdatecheck.paivamaaranMuotoTarkistin("15/04/2018"));
     }
 
     @Test
     public void paivamaaranMuotoTarkistinPalauttaaFalseJosJokuAnnetuistaVaarin() {
-        assertEquals(false, observationdatecheck.paivamaaranMuotoTarkistin("15/ii/2018"));
+        assertEquals(false, observationdatecheck.paivamaaranMuotoTarkistin("15.ii.2018"));
     }
 
     @Test
@@ -195,7 +195,6 @@ public class ObservationDateTest {
 
     @Test
     public void annetaankoEnnuste3vrkPaahanPalauttaaFalseJosHavainnostaKulunutYli3Pv() {
-        //observationdatecheck.tanaanStringiksi();
         observationdatecheck.setpv(12);
         observationdatecheck.setkk(4);
         observationdatecheck.setvvvv(2018);

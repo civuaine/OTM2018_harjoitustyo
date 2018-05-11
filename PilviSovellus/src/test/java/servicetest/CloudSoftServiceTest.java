@@ -66,12 +66,12 @@ public class CloudSoftServiceTest {
 
     @Test
     public void tarkistaPaivamaaraPalauttaaTrueKunKaikkiKunnossa() {
-        assertEquals(true, cloudsoftservice.tarkistaPaivamaara("13/4/2018"));
+        assertEquals(true, cloudsoftservice.tarkistaPaivamaara("13.4.2018"));
     }
 
     @Test
     public void tarkistaPaivamaaraPalauttaaFalseKunPaivaysVaarin() {
-        assertEquals(false, cloudsoftservice.tarkistaPaivamaara("12.4.2018"));
+        assertEquals(false, cloudsoftservice.tarkistaPaivamaara("12/4/2018"));
     }
 
     //Aseta päivämäärä jos haluat testata
@@ -82,7 +82,7 @@ public class CloudSoftServiceTest {
 //    }
     @Test
     public void annetaankoLahivuorokausienEnnustePalauttaaFalseJosYli3pvEroaHavainnollaJaTallapaivalla() {
-        cloudsoftservice.tarkistaPaivamaara("20/4/2018");
+        cloudsoftservice.tarkistaPaivamaara("20.4.2018");
         assertEquals(false, cloudsoftservice.annetaankoLahivuorokausienEnnuste());
     }
 

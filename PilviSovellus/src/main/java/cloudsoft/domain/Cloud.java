@@ -228,7 +228,8 @@ public class Cloud {
         } else if ((this.sataa == true) && (this.sataaVettaTaiLunta == true) && (this.kuurottainenSade == false) && (this.valkoinenPilvi == false) && (this.iso == true) && (this.lapikuultava == true)
                 && (this.haloja == false)) {
             return true;
-        } else if ((this.sataa == false) && (this.valkoinenPilvi == false) && (this.iso == true) && (this.harsomainenJaTaiSaikeinen == true) && (this.haloja == false)) {
+        } else if ((this.sataa == false) && (this.valkoinenPilvi == false) && (this.iso == true) && (this.harsomainenJaTaiSaikeinen == true) && (this.haloja == false)
+                && (this.lapikuultava == true)) {
             return true;
         } else {
             return false;
@@ -275,9 +276,7 @@ public class Cloud {
     }
 
     public boolean onkoPilviCirroStratus() {
-        if ((this.harsomainenJaTaiSaikeinen == true) && (this.haloja == true) && (this.valkoinenPilvi == true)) {
-            return true;
-        } else if ((this.sataa == false) && (this.lapikuultava == true) && (this.harsomainenJaTaiSaikeinen == true) && (this.valkoinenPilvi == true)) {
+        if ((this.harsomainenJaTaiSaikeinen == true) && (this.haloja == true) && (this.valkoinenPilvi == true) && (this.lapikuultava == true)) {
             return true;
         } else {
             return false;
@@ -320,7 +319,7 @@ public class Cloud {
         else if(onkoPilviCirrus()) {setPilvi("Cirrus");}
         else if(onkoPilviCirroStratus()) {setPilvi("Cirrostratus");}
         else if(onkoPilviAltoCumulus()) {setPilvi("Altocumulus");}
-        else if(onkoPilviCirroCumulus()) {setPilvi("cirrocumulus");}
+        else if(onkoPilviCirroCumulus()) {setPilvi("Cirrocumulus");}
     }
     
     
