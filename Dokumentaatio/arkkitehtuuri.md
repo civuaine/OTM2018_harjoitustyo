@@ -54,3 +54,19 @@ Alla sekvenssikaavio kuvaamaan mitä tapahtuu kun käyttäjä painaa tallenna-na
 Painikkeen painamiseen reagoiva tapahtumakäsittelijä kutsuu sovelluslogiikasta vastaavan luokan _CloudSoftService_ metodia tarkistaPaivamaara antaen sille parametriksi käyttäjän syötteen. Sovelluslogiikka selvittää useamman tarkistuksen kautta, että päivämäärä on oikein annettu (päivä, kk, vuosi), se ei sisällä kirjaimia, se on järkevä (13. kuukausi ei esim mahdollinen jne) ja että päiväys ei ole tulevaisuudessa. Näiden jälkeen jos kaikki metodit palauttavat true, niin sovelluslogiikan tarkistaPaivamaara-metodi palauttaa true, jolloin käyttöliittymä näyttää käyttäjälle tekstin "Päivämäärä annettu!".
 
 Sekvenssikaavioita voisi varmasti piirrellä ihan jokaisesta asiasta mitä sovelluksessa tehdään, mutta kuten ylläolevastakin huomaa sovelluslogiikka on monimutkaista. Sovelluksen moniulotteisuuden takia jätetään siis muiden sekvenssikaavioiden piirtäminen pois.
+
+## Ohjelman rakenteeseen jääneet heikkoudet
+
+Kaiken kaikkiaan koko koodi on sekaisin englantia ja suomea. Paketit ja luokat ovat (kuten minimivaatimuksena luennolla pyydettiin) ovat englanniksi, metodit, muuttujat jne ovat suomeksi. Tämä kannattaisi ehdottomasti yhtenäistää jotenkin fiksusti.
+
+### Käyttöliittymä
+
+Koko käyttöliittymä on sullottuna yhteen luokkaan ja moniin metodeihin. Eri näkymät olisi ehdottomasti kannattanut rakentaa omiksi luokikseen. Olisin halunnut hienosäätää myös grafiikoita, mutta aika ei siihen riittänyt.
+
+### CloudSoftService ja Cloud luokat
+Nämä sisältävät harmillisen paljon samoja gettereitä ja settereitä, joten olisi ollut järkevää tehdä jokin muu ratkaisu, mutta Ohjelmoinnin jatkokurssin materiaalia lukiessa kävi erittäin selväksi, että yliluokka ei ole vaihtoehto, vaikka sitä suunnittelinkin. Tämä ratkaisu jäi sitten hämärään eikä sitä tullut koskaan tehtyä.
+
+### jokin kokonainen luokkaratkaisu joka jäi puuttumaan?
+Jossain vaiheessa alkoi tuntua siltä, että databasen ja niitä käyttävien luokkien välissä tulisi olla vielä jokin luokka _controller_, mutta koska toteutus eteni kovaa vauhtiä, tämä ajatus jäi unholaan hyvinkin pian.
+
+Eniten tässä sovelluksessä jäi harmittamaan se, että en ehtinyt toteuttaa Yahoon sääennusteen JSONin parsimista GSONilla, vaikka onnistuneesti itse ennusteen noudankin. Se olisi ollut hieno osa sovellusta...
