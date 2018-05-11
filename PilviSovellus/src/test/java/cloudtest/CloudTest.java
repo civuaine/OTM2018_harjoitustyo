@@ -96,8 +96,92 @@ public class CloudTest {
         cloud.setUkkostaa(true);
         assertEquals(true, cloud.getUkkostaa());
     }
-// Muita settereitä ja gettereitä ei enää testata, sillä nämäkin tuntuu toimivan
 
+    @Test
+    public void getPilviOnKorkeaPalauttaaOikeinTrue() {
+        cloud.setPilviOnKorkea(true);
+        assertEquals(true, cloud.getPilviOnKorkea());
+    }
+    
+    @Test
+    public void getPilviVesiTaiLumiPalauttaaOikeinTrue() {
+        cloud.setVesiTaiLumi(true);
+        assertEquals(true, cloud.getVesiTaiLumi());
+    }    
+
+    @Test
+    public void getSataaRakeitaPalauttaaOikeinTrue() {
+        cloud.setsataaRakeita(true);
+        assertEquals(true, cloud.getsataaRakeita());
+    }    
+    
+    @Test
+    public void getMuuSateenOlomuotoPalauttaaOikeinTrue() {
+        cloud.setMuuSateenOlomuoto(true);
+        assertEquals(true, cloud.getMuuSateenOlomuoto());
+    }    
+    
+    @Test
+    public void getKuurottainenSadePalauttaaOikeinTrue() {
+        cloud.setKuurottainenSade(true);
+        assertEquals(true, cloud.getKuurottainenSade());
+    }    
+
+    @Test
+    public void getVoimakasSadePalauttaaOikeinTrue() {
+        cloud.setVoimakasSade(true);
+        assertEquals(true, cloud.getVoimakasSade());
+    }
+
+    @Test
+    public void getTummaPohjaValkoinenTorniPalauttaaOikeinTrue() {
+        cloud.setTummaPohjaValkoinenTorni(true);
+        assertEquals(true, cloud.getTummaPohjaValkoinenTorni());
+    }    
+    
+    @Test
+    public void getSolumainenPalauttaaOikeinTrue() {
+        cloud.setSolumainen(true);
+        assertEquals(true, cloud.getSolumainen());
+    }
+    
+    @Test
+    public void getIsoSoluPalauttaaOikeinTrue() {
+        cloud.setIsoSolu(true);
+        assertEquals(true, cloud.getIsoSolu());
+    }    
+
+    @Test
+    public void getAaltomainenPalauttaaOikeinTrue() {
+        cloud.setAaltomainen(true);
+        assertEquals(true, cloud.getAaltomainen());
+    }
+    
+    @Test
+    public void getIsoAaltoPalauttaaOikeinTrue() {
+        cloud.setIsoAalto(true);
+        assertEquals(true, cloud.getIsoAalto());
+    }
+
+    @Test
+    public void getHarsoTaiSaiePalauttaaOikeinTrue() {
+        cloud.setHarsomainenJaTaiSaikeinen(true);
+        assertEquals(true, cloud.getHarsomainenJaTaiSaikeinen());
+    }
+    
+    @Test
+    public void getKukkakaalimainenPalauttaaOikeinTrue() {
+        cloud.setKukkakaalimainen(true);
+        assertEquals(true, cloud.getKukkakaalimainen());
+    }
+    
+    @Test
+    public void getHalojaPalauttaaOikeinTrue() {
+        cloud.setHaloja(true);
+        assertEquals(true, cloud.getHaloja());
+    }    
+    
+    
     @Test
     public void etsiPilviPalauttaaOikeinNimbostratus() {
         cloud.setPilviSataa(true);

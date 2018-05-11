@@ -48,6 +48,32 @@ public class ObservationDateCheck {
         return this.havaintoVuosi;
     }
 
+    public void setpvtanaan(int pv) {
+        this.paivaTanaan = pv;
+    }
+
+    public void setkktanaan(int kk) {
+        this.kuukausiTanaan = kk;
+    }
+
+    public void setvvvvtanaan(int vvvv) {
+        this.vuosiTanaan = vvvv;
+    }
+
+    public int getpvtanaan() {
+        return this.paivaTanaan;
+    }
+
+    public int getkktanaan() {
+        return this.kuukausiTanaan;
+    }
+
+    public int getvvvvtanaan() {
+        return this.vuosiTanaan;
+    }
+    
+// muita settereitä ja gettereitä ei enää testata sillä nämäkin tuntuu toimivan    
+
     /**
      * Metodi muuttaa sovelluksen käynnistyshetken päivämäärän String-muotoon.
      */
@@ -82,8 +108,6 @@ public class ObservationDateCheck {
         try {
             Integer.parseInt(s);
         } catch (NumberFormatException e) {
-            return false;
-        } catch (NullPointerException e) {
             return false;
         }
         return true;

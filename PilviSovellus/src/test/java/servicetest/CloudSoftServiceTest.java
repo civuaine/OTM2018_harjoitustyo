@@ -14,6 +14,8 @@ import cloudsoft.domain.CityCheck;
 import cloudsoft.domain.Cloud;
 import cloudsoft.domain.CloudSoftService;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,10 +25,12 @@ public class CloudSoftServiceTest {
 
     private CloudSoftService cloudsoftservice;
     private Cloud cloud;
+    private ObservationDateCheck odc;
+    //private ObservationDatabase observationdatabase;
 
     @Before
     public void setUp() throws Exception {
-
+        this.odc = new ObservationDateCheck();
         this.cloudsoftservice = new CloudSoftService();
         this.cloudsoftservice.tietokannatKayttovalmiiksi();
         this.cloud = new Cloud();
@@ -85,7 +89,43 @@ public class CloudSoftServiceTest {
         cloudsoftservice.tarkistaPaivamaara("20.4.2018");
         assertEquals(false, cloudsoftservice.annetaankoLahivuorokausienEnnuste());
     }
+    
+    @Test
+    public void tallennaHavaintoLahettaaTiedonOikeassaMuodossaEteenpain() {
+        try {
+            odc.setpv(11);
+            odc.setkk(5);
+            odc.setvvvv(2018);
+            this.cloudsoftservice.tallennaHavainto("Cirrocumulus");
+        } catch (Exception ex) {
+            
+        }
+    }
+    
+    @Test
+    public void noudaEnnustePilvenPerusteellaToimii() {
+        try {
+            this.cloud.setHarsomainenJaTaiSaikeinen(true);
+            this.cloud.setPilviOnValkoinen(true);
+            this.cloud.setPilviOnLapikuultava(true);
+            this.cloud.setHaloja(false);
+            this.cloudsoftservice.noudaEnnustePilvenPerusteella();
+        } catch (Exception ex) {
+            
+        }
+        
+    }
 
+//    @Test
+//    public void annetaankoLahivuorokausienEnnustePalauttaaTrueJosAlle3pvEroaHavainnollaJaTallapaivalla() {
+//        odc.setpvtanaan(22);
+//        odc.setkktanaan(4);
+//        odc.setvvvvtanaan(2018);
+//        cloudsoftservice.tarkistaPaivamaara("20.4.2018");
+//        assertEquals(false, cloudsoftservice.annetaankoLahivuorokausienEnnuste());
+//    }
+
+// muita settereitä ja gettereitä ei enää testa sillä nämäkin tuntuvat toimivan ihan hyvin.
     @Test
     public void paikkakuntaOikeinAnnettuPalauttaaTrue() {
         assertEquals(true, cloudsoftservice.paikkakuntaOikeinAnnettu());

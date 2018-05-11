@@ -203,7 +203,12 @@ public class ObservationDateTest {
 
     @Test
     public void paivamaaraOnIntegerPalauttaafalseException() {
-        assertEquals(false, observationdatecheck.paivamaaraOnInteger(""));
+        assertEquals(false, observationdatecheck.paivamaaraOnInteger("ir"));
+    }
+
+    @Test
+    public void paivamaaraOnIntegerPalauttaaFalseJosNullpoint() {
+        assertEquals(false, observationdatecheck.paivamaaraOnInteger(null));
     }
 
     @Test
@@ -219,8 +224,68 @@ public class ObservationDateTest {
     }
 
     @Test
-    public void getpvvvvalauttaaOikein() {
+    public void getvvvvPalauttaaOikein() {
         observationdatecheck.setvvvv(2018);
         assertEquals(2018, observationdatecheck.getvvvv());
     }
+
+    @Test
+    public void getpvtanaanPalauttaaOikein() {
+        observationdatecheck.setpvtanaan(12);
+        assertEquals(12, observationdatecheck.getpvtanaan());
+    }
+
+    @Test
+    public void getkktanaanPalauttaaOikein() {
+        observationdatecheck.setkktanaan(5);
+        assertEquals(5, observationdatecheck.getkktanaan());
+    }
+
+    @Test
+    public void getvvvvtanaanPalauttaaOikein() {
+        observationdatecheck.setvvvvtanaan(2018);
+        assertEquals(2018, observationdatecheck.getvvvvtanaan());
+    }
+
+    @Test
+    public void annetaankoEnnuste3vrkPaahanPalauttaaFalseKunSamaVuosiEriKuukausi() {
+        observationdatecheck.setvvvvtanaan(2018);
+        observationdatecheck.setvvvv(2018);
+        observationdatecheck.setkk(4);
+        observationdatecheck.setkktanaan(5);
+        assertEquals(false, observationdatecheck.annetaankoEnnuste3vrkPaahan());
+    }
+
+    @Test
+    public void annetaankoEnnuste3vrkPaahanPalauttaaFalseKunPaivienValillaYli3vrkEroa() {
+        observationdatecheck.setvvvvtanaan(2018);
+        observationdatecheck.setvvvv(2018);
+        observationdatecheck.setkk(5);
+        observationdatecheck.setkktanaan(5);
+        observationdatecheck.setpvtanaan(10);
+        observationdatecheck.setpv(6);
+        assertEquals(false, observationdatecheck.annetaankoEnnuste3vrkPaahan());
+    }
+
+    @Test
+    public void annetaankoEnnuste3vrkPaahanPalauttaaTrueKunPaivienValillaTasan3vrkEroa() {
+        observationdatecheck.setvvvvtanaan(2018);
+        observationdatecheck.setvvvv(2018);
+        observationdatecheck.setkk(5);
+        observationdatecheck.setkktanaan(5);
+        observationdatecheck.setpvtanaan(10);
+        observationdatecheck.setpv(7);
+        assertEquals(true, observationdatecheck.annetaankoEnnuste3vrkPaahan());
+    }
+    
+    @Test
+    public void annetaankoEnnuste3vrkPaahanPalauttaaTrueKunPaivienValillaAlle3vrkEroa() {
+        observationdatecheck.setvvvvtanaan(2018);
+        observationdatecheck.setvvvv(2018);
+        observationdatecheck.setkk(5);
+        observationdatecheck.setkktanaan(5);
+        observationdatecheck.setpvtanaan(10);
+        observationdatecheck.setpv(9);
+        assertEquals(true, observationdatecheck.annetaankoEnnuste3vrkPaahan());
+    }        
 }
