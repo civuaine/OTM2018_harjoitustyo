@@ -1,6 +1,7 @@
 package databasetests;
 
 import cloudsoft.dao.CloudDatabase;
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -28,4 +29,17 @@ public class CloudDatabaseTest {
         String address = osoite;
         assertEquals("string", address);
     }
+    
+    @Test
+    public void addDataLisaaDataaTietokantaan() throws SQLException, Exception {
+        try {
+            CloudDatabase base = new CloudDatabase("jdbc:sqlite:Testi.db");
+            base.init();
+            if(base.onTyhja()) {
+                base.addData();
+            }
+        } catch (ClassNotFoundException ex) {
+            
+        }
+    }    
 }

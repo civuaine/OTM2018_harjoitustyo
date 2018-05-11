@@ -64,7 +64,7 @@ public class CloudSoftUi extends Application {
     }
 
     public String kokokysymys() {
-        String kyssari = "Onko pilvi iso horisontaalisuunnassa?";
+        String kyssari = "Peittääkö pilvi yli puolet taivaasta?";
         return kyssari;
     }
 
@@ -74,12 +74,12 @@ public class CloudSoftUi extends Application {
     }
 
     public String lapinakyvakysymys() {
-        String kyssari = "Onko pilvi läpikuultava, eli voiko sen läpi erottaa esimerkiksi auringon sijainnin?";
+        String kyssari = "Onko pilvi läpikuultava, eli voiko sen läpi erottaa esimerkiksi auringon sijainnin tai taivaan värin?";
         return kyssari;
     }
 
     public String selvarajainenkysymys() {
-        String kyssari = "Onko pilvi selvärajainen (selvärajainen pilvi ei näytä kuitumaiselta)";
+        String kyssari = "Onko pilvi selvärajainen, eli onko sillä selvät 'ääriviivat'";
         return kyssari;
     }
 
@@ -109,7 +109,7 @@ public class CloudSoftUi extends Application {
     }
 
     public String pilventummapohjatornivalkoinenkysymys() {
-        String kyssari = "Onko pilvellä tummempi alaosa ja valkoinen 'torniosa' (pystyulottuvuus)? Pilven pohja saattaa olla aivan tasainen.";
+        String kyssari = "Onko pilvellä tumma alaosa ja valkoinen (kumpuileva) yläosa? Pilven pohja saattaa olla aivan tasainen.";
         return kyssari;
     }
 
