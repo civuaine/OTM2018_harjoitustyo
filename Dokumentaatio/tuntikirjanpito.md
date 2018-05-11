@@ -28,5 +28,4 @@ Käytetty aika oman projektin eteen.
 | 9.5   | 7    | Päiväysongelman ratkaiseminen, databaseluokan toiston vähentäminen niputtamalla samankaltaiset metodit yhteen. Tilastosivun toiminnan parantaminen. GSON-ongelman ratkaisemista..|
 | 10.5  | 10   | Lopullisen kyselyn saaminen kuntoon. Koodin siistiminen. Sinänsä koodi on loppupalautuskunnossa, enää testejä lisää kehiin ja dokumentaatio loppuun. Saas nähä ehtiikö tehä yahoon sääennusteiden noutamista ja parsemista...| 
 | 11.5  | 9  | Javadoc, testien parantelua ja lisäystä, kyselyn parantelu, tietokannan sisällön parantelu, Testaus jne. jne.. vähän kaikkee|
-
 | yht   | 116   | 
