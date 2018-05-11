@@ -53,7 +53,7 @@ public class CloudSoftServiceTest {
 
     @Test
     public void tarkistaPaikkakuntaPalauttaaTrueKunKaikkiKunnossa() {
-        assertEquals(true, cloudsoftservice.tarkistaPaikkakunta("joutsa"));
+        assertEquals(true, cloudsoftservice.tarkistaPaikkakunta("Helsinki"));
 
     }
 
