@@ -15,7 +15,7 @@ java -jar PilviSovellus.jar
 Sovellus käynnistyy päänäkymään, jossa on ohjeteksti ja kaksi nappulaa, joista toisesta pääsee katsomaan tilastoja havainnoista
 ja toisesta tekemään pilvihavainnon.
 
-<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/Yleisnakyma.png" width="1100">
+<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/paanakyma.png" width="1100">
 
 ## Tilastojen havainnoista -näkymä
 
@@ -28,7 +28,7 @@ painamalla. "Etusivulle" nappi vie sinut takaisin etusivulle.
 Jos valitset päänäkymässä napin "Tee havainto", sinulta kysytään havaintopaikkakuntaa ja päivämäärää, jolloin pilvihavainnon teit.
 Syötä päivämäärä ohjeen antamassa muodossa. Jos painat "Etusivulle" nappia sovellus palauttaa sinut päänäkymään.
 
-<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/TeeHavainto.png" width="1100">
+<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/havaintosivu.png" width="1100">
 
 ## Kysely
 Varsinaisessa kyselyssä pyri valitsemaan se vaihtoehto, joka on mahdollisimman lähelle todellisuutta.
