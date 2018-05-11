@@ -1,5 +1,10 @@
 # Käyttöohje
 
+Lataa tiedosto [pilvisovellus.jar]()
+
+## Konfigurointi
+Ohjelma olettaa, että sen käynnistyshakemistossa on kolme tekstitiedostoa, joista kukin sisältää tekstiä käyttöliittymään.
+
 ## Ohjelman käynnistäminen
 
 Ohjelma käynnistetään kommennolla 
@@ -30,10 +35,8 @@ Varsinaisessa kyselyssä pyri valitsemaan se vaihtoehto, joka on mahdollisimman 
 
 <img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/Kysely.png" width="1100">
 
-"Edellinen" nappi vie sinut takaisin antamaan paikkakunnan ja päivämäärän. "Etusivulle" nappi palauttaa sinut päänäkymään.
-Jos antamiesi tietojen perusteella löytyy pilvi tietokannasta, saat lopuksi näytölle ennusteen siitä mitä pilvi voi kertoa
-tulevasta säästä. Saat myös paikkakuntakohtaisen sääennusteen, jotta voit verrata kuinka hyvin (tai huonosti) havintosi täsmää
-todellisuuden kanssa. Voit lopussa halutessasi tallentaa pilvihavainnon tietokantaan.
+"Etusivulle" nappi palauttaa sinut päänäkymään, ja pyyhkii kaikki juuri syöttämäsi tiedot automaattisesti.
+Jos antamiesi tietojen perusteella löytyy pilvi tietokannasta, saat lopuksi näytölle ennusteen siitä mitä pilvi voi kertoa tulevasta säästä. Jos sovellus tunnistaa havaitsemasi pilven lajin, voit lopussa halutessasi tallentaa pilvihavainnon tietokantaan.
 
 
 
