@@ -359,35 +359,6 @@ public class CloudSoftService {
         }
     }
 
-    /**
-     * Metodi hakee käyttäjän syöttämän paikkakunnan perusteella Yahoon
-     * paikkakuntakohtaisen sääennusteen.
-     *
-     * @return sääennuste JSON-muodossa
-     * @throws Exception
-     */
-    // yahoon säärajapinnan käyttö
-    public String yahoowebservice() throws Exception { // annetaan paikkakunta metodiin muuttujana.
-        String kaupunki = "helsinki"; // paikkakunta sisältää vain kirjaimia (sisältö tarkistettu).
-        String baseURL = "https://query.yahooapis.com/v1/public/yql?q=";
-        String query = "select item.forecast from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + kaupunki + "')and u='c'";
-        String fullURLString = baseURL + URLEncoder.encode(query, "UTF-8") + "&format=json";
-//        String request = baseURL + URLEncoder.encode(query, "UTF-8") + "&format=json";  
-
-        URL fullURL = new URL(fullURLString);
-        InputStream is = fullURL.openStream();
-        BufferedReader br1 = new BufferedReader(new InputStreamReader(is));
-        String line;
-        while ((line = br1.readLine()) != null) {
-            //System.out.println(line);
-            return line;
-        }
-        br1.close();
-        return line;
-        // JSON parser --> GSON esimerkiksi
-        // lisätään tekstinä aluksi, ehkä myöhemmin kuvana, jos onnistuu
-    }
-
 //    public String parse(String jsonLine) {
 //        JsonElement jelement = new JsonParser().parse(jsonLine);
 //        JsonObject jobject = jelement.getAsJsonObject();
@@ -397,10 +368,10 @@ public class CloudSoftService {
 //        String result = jobject.get("translatedText").getAsString();
 //        return result;
 //    }
-    public void parse(String jsonLine) {
-        Gson gson = new Gson();
-        CloudSoftService css = gson.fromJson(jsonLine, CloudSoftService.class);
-    }
+//    public void parse(String jsonLine) {
+//        Gson gson = new Gson();
+//        CloudSoftService css = gson.fromJson(jsonLine, CloudSoftService.class);
+//    }
 
     /**
      * Metodi ojentaa käyttöliittymälle sääennusteen sopivassa muodossa.
@@ -408,10 +379,10 @@ public class CloudSoftService {
      * @return sääennuste oikeassa muodossa
      * @throws Exception
      */
-    public String tulostaEnnuste() throws Exception {
-        String line = yahoowebservice();
-        //String parseLine = parse(line);
-        return line; // normi line toimii
-    }
+//    public String tulostaEnnuste() throws Exception {
+//        String line = yahoowebservice();
+//        //String parseLine = parse(line);
+//        return line; // normi line toimii
+//    }
 
 }

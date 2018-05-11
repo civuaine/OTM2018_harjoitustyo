@@ -134,7 +134,7 @@ public class CloudSoftUi extends Application {
     }
 
     public String harsomainensaikeinenkysymys() {
-        String kyssari = "Näyttääkö pilvi harsomaiselta ja / tai säikeiseltä? Pilvi voi näyttää tasaiselta 'peitolta' taivaalla ja se voi olla niin ohut, että se näyttää vain hieman vaalentavan taivaan väriä.";
+        String kyssari = "Näyttääkö pilvi harsomaiselta ja / tai säikeiseltä? Pilvi voi esimerkiksi näyttää tasaiselta 'peitolta' taivaalla ja se voi olla niin ohut, että se näyttää vain hieman vaalentavan taivaan väriä.";
         return kyssari;
     }
 
@@ -150,7 +150,7 @@ public class CloudSoftUi extends Application {
     }
 
     public String halokysymys() {
-        String kyssari = "Näkyykö auringon lähellä tai ympärillä taivaalla haloilmiiöitä?";
+        String kyssari = "Näkyykö auringon lähellä tai ympärillä taivaalla haloilmiöitä?";
         return kyssari;
     }
 
@@ -285,9 +285,8 @@ public class CloudSoftUi extends Application {
     public void tulostaEnnusteKyselynPaatteeksi(Label kysymys, boolean arvo, HBox kylEi, Button teeUudestaan, Button tallennaTietokantaan) {
         try {
             String ennuste = cloudsoftservice.noudaEnnustePilvenPerusteella();
-            String saaennuste = cloudsoftservice.tulostaEnnuste();
             kysymys.setText("Kysely on valmis. Alla ennuste, mitä havaitsemasi pilvi voi tarkoittaa"
-                    + " lähituntien/-päivien sään kannalta\n" + ennuste + "\n" + "JSON:in noutaminen ja sen muuttaminen vielä vaiheessa...: " + saaennuste);
+                    + " lähituntien/-päivien sään kannalta\n" + ennuste + "\n");
             kylEi.getChildren().clear();
             if (!cloudsoftservice.getPilvi().equals("Pilveä ei löydy")) {
                 kylEi.getChildren().addAll(teeUudestaan, tallennaTietokantaan);
@@ -486,7 +485,8 @@ public class CloudSoftUi extends Application {
             // tarkistetaan heti löytyykö paikkakunta IL:n tietokannasta.
             Boolean paikkakuntatesti = cloudsoftservice.tarkistaPaikkakunta(pk);
             if (!paikkakuntatesti) {
-                hyvaksymistekstiPaikkakunta.setText("Anna paikkakunta, tarkista oikeinkirjoitus!");  // paikkakuntaa ei vältts löydy yahoon palvelusta
+                hyvaksymistekstiPaikkakunta.setText("Anna paikkakunta, tarkista oikeinkirjoitus!\nPaikkakuntaa ei välttämättä löydy Yahoon säätietokannasta"
+                        + " tai verkkoyhteys on huono.");  // paikkakuntaa ei vältts löydy yahoon palvelusta
                 hyvaksymistekstiPaikkakunta.setTextFill(Color.FIREBRICK);
             } else {
                 hyvaksymistekstiPaikkakunta.setText("Paikkakunta annettu!");

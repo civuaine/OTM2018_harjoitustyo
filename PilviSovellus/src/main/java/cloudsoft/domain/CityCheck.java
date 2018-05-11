@@ -1,6 +1,14 @@
 package cloudsoft.domain;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.text.Normalizer;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -53,10 +61,16 @@ public class CityCheck {
      * @return true, jos paikkakunta löytyy Yahoon tietokannasta
      */
     public boolean paikkakuntaOnOlemassa(String havaintoPaikkakunta) {
-        //Testataan löytyykö annettua paikkakuntaa IL:n tietokannasta
-        String pienilla = havaintoPaikkakunta.toLowerCase();
-        //kutsu yahoota. täältä vai cloudsfotseivcesta
-        return true;
+        try {
+            //Testataan löytyykö annettua paikkakuntaa Yahoo!:n tietokannasta
+            String pienilla = havaintoPaikkakunta.toLowerCase();
+            pienilla = pienilla.replace('ä', 'a');
+            pienilla = pienilla.replace('ö','o');
+            boolean onkoOlemassa = yahoowebservice(havaintoPaikkakunta);
+            return onkoOlemassa;
+        } catch (Exception ex) {
+            return false;
+        }
     }
 
     /**
@@ -73,6 +87,41 @@ public class CityCheck {
             return false;
         }
         return true;
+    }
+    
+        /**
+     * Metodi tarkistaa käyttäjän syöttämän kaupungin olemassaolon
+     * yahoon web-palvelimelta.
+     *
+     * @param kaupunki käyttäjän syöttämä kaupunki
+     * @return true, jos kaupunki löytyy ja false, jos ei tai nettiyhteys ei toimi.
+     * @throws Exception
+     */
+    // yahoon säärajapinnan käyttö
+    public boolean yahoowebservice(String kaupunki) throws Exception { // annetaan paikkakunta metodiin muuttujana.
+        //String kaupunki = "helsinki"; // paikkakunta sisältää vain kirjaimia (sisältö tarkistettu).
+        String baseURL = "https://query.yahooapis.com/v1/public/yql?q=";
+        String query = "select item.forecast from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + kaupunki + "')and u='c'";
+        String fullURLString = baseURL + URLEncoder.encode(query, "UTF-8") + "&format=json";
+//        String request = baseURL + URLEncoder.encode(query, "UTF-8") + "&format=json";  
+
+        URL fullURL = new URL(fullURLString);
+        InputStream is = fullURL.openStream();
+        try (BufferedReader br1 = new BufferedReader(new InputStreamReader(is))) {
+            String line;
+            String search = "null";
+            while ((line = br1.readLine()) != null) {
+                //System.out.println(line);
+                if(line.contains(search)) {
+                    return false;
+                }
+                return true;
+                
+            }
+        }
+        return false;
+        // JSON parser --> GSON esimerkiksi
+        // lisätään tekstinä aluksi, ehkä myöhemmin kuvana, jos onnistuu
     }
 
 }

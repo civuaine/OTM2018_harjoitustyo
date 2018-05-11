@@ -201,6 +201,10 @@ public class Cloud {
         return this.haloja;
     }
 
+    /**
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Cumulus.
+     * @return true, jos pilvi on Cumulus
+     */
     public boolean onkoPilviCumulus() {
         if ((this.sataa == true) && (this.sataaVettaTaiLunta == true) && (this.kuurottainenSade == true) && (this.voimakasSade == false)) {
             return true;
@@ -212,6 +216,10 @@ public class Cloud {
         }
     }
 
+    /**
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Stratus
+     * @return true, jos pilvi on Stratus
+     */
     public boolean onkoPilviStratus() {
         if ((this.sataa == true) && (this.muuSateenOlomuoto == true) && (this.valkoinenPilvi == false)) {
             return true;
@@ -222,6 +230,10 @@ public class Cloud {
         }
     }
 
+    /**
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Altostratus
+     * @return true, jos pilvi on Altostratus
+     */
     public boolean onkoPilviAltoStratus() {
         if ((this.harsomainenJaTaiSaikeinen == true) && (this.valkoinenPilvi == false) && (this.lapikuultava == true) && (this.haloja == false)) {
             return true;
@@ -236,6 +248,10 @@ public class Cloud {
         }
     }
 
+    /**
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Stratocumulus.
+     * @return true, jos pilvi on Stratocumulus
+     */
     public boolean onkoPilviStratoCumulus() {
         if ((this.aaltomainen == true) && (this.isoAalto == true) && (this.valkoinenPilvi == false)) {
             return true;
@@ -249,6 +265,10 @@ public class Cloud {
         }
     }
 
+    /**
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Nimbostratus.
+     * @return true jos pilvi on Nimbostratus
+     */
     public boolean onkoPilviNimboStratus() {
         if ((this.sataa == true) && (this.sataaVettaTaiLunta == true) && (this.kuurottainenSade == false) && (this.iso == true) && (this.valkoinenPilvi == false) && (this.lapikuultava == false)) {
             return true;
@@ -257,6 +277,10 @@ public class Cloud {
         }
     }
 
+    /**
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Cumulonimbus.
+     * @return true jos on Cumulonimbus
+     */
     public boolean onkoPilviCumuloNimbus() {
         if ((this.sataa == true) && ((this.sataaRakeita == true) || (this.ukkostaa == true))) {
             return true;
@@ -268,6 +292,10 @@ public class Cloud {
         }
     }
 
+    /**
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Cirrus.
+     * @return true, jos pilvi on Cirrus.
+     */
     public boolean onkoPilviCirrus() {
         if ((this.harsomainenJaTaiSaikeinen == true) && (this.haloja == false) && (this.valkoinenPilvi == true) && (this.lapikuultava == true)) {
             return true;
@@ -283,6 +311,10 @@ public class Cloud {
         }
     }
 
+    /**
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Altocumulus.
+     * @return true, jos pilvi on Altocumulus
+     */
     public boolean onkoPilviAltoCumulus() {
         if ((this.solumainen == true) && (this.isoSolu == true) && (this.valkoinenPilvi == false)) {
             return true;
@@ -293,6 +325,10 @@ public class Cloud {
         }
     }
 
+    /**
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Cirrocumulus
+     * @return true, jos pilvi on Cirrocumulus.
+     */
     public boolean onkoPilviCirroCumulus() {
         if ((this.solumainen == true) && (this.isoSolu == false) && (this.lapikuultava == true)) {
             return true;
@@ -321,34 +357,4 @@ public class Cloud {
         else if(onkoPilviAltoCumulus()) {setPilvi("Altocumulus");}
         else if(onkoPilviCirroCumulus()) {setPilvi("Cirrocumulus");}
     }
-    
-    
-    
-    
-    
-    
-    
-//    public void etsiPilvi() {
-//        if ((this.sataa == true) && (this.iso == true) && (this.valkoinenPilvi == false) && (this.lapikuultava == false) && (this.selvaRajainen == false)) {
-//            setPilvi("Nimbostratus");
-//        } else if ((this.sataa == true) && (this.ukkostaa == true) && (this.valkoinenPilvi == true)) {
-//            setPilvi("Cumulonimbus");
-//        } else if ((this.iso == false) && (this.selvaRajainen == true) && (this.valkoinenPilvi == true)) {
-//            setPilvi("Cumulus"); // voi sataa tai olla satamatta
-//        } else if ((this.sataa == false) && (this.iso == true) && (this.valkoinenPilvi == false) && (this.selvaRajainen == false)) {
-//            setPilvi("Stratus"); // voi sataa tai olla satamatta
-//        } else if ((this.sataa == false) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.selvaRajainen == false) && (this.iso == false)) {
-//            setPilvi("Cirrus");
-//        } else if ((this.sataa == false) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.iso == true) && (this.selvaRajainen == false)) {
-//            setPilvi("Cirrostratus");
-//        } else if ((this.sataa == true) && (this.valkoinenPilvi == false) && (this.iso == true) && (this.lapikuultava == true) && (this.selvaRajainen == false)) {
-//            setPilvi("Altostratus"); // voi sataa tai olla satamatta, iso tai melko iso
-//        } else if ((this.sataa == false) && (this.iso == true) && (this.lapikuultava == true) && (this.valkoinenPilvi == true) && (this.selvaRajainen == true)) {
-//            setPilvi("Altocumulus"); // valkoinen tai harmaa, koko vaihtelee
-//        } else if ((this.iso == true) && (this.selvaRajainen == true) && (this.valkoinenPilvi == true) && (this.sataa == false)) {
-//            setPilvi("Stratocumulus"); // sataa tai ei sada, harmaa tai valkoinen
-//        } else if ((this.sataa == false) && (this.iso == true) && (this.valkoinenPilvi == true) && (this.lapikuultava == true) && (this.selvaRajainen == false)) {
-//            setPilvi("Cirrocumulus"); //laaja tai melkolaaja
-//        }
-//    }
 }
