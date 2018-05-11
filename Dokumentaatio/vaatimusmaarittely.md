@@ -2,29 +2,28 @@
 
 ## Sovelluksen tarkoitus
 
-Sovelluksen avulla käyttäjän on mahdollista selvittää (näin alkuvaiheessa) mikä taivaalla näkyvän pilven pilvisuku on ja
-mitä se *voi* kertoa tulevasta säästä. Käyttäjä näkee myös mitä pilvihavaintoja muut sovellusta käyttäneet ovat tehneet. Lopuksi käyttäjältä kysytään havainnontekopaikka ja päivämäärä, jonka jälkeen käyttäjä voi lisätä havainnon järjestelmään. Käyttäjälle annetaan myös Ilmatieteen laitoksen sääennuste kyseiselle paikkakunnalle.
+Sovelluksen avulla käyttäjän on mahdollista selvittää mikä taivaalla näkyvän pilven pilvisuku on ja
+mitä se *voi* kertoa tulevasta säästä. Käyttäjä näkee myös mitä pilvihavaintoja löytyy sovelluksen tietokannasta. Kyselyn aluksi käyttäjältä kysytään havainnontekopaikka ja päivämäärä, jotka tarkistetaan perusteelliseti virheellisen syötteen vuoksi. Jos pilvitietokannasta löytyy havaintoa vastaava pilvi, voi käyttäjä lisätä havainnon järjestelmään. Joka tapauksessa käyttäjälle tarjotaan mahdollisuus uusia testi.
 
-(Sovellukseen saatetaan lisätä myöhemmin mahdollisuus selvittää myös havaitun pilven pilvilaji, jolloin pilvien perusteella annettu sääennuste voi parantua.)
 ## Käyttäjät
 Käyttäjärooleja on vain yksi eli normaali käyttäjä.
 
-## Suunnitellut toiminnallisuudet
+## Toiminnallisuudet
 - Käyttäjä voi nähdä statistiikkaa, eli millaisia pilvihavaintoja milläkin paikkakunnalla on tehty ja milloin
-- Jokainen käyttäjä voi nähdä muiden tekemiä havaintoja. Käyttäjät ovat anonyymejä.
+- Jokainen käyttäjä voi nähdä tietokannassa olevia havaintoja. Käyttäjät ovat anonyymejä.
 - Statistiikkasivulla havainnot on päivämäärän mukaan järjestetty
-- Käyttäjä voi lisätä juuri tehdyn pilvihavainnon järjestelmään (tietokantaan), myös aiemmin tehdyn havainnon voi lisätä. Tästä huolimatta haetaan havaintojen kirjaamispäivän ja seuraavan päivän sääennuste, vaikka havainto olisikin esim. viikon takaa.
+- käyttäjä voi valita kuinka haluaa havainnot järjestää, päivämäärän vai paikan mukaan
+- Syötetyn paikkakunnan olemassa olo tarkistetaan Yahoon sääpalvelusta.
+- Käyttäjä voi lisätä juuri tehdyn pilvihavainnon järjestelmään (tietokantaan), myös aiemmin tehdyn havainnon voi lisätä.
 - Käyttäjältä kysytään haluaako hän tallentaa havainnon järjestelmään
+- käyttäjä voi suorittaa testin uudelleen sulkematta sovellusta
 - Tehtyjä havaintoja ei voi poistaa
 - Tulevaisuudessa olevat havainnot aiheuttavat virheilmoituksen
 
 ## Käyttöliittymäsuunnittelua...
 - Kun käyttäjä käynnistää sovelluksen, tulee näytölle ohjeet sovelluksen ideasta ja tarkoituksesta, sekä siihen liittyvästä toiminnallisuudesta
 - Käyttäjä klikkailee nappeja sovelluksen kysyessä kysymyksiä havaintoon liittyen
-- Käyttäjälle näytetään esimerkkikuvia kysymyksiin liittyen
-- Joidenkin kysymysten ohessa voidaan antaa lisäohjeita tarvittaessa jonnekin sivuun tai napin toiminnallisuuden taakse 
-- Jokainen klikkaus johtaa uuteen kysymykseen. Paluu mahdollisuus edelliseen kysymykseen tulee onnistua.
-- Ilmatieteen laitokselta haettu sääennuste jotenkin järkevästi ruudulle...
+- Jokainen klikkaus johtaa uuteen kysymykseen. Paluuta edelliseen kysymykseen ei sallita. Koko kyselyn voi toki suorittaa uudestaan.
 
 ## Toimintaympäristön rajoitteet
 - Tulee toimia Linux-ympäristössä
@@ -32,5 +31,6 @@ Käyttäjärooleja on vain yksi eli normaali käyttäjä.
 
 ## Jatkokehitysideoita
 - Sovellukseen saatetaan lisätä myöhemmin mahdollisuus selvittää myös havaitun pilven pilvilaji, jolloin pilvien perusteella annettu sääennuste voi parantua.
+- Yahoon sääpalvelusta voisi käyttäjälle antaa myös sääennusteen lähivuorokausille.
+- kivoja kuvia sovellukseen. Kuvat voisivat helpottaa myös kysymyksiin vastaamista.
 
-Jatkokehitys riippuu ajan riittävyydestä. Tämä on suunnitelma ja graafisen käyttöliittymän ulkoasu varmasti tulee vielä muuttumaan...
