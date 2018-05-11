@@ -39,7 +39,7 @@ Pakkauksen cloudsoft.dao luokat CloudDatabase ja ObservationDatabase pitävät h
 
 Havaintotietokanta koostetaan seuraavalla tavalla: 
 
-_Havainnot (paikka varchar(200), paivamaara varchar(20), pilvi varchar(20))_.
+_Havainnot (paikka varchar(200), paivamaara Date, pilvi varchar(20))_.
 
 Vastaavasti pilvitietokannalle:
 
