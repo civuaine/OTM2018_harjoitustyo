@@ -66,7 +66,7 @@ Koko käyttöliittymä on sullottuna yhteen luokkaan ja moniin metodeihin. Eri n
 ### CloudSoftService ja Cloud luokat
 Nämä sisältävät harmillisen paljon samoja gettereitä ja settereitä, joten olisi ollut järkevää tehdä jokin muu ratkaisu, mutta Ohjelmoinnin jatkokurssin materiaalia lukiessa kävi erittäin selväksi, että yliluokka ei ole vaihtoehto, vaikka sitä suunnittelinkin. Tämä ratkaisu jäi sitten hämärään eikä sitä tullut koskaan tehtyä.
 
-### jokin kokonainen luokkaratkaisu joka jäi puuttumaan?
+### Jokin kokonainen luokkaratkaisu joka jäi puuttumaan?
 Jossain vaiheessa alkoi tuntua siltä, että databasen ja niitä käyttävien luokkien välissä tulisi olla vielä jokin luokka _controller_, mutta koska toteutus eteni kovaa vauhtiä, tämä ajatus jäi unholaan hyvinkin pian.
 
 Eniten tässä sovelluksessä jäi harmittamaan se, että en ehtinyt toteuttaa Yahoon sääennusteen JSONin parsimista GSONilla, vaikka onnistuneesti itse ennusteen noudankin. Se olisi ollut hieno osa sovellusta...
