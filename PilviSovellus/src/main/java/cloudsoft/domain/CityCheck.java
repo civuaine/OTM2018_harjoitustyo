@@ -65,7 +65,7 @@ public class CityCheck {
             //Testataan löytyykö annettua paikkakuntaa Yahoo!:n tietokannasta
             String pienilla = havaintoPaikkakunta.toLowerCase();
             pienilla = pienilla.replace('ä', 'a');
-            pienilla = pienilla.replace('ö','o');
+            pienilla = pienilla.replace('ö', 'o');
             boolean onkoOlemassa = yahoowebservice(havaintoPaikkakunta);
             return onkoOlemassa;
         } catch (Exception ex) {
@@ -88,13 +88,14 @@ public class CityCheck {
         }
         return true;
     }
-    
-        /**
-     * Metodi tarkistaa käyttäjän syöttämän kaupungin olemassaolon
-     * yahoon web-palvelimelta.
+
+    /**
+     * Metodi tarkistaa käyttäjän syöttämän kaupungin olemassaolon yahoon
+     * web-palvelimelta.
      *
      * @param kaupunki käyttäjän syöttämä kaupunki
-     * @return true, jos kaupunki löytyy ja false, jos ei tai nettiyhteys ei toimi.
+     * @return true, jos kaupunki löytyy ja false, jos ei tai nettiyhteys ei
+     * toimi.
      * @throws Exception
      */
     // yahoon säärajapinnan käyttö
@@ -112,16 +113,14 @@ public class CityCheck {
             String search = "null";
             while ((line = br1.readLine()) != null) {
                 //System.out.println(line);
-                if(line.contains(search)) {
+                if (line.contains(search)) {
                     return false;
                 }
                 return true;
-                
+
             }
         }
         return false;
-        // JSON parser --> GSON esimerkiksi
-        // lisätään tekstinä aluksi, ehkä myöhemmin kuvana, jos onnistuu
     }
 
 }

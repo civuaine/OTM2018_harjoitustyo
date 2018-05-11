@@ -359,30 +359,4 @@ public class CloudSoftService {
         }
     }
 
-//    public String parse(String jsonLine) {
-//        JsonElement jelement = new JsonParser().parse(jsonLine);
-//        JsonObject jobject = jelement.getAsJsonObject();
-//        jobject = jobject.getAsJsonObject("data");
-//        JsonArray jarray = jobject.getAsJsonArray("translations");
-//        jobject = jarray.get(0).getAsJsonObject();
-//        String result = jobject.get("translatedText").getAsString();
-//        return result;
-//    }
-//    public void parse(String jsonLine) {
-//        Gson gson = new Gson();
-//        CloudSoftService css = gson.fromJson(jsonLine, CloudSoftService.class);
-//    }
-
-    /**
-     * Metodi ojentaa käyttöliittymälle sääennusteen sopivassa muodossa.
-     *
-     * @return sääennuste oikeassa muodossa
-     * @throws Exception
-     */
-//    public String tulostaEnnuste() throws Exception {
-//        String line = yahoowebservice();
-//        //String parseLine = parse(line);
-//        return line; // normi line toimii
-//    }
-
 }

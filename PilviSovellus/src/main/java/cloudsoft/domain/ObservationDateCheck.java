@@ -71,9 +71,8 @@ public class ObservationDateCheck {
     public int getvvvvtanaan() {
         return this.vuosiTanaan;
     }
-    
-// muita settereitä ja gettereitä ei enää testata sillä nämäkin tuntuu toimivan    
 
+// muita settereitä ja gettereitä ei enää testata sillä nämäkin tuntuu toimivan    
     /**
      * Metodi muuttaa sovelluksen käynnistyshetken päivämäärän String-muotoon.
      */
@@ -111,9 +110,6 @@ public class ObservationDateCheck {
             return false;
         }
         return true;
-
-        // s.matches("-?\\d") // negative sign none or one.
-        // s.matches("^[+-]?\\d+$")
     }
 
     /**

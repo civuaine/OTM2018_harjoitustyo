@@ -202,7 +202,9 @@ public class Cloud {
     }
 
     /**
-     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Cumulus.
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan
+     * Cumulus.
+     *
      * @return true, jos pilvi on Cumulus
      */
     public boolean onkoPilviCumulus() {
@@ -217,7 +219,9 @@ public class Cloud {
     }
 
     /**
-     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Stratus
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan
+     * Stratus
+     *
      * @return true, jos pilvi on Stratus
      */
     public boolean onkoPilviStratus() {
@@ -231,7 +235,9 @@ public class Cloud {
     }
 
     /**
-     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Altostratus
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan
+     * Altostratus
+     *
      * @return true, jos pilvi on Altostratus
      */
     public boolean onkoPilviAltoStratus() {
@@ -249,7 +255,9 @@ public class Cloud {
     }
 
     /**
-     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Stratocumulus.
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan
+     * Stratocumulus.
+     *
      * @return true, jos pilvi on Stratocumulus
      */
     public boolean onkoPilviStratoCumulus() {
@@ -266,7 +274,9 @@ public class Cloud {
     }
 
     /**
-     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Nimbostratus.
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan
+     * Nimbostratus.
+     *
      * @return true jos pilvi on Nimbostratus
      */
     public boolean onkoPilviNimboStratus() {
@@ -278,7 +288,9 @@ public class Cloud {
     }
 
     /**
-     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Cumulonimbus.
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan
+     * Cumulonimbus.
+     *
      * @return true jos on Cumulonimbus
      */
     public boolean onkoPilviCumuloNimbus() {
@@ -293,7 +305,9 @@ public class Cloud {
     }
 
     /**
-     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Cirrus.
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan
+     * Cirrus.
+     *
      * @return true, jos pilvi on Cirrus.
      */
     public boolean onkoPilviCirrus() {
@@ -312,7 +326,9 @@ public class Cloud {
     }
 
     /**
-     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Altocumulus.
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan
+     * Altocumulus.
+     *
      * @return true, jos pilvi on Altocumulus
      */
     public boolean onkoPilviAltoCumulus() {
@@ -326,7 +342,9 @@ public class Cloud {
     }
 
     /**
-     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan Cirrocumulus
+     * Metodi tarkistaa annettujen parametrien perusteella, onko pilvi lajiltaan
+     * Cirrocumulus
+     *
      * @return true, jos pilvi on Cirrocumulus.
      */
     public boolean onkoPilviCirroCumulus() {
@@ -346,15 +364,26 @@ public class Cloud {
      * olla.
      */
     public void etsiPilvi() {
-        if(onkoPilviCumulus()) {setPilvi("Cumulus");}
-        else if(onkoPilviStratus()) {setPilvi("Stratus");}
-        else if(onkoPilviAltoStratus()) {setPilvi("Altostratus");}
-        else if(onkoPilviStratoCumulus()) {setPilvi("Stratocumulus");}
-        else if(onkoPilviNimboStratus()) {setPilvi("Nimbostratus");}
-        else if(onkoPilviCumuloNimbus()) {setPilvi("Cumulonimbus");}
-        else if(onkoPilviCirrus()) {setPilvi("Cirrus");}
-        else if(onkoPilviCirroStratus()) {setPilvi("Cirrostratus");}
-        else if(onkoPilviAltoCumulus()) {setPilvi("Altocumulus");}
-        else if(onkoPilviCirroCumulus()) {setPilvi("Cirrocumulus");}
+        if (onkoPilviCumulus()) {
+            setPilvi("Cumulus");
+        } else if (onkoPilviStratus()) {
+            setPilvi("Stratus");
+        } else if (onkoPilviAltoStratus()) {
+            setPilvi("Altostratus");
+        } else if (onkoPilviStratoCumulus()) {
+            setPilvi("Stratocumulus");
+        } else if (onkoPilviNimboStratus()) {
+            setPilvi("Nimbostratus");
+        } else if (onkoPilviCumuloNimbus()) {
+            setPilvi("Cumulonimbus");
+        } else if (onkoPilviCirrus()) {
+            setPilvi("Cirrus");
+        } else if (onkoPilviCirroStratus()) {
+            setPilvi("Cirrostratus");
+        } else if (onkoPilviAltoCumulus()) {
+            setPilvi("Altocumulus");
+        } else if (onkoPilviCirroCumulus()) {
+            setPilvi("Cirrocumulus");
+        }
     }
 }
