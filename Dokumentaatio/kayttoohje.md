@@ -36,7 +36,7 @@ Varsinaisessa kyselyssä pyri valitsemaan se vaihtoehto, joka on mahdollisimman 
 <img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/kyselysivu.png" width="1100">
 
 "Etusivulle" nappi palauttaa sinut päänäkymään, ja pyyhkii kaikki juuri syöttämäsi tiedot automaattisesti.
-Jos antamiesi tietojen perusteella löytyy pilvi tietokannasta, saat lopuksi näytölle ennusteen siitä mitä pilvi voi kertoa tulevasta säästä. Jos sovellus tunnistaa havaitsemasi pilven, voit lopussa halutessasi tallentaa pilvihavainnon tietokantaan.
+Jos antamiesi tietojen perusteella löytyy pilvi tietokannasta, saat lopuksi näytölle ennusteen siitä mitä pilvi voi kertoa tulevasta säästä. Jos sovellus tunnistaa havaitsemasi pilven, voit lopussa halutessasi tallentaa pilvihavainnon tietokantaan. Joka tapauksessa saat mahdollisuuden tehdä kyselyn uudestaan.
 
 
 
