@@ -72,16 +72,24 @@ public class CloudDatabase implements CloudDao {
     @Override
     public void addData() {
         List<String> lauseet = new ArrayList<>();
-        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Stratus', 'hyvä sää tulossa!')");
-        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Stratocumulus', 'katotaan millanen sää tulee.')");
-        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Cumulus', 'Saas nähä sataako.')");
-        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Cumulonimbus', 'oho, voi ukkostaa.')");
-        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Altostratus', 'tää ei voi sataa.')");
-        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Altocumulus', 'tää voi sataa tihkua')");
-        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Nimbostratus', 'tasaista sadetta.')");
-        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Cirrus', 'voi enteillä rintamaa')");
-        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Cirrocumulus', 'epävakautta yläilmakehässä. Mahdollisesti rintama tulossa.')");
-        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Cirrostratus', 'Hienoja haloilmiöitä!')");
+        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Stratus', 'Lähitunteina voi sataa tihkua tai vettä, sen jälkeen sää poutaantuu ja selkene.!')");
+        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Stratocumulus', 'Säässä ei mitään erikoista muutosta luvassa.')");
+        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Cumulus', 'Kauniin ilman pilviä. Suureksi paisuessaa voivat sataa ja kehittyä kuuro- ja ukkospilviksi')");
+        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Cumulonimbus', 'Pilvi sataa aina. Pilveen liittyvät voimakkaat laskuvirtaukset voivat \n"
+                + "viilentää ilmaa.')");
+        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Altostratus', 'Pilvi voi sataa. Joskus se syntyy jämänä jonkun laajemman "
+                + "pilven hajotessa,\nmutta useimmiten se syntyy laajamittaiseen nousuliikeeseen ja enteilee rintamasysteemiä sekä sadetta noin 12h kuluessa.')");
+        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Altocumulus', 'Syntynyt jämänä jostain muusta pilvestä tai enteilee lähestyvää rintamaa.\n"
+                + "Rintamaan liittyessä rintama on poikkeuksellisen laaja-alainen.')");
+        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Nimbostratus', 'Sateen loputtuessa sää selkenee ja poutaantuu noin vuorokaudeksi,\n"
+                + "jonka jälkeen kylmärintama voi tuoda lisää sateita ja viileämpää ilmaa')");
+        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Cirrus', 'Ohuet Cirrukset syntyvät korkeapaineessa, paksummat liittyvät"
+                + " rintamiin ja huonontuvaan säähän.\nJos pilven päässä on koukkumainen muoto, sää todennäköisesti huonontuu ja "
+                + "sade alkaa tyypillisesti 24h kuluessa.')");
+        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Cirrocumulus', 'Epävakautta yläilmakehässä. Rintamasysteemi voi olla "
+                + "lähestymässä.')");
+        lauseet.add("INSERT INTO Pilvet(nimi, ennuste) VALUES ('Cirrostratus', 'Cirrostratus syntyy kun laaja ilmakerros kohoaa ja saavuttaa"
+                + " kyllästystilan.\nTyypillisesti enteilee rintamasysteemiä, johon liittyessä sade alkaa alle 24h kuluessa.')");
 
         try (Connection conn = getConnection()) {
             Statement stmt = conn.createStatement();
