@@ -18,6 +18,6 @@ public interface ObservationDao {
     public void save(String paikka, String paivamaara, String pilvi) throws SQLException;
 
     public void addData();
-    
-    List<String>getAllObservations(String paikkaTaipaivays) throws SQLException;
+
+    List<String> getAllObservations(String paikkaTaipaivays) throws SQLException;
 }

@@ -29,17 +29,17 @@ public class CloudDatabaseTest {
         String address = osoite;
         assertEquals("string", address);
     }
-    
+
     @Test
     public void addDataLisaaDataaTietokantaan() throws SQLException, Exception {
         try {
             CloudDatabase base = new CloudDatabase("jdbc:sqlite:Testi.db");
             base.init();
-            if(base.onTyhja()) {
+            if (base.onTyhja()) {
                 base.addData();
             }
         } catch (ClassNotFoundException ex) {
-            
+
         }
-    }    
+    }
 }

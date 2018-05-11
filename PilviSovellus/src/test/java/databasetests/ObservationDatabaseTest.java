@@ -34,17 +34,16 @@ public class ObservationDatabaseTest {
     }
 
     // addData, getConnection ja init -testit
-    
     @Test
     public void addDataLisaaDataaTietokantaan() throws SQLException {
         try {
             ObservationDatabase base = new ObservationDatabase("jdbc:sqlite:Testi.db");
             base.init();
-            if(base.getAllObservations("paikka").isEmpty()) {
+            if (base.getAllObservations("paikka").isEmpty()) {
                 base.addData();
             }
         } catch (ClassNotFoundException ex) {
-            
+
         }
     }
 }
