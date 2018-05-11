@@ -13,7 +13,7 @@ Sovellus kysyy havaitsijalta muutamia kysymyksiä havaitusta pilvestä, joihin h
 
 [Työaikakirjanpito](https://github.com/civuaine/OTM2018_harjoitustyo/blob/master/Dokumentaatio/tuntikirjanpito.md)
 
-[Testausdokumentti]((https://github.com/civuaine/OTM2018_harjoitustyo/blob/master/Dokumentaatio/testaus.md)
+[Testausdokumentti](https://github.com/civuaine/OTM2018_harjoitustyo/blob/master/Dokumentaatio/testaus.md)
 
 ## Releaset
 
