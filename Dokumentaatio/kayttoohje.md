@@ -33,7 +33,7 @@ Syötä päivämäärä ohjeen antamassa muodossa. Jos painat "Etusivulle" nappi
 ## Kysely
 Varsinaisessa kyselyssä pyri valitsemaan se vaihtoehto, joka on mahdollisimman lähelle todellisuutta.
 
-<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/Kysely.png" width="1100">
+<img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/kyselysivu.png" width="1100">
 
 "Etusivulle" nappi palauttaa sinut päänäkymään, ja pyyhkii kaikki juuri syöttämäsi tiedot automaattisesti.
 Jos antamiesi tietojen perusteella löytyy pilvi tietokannasta, saat lopuksi näytölle ennusteen siitä mitä pilvi voi kertoa tulevasta säästä. Jos sovellus tunnistaa havaitsemasi pilven lajin, voit lopussa halutessasi tallentaa pilvihavainnon tietokantaan.
