@@ -3,7 +3,7 @@
 Lataa tiedosto [pilvisovellus.jar](https://github.com/civuaine/OTM2018_harjoitustyo/releases/tag/lopullinen)
 
 ## Konfigurointi
-Ohjelma olettaa, että sen käynnistyshakemistossa on kolme tekstitiedostoa, joista kukin sisältää tekstiä käyttöliittymään.
+Ohjelma olettaa, että sen käynnistyshakemistossa on myös yllä olevan linkin takaa löytyvät kolme tekstitiedostoa, joista kukin sisältää tekstiä käyttöliittymään. (teksti.txt, teksti2.txt ja teksti3.txt)
 
 ## Ohjelman käynnistäminen
 
