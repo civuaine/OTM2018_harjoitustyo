@@ -20,7 +20,7 @@ Käyttäjärooleja on vain yksi eli normaali käyttäjä.
 - Tehtyjä havaintoja ei voi poistaa
 - Tulevaisuudessa olevat havainnot aiheuttavat virheilmoituksen
 
-## Käyttöliittymäsuunnittelua...
+## Käyttöliittymä
 - Kun käyttäjä käynnistää sovelluksen, tulee näytölle ohjeet sovelluksen ideasta ja tarkoituksesta, sekä siihen liittyvästä toiminnallisuudesta
 - Käyttäjä klikkailee nappeja sovelluksen kysyessä kysymyksiä havaintoon liittyen
 - Jokainen klikkaus johtaa uuteen kysymykseen. Paluuta edelliseen kysymykseen ei sallita. Koko kyselyn voi toki suorittaa uudestaan.
