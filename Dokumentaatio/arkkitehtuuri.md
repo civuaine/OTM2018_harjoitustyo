@@ -22,7 +22,7 @@ Kaikki tulostaminen tapahtuu käyttöliittymässä, yksikään metodi ei tulosta
 
 
 ## Sovelluslogiikka
-Sovelluksen sovelluslogiikka on siinä mielessä erilainen, että siinä ei ole yksittäistä käyttäjää, jonka tarvitsisi kirjautua sisään sovellukseen nähdäkseen jotain tiettyä. Sovellus on avoin kaikille, minkä vuoksi sovelluslogiikan muodostavat enemmälti käyttäjän syötteen perusteellinen tarkistaminen, sekä tietojen hakeminen ja vieminen tietokantaan. Käyttäjältä kysymysten kysyminen ja niiden hyödyntäminen on hyvin iso (vielä toteuttamaton) osa sovelluksen sovelluslogiikkaa.
+Sovelluksen sovelluslogiikka on siinä mielessä erilainen, että siinä ei ole yksittäistä käyttäjää, jonka tarvitsisi kirjautua sisään sovellukseen nähdäkseen jotain tiettyä. Sovellus on avoin kaikille, minkä vuoksi sovelluslogiikan muodostavat enemmälti käyttäjän syötteen perusteellinen tarkistaminen, sekä tietojen hakeminen ja vieminen tietokantaan. Käyttäjältä kysymysten kysyminen ja niiden hyödyntäminen ovat hyvin iso osa sovelluksen sovelluslogiikkaa.
 
 Sovelluksen toiminnallisesta kokonaisuudesta vastaa ainoastaan luokka _CloudSoftService_. Luokka tarjoaa käyttöliittymälle yksinkertaiset metodit päivämäärän ja paikan syötteen tarkistamiseen, tietokannan alustamiseen, havaintojen järjestämiseen jne.
 
@@ -45,9 +45,6 @@ Vastaavasti pilvitietokannalle:
 
 _Pilvet(nimi varchar(20), ennuste varchar(1000))_
 
-(tarkemmat tiedot täydennetään myöhemmin)
-
-
 ## Päätoiminnallisuudet
 
 Alla sekvenssikaavio kuvaamaan mitä tapahtuu kun käyttäjä painaa tallenna-nappia päivämäärää tallennettaessa.
@@ -55,3 +52,5 @@ Alla sekvenssikaavio kuvaamaan mitä tapahtuu kun käyttäjä painaa tallenna-na
 <img src="https://raw.githubusercontent.com/civuaine/OTM2018_harjoitustyo/master/Dokumentaatio/paivays_sekvenssikaavio.png" width="800">
 
 Painikkeen painamiseen reagoiva tapahtumakäsittelijä kutsuu sovelluslogiikasta vastaavan luokan _CloudSoftService_ metodia tarkistaPaivamaara antaen sille parametriksi käyttäjän syötteen. Sovelluslogiikka selvittää useamman tarkistuksen kautta, että päivämäärä on oikein annettu (päivä, kk, vuosi), se ei sisällä kirjaimia, se on järkevä (13. kuukausi ei esim mahdollinen jne) ja että päiväys ei ole tulevaisuudessa. Näiden jälkeen jos kaikki metodit palauttavat true, niin sovelluslogiikan tarkistaPaivamaara-metodi palauttaa true, jolloin käyttöliittymä näyttää käyttäjälle tekstin "Päivämäärä annettu!".
+
+Sekvenssikaavioita voisi varmasti piirrellä ihan jokaisesta asiasta mitä sovelluksessa tehdään, mutta kuten ylläolevastakin huomaa sovelluslogiikka on monimutkaista. Sovelluksen moniulotteisuuden takia jätetään siis muiden sekvenssikaavioiden piirtäminen pois.
