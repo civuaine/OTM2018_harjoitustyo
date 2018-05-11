@@ -9,7 +9,7 @@ Ohjelma olettaa, että sen käynnistyshakemistossa on kolme tekstitiedostoa, joi
 
 Ohjelma käynnistetään kommennolla 
 ```
-java -jar PilviSovellus.jar
+java -jar pilvisovellus.jar
 ```
 ## Päänäkymä
 Sovellus käynnistyy päänäkymään, jossa on ohjeteksti ja kaksi nappulaa, joista toisesta pääsee katsomaan tilastoja havainnoista
