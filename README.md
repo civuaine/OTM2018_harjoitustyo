@@ -1,8 +1,7 @@
 # Pilvisovellus
-Pilvisovellus tarjoaa jokaiselle mahdollisuuden ennustaa säätä lähitunneille, tilanteesta riippuen jopa parin päivän päähän. Sovelluksen käyttäjät voivat nähdä myös toistensa tekemiä pilvihavaintoja - tilastoja tehdyistä havainnoista. Käyttäjälle *tarjotaan* mahdollisuus tallentaa oma havainto sovelluksen tietokantaan muiden nähtäville. 
+Pilvisovellus tarjoaa jokaiselle mahdollisuuden ennustaa säätä lähitunneille, tilanteesta riippuen jopa parin päivän päähän. Sovelluksen käyttäjät voivat nähdä myös tietokannassa olevia havaintoja sovelluksen tilastojen tarkasteluosastolla. Käyttäjälle *tarjotaan* mahdollisuus tallentaa oma havainto sovelluksen tietokantaan muiden nähtäville. 
 
 Sovellus kysyy havaitsijalta muutamia kysymyksiä havaitusta pilvestä, joihin havaitsija vastaa niin hyvin kuin voi. Kysymysten tarkoituksena on iteroida havainto kohti oikeaa pilvityyppiä. Jos oikea pilvityyppi löytyy, käyttäjälle kerrotaan mitä kyseinen pilvi voi tarkoitaa lähituntien, jopa lähipäivien sään kannalta.
-Jokaiselle käyttäjälle näytetään myös Yahoon paikkakuntakohtainen sääennuste lähipäiville.
 
 ## Dokumentaatio
 
@@ -14,11 +13,15 @@ Jokaiselle käyttäjälle näytetään myös Yahoon paikkakuntakohtainen sääen
 
 [Työaikakirjanpito](https://github.com/civuaine/OTM2018_harjoitustyo/blob/master/Dokumentaatio/tuntikirjanpito.md)
 
+[Testausdokumentti]((https://github.com/civuaine/OTM2018_harjoitustyo/blob/master/Dokumentaatio/testaus.md)
+
 ## Releaset
 
 [Viikko 5](https://github.com/civuaine/OTM2018_harjoitustyo/releases/tag/viikko5)
 
 [Viikko 6](https://github.com/civuaine/OTM2018_harjoitustyo/releases/tag/viikko6)
+
+[Valmis ohjelma] (https://github.com/civuaine/OTM2018_harjoitustyo/releases/tag/lopullinen)
 
 ## Komentorivitoiminnot
 
